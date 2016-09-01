@@ -1,6 +1,6 @@
-**REACT SKELETON**
+**DBPOC-CLIENT**
 
-This is a client app repository for the **DB Distribute** React PoC project.
+This is a client app repository for the DB React PoC project.
 
 **RUNNING THE PROJECT**
 
@@ -16,6 +16,10 @@ or 404 errors, please run
 This will allow access to github.com repos from behind a proxy / firewall.
 
 After installing the dependencies please run
+
+`npm install http-server -g`
+
+In order to instal the web server. Then run
 
 `npm start`
 
