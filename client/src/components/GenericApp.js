@@ -1,6 +1,8 @@
 import React from "react";
-import {LinkContainer} from "react-router-bootstrap";
-import {Nav, Navbar, NavItem, Glyphicon} from "react-bootstrap";
+import DbNavigation from "./UI/DbNavigation";
+import DbSidebar from "./UI/DbSidebar";
+import {Grid, Row, Col, Jumbotron, Button} from "react-bootstrap";
+import {Link} from "react-router";
 
 class GenericApp extends React.Component {
     constructor(props) {
@@ -8,32 +10,23 @@ class GenericApp extends React.Component {
     }
 
     render() {
-        return (<Navbar>
-            <Navbar.Header>
-                <Navbar.Brand>
-                    <a className="navbar-brand ab-logo"><span>DB Skeleton</span></a>
-                </Navbar.Brand>
-            </Navbar.Header>
-            <Nav>
-                <LinkContainer to="/dashboard">
-                    <NavItem><Glyphicon glyph="dashboard"/> Dashboard</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/system">
-                    <NavItem><Glyphicon glyph="cog"/> System</NavItem>
-                </LinkContainer>
-                <LinkContainer to='/option1'>
-                    <NavItem eventKey={1}>Option 1</NavItem>
-                </LinkContainer>
-                <LinkContainer to="/option2">
-                    <NavItem eventKey={2}>Option 2</NavItem>
-                </LinkContainer>
-            </Nav>
-            <Nav pullRight>
-                <LinkContainer to="/user">
-                    <NavItem eventKey={2}>User Menu</NavItem>
-                </LinkContainer>
-            </Nav>
-        </Navbar>);
+        return (<div>
+            <DbNavigation/>
+            <Grid>
+                <Row>
+                    <Col sm={4}>
+                        <DbSidebar/>
+                    </Col>
+                    <Col sm={8}>
+                        <Jumbotron>
+                            <h1>Main Content</h1>
+                            <p>This is the main content</p>
+                            <p><Link to="/dashboard"><Button bsStyle="primary">Learn more</Button></Link></p>
+                        </Jumbotron>
+                    </Col>
+                </Row>
+            </Grid>
+        </div>);
     }
 }
 
