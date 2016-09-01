@@ -15,7 +15,7 @@ class UserTable extends React.Component {
 		super(props);
 	}
 	componentWillMount(){
-		//this.props.usersLoad();
+		this.props.usersLoad();
 	}
 	render() {
 		let { users } = this.props;
@@ -53,7 +53,7 @@ UserTable.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.string.isRequired,
 		name: PropTypes.string.isRequired,
-		yearOfBirth: PropTypes.number.isRequired,
+		yearOfBirth: PropTypes.string.isRequired,
 		country: PropTypes.string.isRequired,
 		username: PropTypes.string.isRequired
 	}).isRequired).isRequired,

@@ -113,7 +113,7 @@ var usr = [
 	}
 ]
 
-const users = (state = usr, action) => {
+const users = (state = [], action) => {
 	if (!action) {return state;}
 	
 	switch (action.type) {
