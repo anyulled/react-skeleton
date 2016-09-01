@@ -19,6 +19,7 @@
     "axios": "^0.14.0",
     "bignumber.js": "^2.4.0",
     "bootstrap": "^3.3.7",
+    "css-loader": "^0.24.0",
     "fixed-data-table": "^0.6.3",
     "i18next": "^3.4.1",
     "jspdf": "^1.2.61",
