@@ -11,7 +11,6 @@ class GenericApp extends React.Component {
 
     render() {
         return (<div>
-            <DbNavigation/>
             <Grid>
                 <Row>
                     <Col sm={4}>

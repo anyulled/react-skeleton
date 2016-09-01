@@ -1,13 +1,14 @@
 const webpack = require("webpack");
+const path = require("path");
 
 module.exports = {
     entry: {
-        js: ["./src/app.js"],
+        js: ["./src/index.js"],
         vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare", "react-virtualized"]
     },
     devtool: "source-map",
     output: {
-        path: __dirname + "/dist/assets/js",
+        path: path.join(__dirname,"dist", "assets", "js"),
         filename: "bundle.js"
     },
     module: {
@@ -17,10 +18,10 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel",
                 query: {
-                    presets: ["es2015", "react"]
+                    presets: ["es2015", "react", "stage-0"]
                 }
             },
-            { test: /\.css$/, loader: "style-loader!css-loader" }
+			{ test: /\.css$/, loader: "style-loader!css-loader" }
         ]
     },
     plugins: [

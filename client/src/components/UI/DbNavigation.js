@@ -11,13 +11,13 @@ class DbNavigation extends React.Component {
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
-                <LinkContainer to="/dashboard">
+                <LinkContainer to="/">
                     <NavItem><Glyphicon glyph="dashboard"/> Dashboard</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/system">
                     <NavItem><Glyphicon glyph="cog"/> System</NavItem>
                 </LinkContainer>
-                <LinkContainer to='/option1'>
+                <LinkContainer to='/pagination'>
                     <NavItem eventKey={1}>Option 1</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/option2">
@@ -25,7 +25,7 @@ class DbNavigation extends React.Component {
                 </LinkContainer>
             </Nav>
             <Nav pullRight>
-                <LinkContainer to="/user">
+                <LinkContainer to="/users">
                     <NavItem eventKey={2}>User Menu</NavItem>
                 </LinkContainer>
             </Nav>
