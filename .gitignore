@@ -5,3 +5,4 @@ client/dist/assets/js/bundle.js.map
 client/dist/assets/js/vendor.bundle.js
 client/dist/assets/js/vendor.bundle.js.map
 client/node_modules/
+server/node_modules/
