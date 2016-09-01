@@ -6,3 +6,4 @@ client/dist/assets/js/vendor.bundle.js
 client/dist/assets/js/vendor.bundle.js.map
 client/node_modules/
 client/dist
+/node_modules/
