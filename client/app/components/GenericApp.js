@@ -1,6 +1,6 @@
 import React from "react";
-import DbNavigation from "./UI/DbNavigation";
-import DbSidebar from "./UI/DbSidebar";
+import Navigation from "./UI/Navigation";
+import Sidebar from "./UI/Sidebar";
 import {Grid, Row, Col, Jumbotron, Button} from "react-bootstrap";
 import {Link} from "react-router";
 
@@ -14,7 +14,7 @@ class GenericApp extends React.Component {
             <Grid>
                 <Row>
                     <Col sm={4}>
-                        <DbSidebar/>
+                        <Sidebar/>
                     </Col>
                     <Col sm={8}>
                         <Jumbotron>

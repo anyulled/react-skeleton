@@ -8,6 +8,8 @@ In order to run the project please first run
 
 `npm install`
 
+`npm install http-server -g`
+
 to download all the required dependencies. If during the install process you run into a permission
 or 404 errors, please run
 
