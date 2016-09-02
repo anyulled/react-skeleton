@@ -2,7 +2,7 @@ import React from "react";
 import {LinkContainer} from "react-router-bootstrap";
 import {Nav, NavItem} from "react-bootstrap";
 
-class DbSidebar extends React.Component {
+class Sidebar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,4 +24,4 @@ class DbSidebar extends React.Component {
     }
 }
 
-export default DbSidebar;
+export default Sidebar;

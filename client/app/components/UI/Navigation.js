@@ -2,12 +2,12 @@ import React from "react";
 import {LinkContainer} from "react-router-bootstrap";
 import {Nav, Navbar, NavItem, Glyphicon} from "react-bootstrap";
 
-class DbNavigation extends React.Component {
+class Navigation extends React.Component {
     render() {
         return (<Navbar>
             <Navbar.Header>
                 <Navbar.Brand>
-                    <a className="navbar-brand ab-logo"><span>DB Skeleton</span></a>
+                    <a className="navbar-brand ab-logo"><span>Appverse Skeleton</span></a>
                 </Navbar.Brand>
             </Navbar.Header>
             <Nav>
@@ -33,4 +33,4 @@ class DbNavigation extends React.Component {
     }
 }
 
-export default DbNavigation;
+export default Navigation;

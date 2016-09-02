@@ -41,6 +41,18 @@ module.exports = {
         	  inject: 'body'
         	}),
         new webpack.HotModuleReplacementPlugin(),
+        new webpackUglifyJsPlugin({
+        	  cacheFolder: __dirname ,
+        	  debug: false,
+        	  minimize: true,
+        	  sourceMap: true,
+        	  output: {
+        	    comments: false
+        	  },
+        	  compressor: {
+        	    warnings: false
+        	  }
+        }),
         new CopyWebpackPlugin([{ from: 'app/assets', to:'assets' }])
         
         /**

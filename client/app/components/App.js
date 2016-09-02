@@ -1,5 +1,5 @@
 import React from "react"
-import DbNavigation from "./UI/DbNavigation"
+import Navigation from "./UI/Navigation"
 import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap"
 
 class App extends React.Component {
@@ -13,7 +13,7 @@ class App extends React.Component {
 
     render() {
         return (<div>
-            <DbNavigation/>
+            <Navigation/>
 			{this.props.children}
         </div>);
     }
