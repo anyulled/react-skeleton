@@ -14,7 +14,7 @@ const user = (state = [], action) => {
 			if (state.id !== action.id) {
 				return state;
 			}
-			return Object.assign({}, state, action.payload);
+			return {...state, ...action.payload};
 			break;
 		default:
 			return state;
