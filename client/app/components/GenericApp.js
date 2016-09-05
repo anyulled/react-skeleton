@@ -7,6 +7,13 @@ import {Link} from "react-router";
 class GenericApp extends React.Component {
     constructor(props) {
         super(props);
+		this.state = {
+			items: [
+				{"id": "1", "name": "Client", "route": "/"},
+				{"id": "2", "name": "Obligor", "route": "/link2"},
+				{"id": "3", "name": "Details", "route": "/link3"}
+			]
+		};
     }
 
     render() {
@@ -14,7 +21,7 @@ class GenericApp extends React.Component {
             <Grid>
                 <Row>
                     <Col sm={4}>
-                        <Sidebar/>
+                        <Sidebar items={this.state.items}/>
                     </Col>
                     <Col sm={8}>
                         <Jumbotron>

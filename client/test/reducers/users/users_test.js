@@ -45,7 +45,7 @@ describe("users reducer", () => {
 		expect(newState).to.have.length(2);
 	});
 	
-	it("should be able to add more than one user", () => {
+	it("should append to the state, not modify it", () => {
 		let state = [{whatever:"whatever"}];
 		let user = {
 			"id":"123456789",
