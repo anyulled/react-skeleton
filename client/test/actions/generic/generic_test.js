@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 /* global define, it, describe */
 
-import {actionOne, actionTwo, actionThree} from "../src/actions/genericAction";
+import {actionOne, actionTwo, actionThree} from "../../../app/actions/generic/generic";
 import {expect} from "chai";
 
 describe("generic action", ()=> {
