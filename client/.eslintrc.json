@@ -38,7 +38,7 @@
     ],
     "indent": [
       "error",
-      2,
+      4,
       {
         "SwitchCase": 1
       }
@@ -85,7 +85,8 @@
       {
         "ignore": [
           "handleSubmit",
-          "fields"
+          "fields",
+          "children"
         ]
       }
     ]

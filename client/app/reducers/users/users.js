@@ -19,7 +19,8 @@ const user = (state = [], action) => {
 		default:
 			return state;
 	}
-}
+};
+
 //This must be removed soon
 var usr = [
 	{
@@ -111,7 +112,7 @@ var usr = [
 		"country":"JAPAN",
 		"username":"nobitar"
 	}
-]
+];
 
 const users = (state = [], action) => {
 	if (!action) {return state;}
@@ -126,7 +127,7 @@ const users = (state = [], action) => {
 			return [ //we're simply concatenating the state array and the new user
 				...state,
 				user(undefined, action)
-			]
+            ];
 			break;
 		case actions.USER_REMOVE:
 			return state.filter(u => 
@@ -143,6 +144,6 @@ const users = (state = [], action) => {
 		default:
 			return state;
 	}
-}
+};
 
 export default users;
