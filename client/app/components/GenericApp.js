@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "./UI/Navigation";
 import Sidebar from "./UI/Sidebar";
 import {Grid, Row, Col, Jumbotron, Button} from "react-bootstrap";
 import {Link} from "react-router";
@@ -7,13 +6,13 @@ import {Link} from "react-router";
 class GenericApp extends React.Component {
     constructor(props) {
         super(props);
-		this.state = {
-			items: [
-				{"id": "1", "name": "Client", "route": "/"},
-				{"id": "2", "name": "Obligor", "route": "/link2"},
-				{"id": "3", "name": "Details", "route": "/link3"}
-			]
-		};
+        this.state = {
+            items: [
+                {"id": "1", "name": "Client", "route": "/"},
+                {"id": "2", "name": "Obligor", "route": "/link2"},
+                {"id": "3", "name": "Details", "route": "/link3"}
+            ]
+        };
     }
 
     render() {

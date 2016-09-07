@@ -22,7 +22,7 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-				<IndexRoute component={GenericApp}/>
+				<Route component={GenericApp}/>
 				<Route path="/pagination" component={PaginationExample}/>
 				<Route path="/formly" component={UserForm}/>
 				<Route path="/users" component={Users}/>

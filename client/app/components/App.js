@@ -1,6 +1,5 @@
 import React from "react"
 import Navigation from "./UI/Navigation"
-import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap"
 
 class App extends React.Component {
     constructor(props) {
@@ -14,7 +13,7 @@ class App extends React.Component {
     render() {
         return (<div>
             <Navigation/>
-			{this.props.children}
+            {this.props.children}
         </div>);
     }
 }
