@@ -21,7 +21,6 @@ class UserTable extends React.Component {
 		let { users } = this.props;
 		let rowHeight = 30;
 		return(
-			<div className="top-toolbar">
 				<Table
 					height={users.length * rowHeight}
 					rowsCount={users.length}
@@ -32,7 +31,7 @@ class UserTable extends React.Component {
 				>
 					<Column cell={<TextCell data={users} col="id" />} width={150} header={<Cell>ID</Cell>} />
 					<Column cell={<TextCell data={users} col="name" />} width={200} header={<Cell>Name</Cell>} />
-					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={400} header={<Cell>Y of Birth</Cell>} />
+					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={400} header={<Cell>Year of Birth</Cell>} />
 					<Column cell={<TextCell data={users} col="country" />} width={150} header={<Cell>Country</Cell>} />
 					<Column cell={<TextCell data={users} col="username" />} width={150} header={<Cell>Username</Cell>} />
 					<Column  width={100} header="Actions"
@@ -43,7 +42,6 @@ class UserTable extends React.Component {
 							)}  
 					/>
 				</Table>
-			</div>
 		);
 	}
 	

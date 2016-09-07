@@ -6,10 +6,14 @@ export const USER_REMOVE = "user/remove";
 export const USER_UPDATE = "user/update";
 export const USER_CLEAR = "user/clear";
 
+let nextUserId = 1;
 export function userAdd(dto) {
 	return {
 		type: USER_ADD,
-		payload: dto
+		payload: {
+				...dto,
+				id: nextUserId++
+			}
 	};
 }
 
