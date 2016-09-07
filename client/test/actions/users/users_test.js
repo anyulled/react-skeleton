@@ -1,9 +1,61 @@
-import { usersLoad } from "../../../app/actions/users/users";
+import * as actions from "../../../app/actions/users/users";
 import mocha from "mocha";
 import { expect } from "chai";
+import thunk from "redux-thunk";
+import Promise from "es6-promise";
+import nock from "nock";
+import configureMockStore from "redux-mock-store";
+
+const middlewares = [ thunk ];
+const mockStore = configureMockStore(middlewares);
 
 describe("users actions", () => {
-  it("should provide usersLoad action", () => {
-    expect(usersLoad).to.be.a("function");
-  });
+	it("should provide usersLoad action", () => {
+		expect(actions.usersLoad).to.be.a("function");
+	});
+	
+	describe("usersLoad", () => {
+		
+		
+		it("should dispatch two actions, the second one asynchronously", (done) => {
+			
+			let store = mockStore({ users: [] });
+			
+			nock("http://localhost:3000")
+				.get("/users")
+				.reply(200, [{
+					"id":"000000061",
+					"name":"John Doe",
+					"yearOfBirth":"1996",
+					"country":"UK",
+					"username":"jdoe"
+				},
+				{
+					"id":"000000062",
+					"name":"Erika Mustermann",
+					"yearOfBirth":"1975",
+					"country":"GERMANY",
+					"username":"erikamustermann"
+				},
+				{
+					"id":"000000063",
+					"name":"Erik Mustermann",
+					"yearOfBirth":"1976",
+					"country":"GERMANY",
+					"username":"erikmustermann"
+				}] );
+				
+				store.dispatch(actions.usersLoad());
+				
+				setTimeout(function(){
+				   expect(store.getActions()).to.have.length(2);
+				   done();
+			   }, 1000);
+
+		});
+		
+	});
+  
+  
+	
 });
