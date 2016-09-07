@@ -15,6 +15,23 @@ let countries = [
 	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA"
 ]
 
+const validate = values => {
+    const errors = {};
+    if (!values.name) {
+        errors.name = 'Required';
+    }
+	if (!values.yearOfBirth) {
+        errors.yearOfBirth = 'Required';
+    }
+	if (!values.username) {
+        errors.username = 'Required';
+    }
+	if (!values.country) {
+        errors.country = 'Required';
+    }
+    return errors;
+}
+
 const UserForm = (props) => {
 	const { fields: {
             name, yearOfBirth, country, username
@@ -50,5 +67,6 @@ const mapStateToProps = (state, props) => {
 
 export default reduxForm({
 	form: "userForm",
-	fields: ['name', 'yearOfBirth', 'username', 'country']
+	fields: ['name', 'yearOfBirth', 'username', 'country'],
+	validate
 }, mapStateToProps)(UserForm);

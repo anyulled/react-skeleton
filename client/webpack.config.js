@@ -6,7 +6,7 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: {
         js: ["./app/index.js"],
-        vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare", "react-virtualized", "transform-decorators-legacy"]
+        vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare", "react-virtualized"]
     },
     devtool: "source-map",
     output: {
