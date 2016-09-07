@@ -14,7 +14,7 @@ class Navigation extends React.Component {
                 <LinkContainer to="/">
                     <NavItem><Glyphicon glyph="dashboard"/> Dashboard</NavItem>
                 </LinkContainer>
-                <LinkContainer to="/formly">
+                <LinkContainer to="/form1">
                 	<NavItem><Glyphicon glyph="cog"/> Forms demo</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/system">
