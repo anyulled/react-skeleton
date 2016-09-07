@@ -29,20 +29,6 @@ describe("users actions", () => {
 					"yearOfBirth":"1996",
 					"country":"UK",
 					"username":"jdoe"
-				},
-				{
-					"id":"000000062",
-					"name":"Erika Mustermann",
-					"yearOfBirth":"1975",
-					"country":"GERMANY",
-					"username":"erikamustermann"
-				},
-				{
-					"id":"000000063",
-					"name":"Erik Mustermann",
-					"yearOfBirth":"1976",
-					"country":"GERMANY",
-					"username":"erikmustermann"
 				}] );
 				
 				store.dispatch(actions.usersLoad());
