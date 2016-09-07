@@ -19,9 +19,17 @@ describe("<Sidebar/>", () => {
 		items.push({"id": "3", "name": "tab 3", "route": "/link3"});
 	});
 	
-	it("should mount", () => {
+	it('should mount', function () {
+
+		const wrapper = mount(<Sidebar items ={items} />);
+		expect(SidebarComp).to.exist;
+	});
+	
+	it("should mount with the same number of items that were passed to it", () => {
 		const wrapper = mount(<Sidebar items={items}/>);
 		expect(wrapper.find('.nav.nav-pills li')).to.have.length(3);
 	});
+	
+	
 	
 });
