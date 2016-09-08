@@ -5,7 +5,6 @@ import * as uiActions from "../actions/ui/ui";
 import { reduxForm, reset } from 'redux-form';
 import Input from "../components/Input";
 import Select from "../components/Select";
-import isEmpty from "../utils/isEmpty";
 import { danger, info, warning } from '../utils/colors';
 
 const clearForm = (dispatch) => {
