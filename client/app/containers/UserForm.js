@@ -22,6 +22,7 @@ const submitCancelEdit = (id, values, dispatch) => {
 };
 
 let countries = [
+	"FRANCE",
 	"GERMANY",
 	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA"
 ]

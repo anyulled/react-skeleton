@@ -9,12 +9,6 @@ const submit = (id, values, dispatch) => {
     dispatch(userActions.userAdd(values));
 };
 
-let countries = [
-	"FRANCE",
-	"GERMANY",
-	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA"
-]
-
 const validate = values => {
     const errors = {};
     if (!values.name) {
