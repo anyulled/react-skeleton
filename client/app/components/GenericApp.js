@@ -8,9 +8,9 @@ class GenericApp extends React.Component {
         super(props);
         this.state = {
             items: [
-                {"id": "1", "name": "Client", "route": "/"},
-                {"id": "2", "name": "Obligor", "route": "/link2"},
-                {"id": "3", "name": "Details", "route": "/link3"}
+                {"id": "1", "name": "Section 1", "route": "/"},
+                {"id": "2", "name": "Section 2", "route": "/link2"},
+                {"id": "3", "name": "Section 3", "route": "/link3"}
             ]
         };
     }
