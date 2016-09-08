@@ -25,14 +25,14 @@ class UserTable extends React.Component {
 				<Table
 					height={users.length * rowHeight}
 					rowsCount={users.length}
-					width={1050 + (del || edit ? 100 : 0)}
+					width={800 + (del || edit ? 100 : 0)}
 					rowHeight={rowHeight}
 					headerHeight={rowHeight}
 					{...this.props}
 				>
 					<Column cell={<TextCell data={users} col="id" />} width={150} header={<Cell>ID</Cell>} />
 					<Column cell={<TextCell data={users} col="name" />} width={200} header={<Cell>Name</Cell>} />
-					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={400} header={<Cell>Year of Birth</Cell>} />
+					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={150} header={<Cell>Year of Birth</Cell>} />
 					<Column cell={<TextCell data={users} col="country" />} width={150} header={<Cell>Country</Cell>} />
 					<Column cell={<TextCell data={users} col="username" />} width={150} header={<Cell>Username</Cell>} />
 					{ del || edit ? <Column  width={100} header="Actions"
