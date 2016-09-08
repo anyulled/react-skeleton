@@ -19,13 +19,13 @@ class UserTable extends React.Component {
 		this.props.usersLoad();
 	}
 	render() {
-		let { users, onEditClick, onRemoveClick } = this.props;
+		let { users, onEditClick, onRemoveClick, edit, del } = this.props;
 		let rowHeight = 30;
 		return(
 				<Table
 					height={users.length * rowHeight}
 					rowsCount={users.length}
-					width={1150}
+					width={1050 + (del || edit ? 100 : 0)}
 					rowHeight={rowHeight}
 					headerHeight={rowHeight}
 					{...this.props}
@@ -35,19 +35,24 @@ class UserTable extends React.Component {
 					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={400} header={<Cell>Year of Birth</Cell>} />
 					<Column cell={<TextCell data={users} col="country" />} width={150} header={<Cell>Country</Cell>} />
 					<Column cell={<TextCell data={users} col="username" />} width={150} header={<Cell>Username</Cell>} />
-					<Column  width={100} header="Actions"
+					{ del || edit ? <Column  width={100} header="Actions"
 						cell={({rowIndex, ...props}) => (
 								<Cell>
-									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(users[rowIndex])}}><Glyphicon glyph="pencil" /></div>
-									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onRemoveClick(users[rowIndex]["id"])}}><Glyphicon glyph="remove" /></div>
+									{ edit ? <div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(users[rowIndex])}}><Glyphicon glyph="pencil" /></div> : null }
+									{ del  ? <div style={{cursor: "pointer", display:"inline"}} onClick={() => { onRemoveClick(users[rowIndex]["id"])}}><Glyphicon glyph="remove" /></div> : null }
 								</Cell>
 							)}  
-					/>
+					/> : null }
 				</Table>
 		);
 	}
 	
 }
+
+UserTable.defaultProps= {
+	del: false,
+	edit: false
+};
 
 UserTable.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.shape({
@@ -59,7 +64,9 @@ UserTable.propTypes = {
 	}).isRequired).isRequired,
 	usersLoad: PropTypes.func.isRequired,
 	onRemoveClick: PropTypes.func.isRequired,
-	onEditClick: PropTypes.func.isRequired
+	onEditClick: PropTypes.func.isRequired,
+	edit: PropTypes.bool.isRequired,
+	del: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => {

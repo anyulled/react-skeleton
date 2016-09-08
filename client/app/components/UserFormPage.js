@@ -9,7 +9,7 @@ const UserFormPage = (props) => {
 	return (<div>
 		<UserForm/>
 		<h3>This is for display purposes only. Any changes on the user list will be undone upon re-rendering.</h3>
-		<UserTable/>
+		<UserTable del={true} edit={true}/>
   
 	</div>);
 }
