@@ -1,30 +1,37 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as userActions from "../actions/users/users";
-import { reduxForm } from 'redux-form';
+import * as uiActions from "../actions/ui/ui";
+import { reduxForm, reset } from 'redux-form';
 import Input from "../components/Input";
 import Select from "../components/Select";
 import isEmpty from "../utils/isEmpty";
 import { danger, info, warning } from '../utils/colors';
 
+const clearForm = (dispatch) => {
+	dispatch(uiActions.editingUserChanged(false));
+	dispatch(userActions.userEdit({}));
+	dispatch(reset("userForm"));
+}
+
 const submitAdd = (id, values, dispatch) => {
     dispatch(userActions.userAdd(values));
-	dispatch(userActions.userEdit({}));
+	clearForm(dispatch);
 };
 
 const submitUpdate = (id, dispatch, values) => {
     dispatch(userActions.userUpdate(id, values));
-	dispatch(userActions.userEdit({}));
+	clearForm(dispatch);
 };
 
 const submitCancelEdit = (id, values, dispatch) => {
-    dispatch(userActions.userEdit({}));
+    clearForm(dispatch);
 };
 
 let countries = [
 	"FRANCE",
 	"GERMANY",
-	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA"
+	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA","VENEZUELA"
 ]
 
 const validate = values => {
@@ -47,19 +54,13 @@ const validate = values => {
 class UserForm extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			buttonText: isEmpty(props.user) ? "New" : "Save"
-		}
-	}
-	componentWillReceiveProps(nextProps) {
-		this.state.buttonText = isEmpty(nextProps.user) ? "New" : "Save"
 	}
 	render() {
 		let { fields: {
             name, yearOfBirth, country, username
-        }, handleSubmit, dispatch, user } = this.props;
+        }, handleSubmit, dispatch, id, isEditingUser } = this.props;
 		const tsubmit = submitAdd.bind(undefined, dispatch);
-		const usubmit = submitUpdate.bind(undefined, user.id, dispatch);
+		const usubmit = submitUpdate.bind(undefined, id, dispatch);
 		const cESubmit = submitCancelEdit.bind(undefined, dispatch);
 		return (<form onSubmit={handleSubmit(tsubmit)}>
 
@@ -72,13 +73,13 @@ class UserForm extends React.Component {
 						...countries.map(a => ({'id': a, 'name': a}))
 					]
 				} />
-				{ isEmpty(user) ? <button d type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(tsubmit)}>
+				{ !isEditingUser ? <button d type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(tsubmit)}>
 					New
 				</button>:null}
-				{ !isEmpty(user) ? <button  type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(usubmit)}>
+				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(usubmit)}>
 					Save
 				</button>:null}
-				{ !isEmpty(user) ? <button  type='button' className='button button-primary' style={{backgroundColor: warning}} onClick={handleSubmit(cESubmit)}>
+				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: warning}} onClick={handleSubmit(cESubmit)}>
 					Cancel
 				</button>:null}
 				
@@ -89,14 +90,14 @@ class UserForm extends React.Component {
 const mapStateToProps = (state, props) => {
 	let initial = {};
 	const { user } = state.users;
-       
 	if( user ) { 
          initial = user; 
 	} 
 
     return {
         initialValues: initial,
-		user: initial
+		id: initial.id,
+		isEditingUser: state.ui.isEditingUser
     };
 };
 

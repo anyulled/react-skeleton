@@ -9,6 +9,7 @@ import * as userActions from "../actions/users/users";
 import "fixed-data-table/dist/fixed-data-table-base.css";
 import "fixed-data-table/dist/fixed-data-table-style.css";
 import "fixed-data-table/dist/fixed-data-table.css";
+import * as uiActions from "../actions/ui/ui";
 
 class UserTable extends React.Component {
 	constructor(props) {
@@ -77,6 +78,7 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		onEditClick: (user) => {
 			dispatch(userActions.userEdit(user));
+			dispatch(uiActions.editingUserChanged(true));
 		}
 	};
 };

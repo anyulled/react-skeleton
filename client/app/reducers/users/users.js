@@ -12,7 +12,6 @@ const user = (state = [], action) => {
             break;
         case actions.USER_UPDATE:
             if (state.id !== action.id) {
-				console.log("213");
                 return state;
             }
             return {...state, ...action.payload};

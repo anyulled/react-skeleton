@@ -5,10 +5,12 @@ import thunk from "redux-thunk";
 
 import genericReducer from "../reducers/generic/generic";
 import users from "../reducers/users/users";
+import ui from "../reducers/ui/ui";
 
 export default createStore(combineReducers({
     generic: genericReducer,
 	users: users,
+	ui: ui,
     form: formReducer
 }), compose(
     applyMiddleware(thunk, logger()),
