@@ -12,6 +12,7 @@ const user = (state = [], action) => {
             break;
         case actions.USER_UPDATE:
             if (state.id !== action.id) {
+				console.log("213");
                 return state;
             }
             return {...state, ...action.payload};
@@ -21,7 +22,12 @@ const user = (state = [], action) => {
     }
 }
 
-const users = (state = [], action) => {
+const USERS_INITIAL = {
+	items: [],
+	user: {}
+}
+
+const users = (state = USERS_INITIAL, action) => {
     if (!action) {
         return state;
     }
@@ -29,29 +35,46 @@ const users = (state = [], action) => {
     switch (action.type) {
         case actions.USER_ADD:
             if (typeof action.clear !== "undefined" && action.clear === true) {
-                return action.payload;
+                return {
+					...state,
+					items: action.payload
+				};
             }
             //if the payload is an array, we add it to the state
             if (Array.isArray(action.payload)) {
-                return [...state, ...action.payload];
+                return {
+					...state,
+					items: [...state.items, ...action.payload]
+				};
             }
-            return [ //we're simply concatenating the state array and the new user
-                ...state,
-                user(undefined, action)
-            ];
+			return {
+				...state,
+				items: [...state.items, user(undefined, action)] //we're simply concatenating the state array and the new user
+			};
             break;
         case actions.USER_REMOVE:
-            return state.filter(u =>
-                user(u, action)
-            );
+            return {
+				...state,
+				items: state.items.filter(u => user(u, action))
+			}
+            break;
+		case actions.USER_EDIT:
+            return {
+				...state,
+				user: action.payload
+			} 
             break;
         case actions.USER_UPDATE:
-            return state.map(u =>
-                user(u, action)
-            );
+            return {
+				...state,
+				items: state.items.map(u => user(u, action))
+			} 
             break;
         case actions.USER_CLEAR:
-            return [];
+            return {
+				...state,
+				items: []
+			};
         default:
             return state;
     }

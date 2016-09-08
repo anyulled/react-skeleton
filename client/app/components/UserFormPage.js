@@ -10,6 +10,7 @@ const submit = (id, values, dispatch) => {
 };
 
 let countries = [
+	"FRANCE",
 	"GERMANY",
 	"IRELAND","ITALY","JAPAN","SPAIN","UK","USA"
 ]
@@ -34,7 +35,7 @@ const validate = values => {
 const UserFormPage = (props) => {
 	return (<div>
 		<UserForm/>
-		<h3>This is for display purposes only. The users added using the form will be removed on re-rendering.</h3>
+		<h3>This is for display purposes only. Any changes on the user list will be undone upon re-rendering.</h3>
 		<UserTable/>
   
 	</div>);

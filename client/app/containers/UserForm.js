@@ -4,9 +4,21 @@ import * as userActions from "../actions/users/users";
 import { reduxForm } from 'redux-form';
 import Input from "../components/Input";
 import Select from "../components/Select";
+import isEmpty from "../utils/isEmpty";
+import { danger, info, warning } from '../utils/colors';
 
-const submit = (id, values, dispatch) => {
+const submitAdd = (id, values, dispatch) => {
     dispatch(userActions.userAdd(values));
+	dispatch(userActions.userEdit({}));
+};
+
+const submitUpdate = (id, dispatch, values) => {
+    dispatch(userActions.userUpdate(id, values));
+	dispatch(userActions.userEdit({}));
+};
+
+const submitCancelEdit = (id, values, dispatch) => {
+    dispatch(userActions.userEdit({}));
 };
 
 let countries = [
@@ -31,12 +43,24 @@ const validate = values => {
     return errors;
 }
 
-const UserForm = (props) => {
-	const { fields: {
+class UserForm extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			buttonText: isEmpty(props.user) ? "New" : "Save"
+		}
+	}
+	componentWillReceiveProps(nextProps) {
+		this.state.buttonText = isEmpty(nextProps.user) ? "New" : "Save"
+	}
+	render() {
+		let { fields: {
             name, yearOfBirth, country, username
-        }, handleSubmit, dispatch } = props;
-	const tsubmit = submit.bind(undefined, dispatch);
-	return (<form onSubmit={handleSubmit(tsubmit)}>
+        }, handleSubmit, dispatch, user } = this.props;
+		const tsubmit = submitAdd.bind(undefined, dispatch);
+		const usubmit = submitUpdate.bind(undefined, user.id, dispatch);
+		const cESubmit = submitCancelEdit.bind(undefined, dispatch);
+		return (<form onSubmit={handleSubmit(tsubmit)}>
 
 				<Input label='Name' field={name} />
 				<Input label='Year of Birth' field={yearOfBirth} />
@@ -47,16 +71,32 @@ const UserForm = (props) => {
 						...countries.map(a => ({'id': a, 'name': a}))
 					]
 				} />
-				<button onClick={handleSubmit(tsubmit)}>
-				  Create new user
-				</button>
+				{ isEmpty(user) ? <button d type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(tsubmit)}>
+					New
+				</button>:null}
+				{ !isEmpty(user) ? <button  type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(usubmit)}>
+					Save
+				</button>:null}
+				{ !isEmpty(user) ? <button  type='button' className='button button-primary' style={{backgroundColor: warning}} onClick={handleSubmit(cESubmit)}>
+					Cancel
+				</button>:null}
+				
 			</form>);
+	}
 }
 
 const mapStateToProps = (state, props) => {
+	let initial = {};
+	const { user } = state.users;
+       
+	if( user ) { 
+         initial = user; 
+	} 
+
     return {
-        initialValues: {}
-    }
+        initialValues: initial,
+		user: initial
+    };
 };
 
 export default reduxForm({

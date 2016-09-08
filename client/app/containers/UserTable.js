@@ -18,7 +18,7 @@ class UserTable extends React.Component {
 		this.props.usersLoad();
 	}
 	render() {
-		let { users } = this.props;
+		let { users, onEditClick, onRemoveClick } = this.props;
 		let rowHeight = 30;
 		return(
 				<Table
@@ -37,7 +37,8 @@ class UserTable extends React.Component {
 					<Column  width={100} header="Actions"
 						cell={({rowIndex, ...props}) => (
 								<Cell>
-									<Link to={`/users/${users[rowIndex]["id"]}`}><Glyphicon glyph="eye-open" /></Link>
+									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(users[rowIndex])}}><Glyphicon glyph="pencil" /></div>
+									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onRemoveClick(users[rowIndex]["id"])}}><Glyphicon glyph="remove" /></div>
 								</Cell>
 							)}  
 					/>
@@ -55,12 +56,14 @@ UserTable.propTypes = {
 		country: PropTypes.string.isRequired,
 		username: PropTypes.string.isRequired
 	}).isRequired).isRequired,
-	usersLoad: PropTypes.func.isRequired
+	usersLoad: PropTypes.func.isRequired,
+	onRemoveClick: PropTypes.func.isRequired,
+	onEditClick: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
 	return {
-		users: state.users
+		users: state.users.items
 	};
 };
 
@@ -68,7 +71,13 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		usersLoad: () => {
 			dispatch(userActions.usersLoad());
-		} 
+		},
+		onRemoveClick: (id) => {
+			dispatch(userActions.userRemove(id));
+		},
+		onEditClick: (user) => {
+			dispatch(userActions.userEdit(user));
+		}
 	};
 };
 

@@ -3,6 +3,7 @@ import config from "../../config";
 
 export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
+export const USER_EDIT = "user/edit";
 export const USER_UPDATE = "user/update";
 export const USER_CLEAR = "user/clear";
 
@@ -28,6 +29,13 @@ export function userUpdate(id, user) {
 	return {
 		type: USER_UPDATE,
 		id: id,
+		payload: user
+	};
+}
+
+export function userEdit(user) {
+	return {
+		type: USER_EDIT,
 		payload: user
 	};
 }
