@@ -23,6 +23,11 @@ const submitUpdate = (id, dispatch, values) => {
 	clearForm(dispatch);
 };
 
+const submitRemove = (id, dispatch) => {
+    dispatch(userActions.userRemove(id));
+	clearForm(dispatch);
+};
+
 const submitCancelEdit = (id, values, dispatch) => {
     clearForm(dispatch);
 };
@@ -61,6 +66,7 @@ class UserForm extends React.Component {
 		const tsubmit = submitAdd.bind(undefined, dispatch);
 		const usubmit = submitUpdate.bind(undefined, id, dispatch);
 		const cESubmit = submitCancelEdit.bind(undefined, dispatch);
+		const dsubmit = submitRemove.bind(undefined, id, dispatch);
 		return (<form onSubmit={handleSubmit(tsubmit)}>
 
 				<Input label='Name' field={name} />
@@ -77,6 +83,9 @@ class UserForm extends React.Component {
 				</button>:null}
 				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(usubmit)}>
 					Save
+				</button>:null}
+				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: danger}} onClick={handleSubmit(dsubmit)}>
+					Delete
 				</button>:null}
 				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: warning}} onClick={handleSubmit(cESubmit)}>
 					Cancel
