@@ -5,7 +5,7 @@ import { expect } from "chai";
 
 describe("users reducer", () => {
 	it("should return an initial state when called with no params", () => {
-		expect(usersReducer()).to.eql([]);
+		expect(usersReducer()).to.eql({ items: [], user: {} } );
 	});
 	
 	it("should return a new state with one user after adding one", () => {
