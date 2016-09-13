@@ -68,7 +68,7 @@ UserTable.propTypes = {
 
 const mapStateToProps = (state) => {
 	return {
-		users: state.users.items
+		users: state.users
 	};
 };
 
@@ -81,8 +81,7 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(userActions.userRemove(id));
 		},
 		onEditClick: (user) => {
-			dispatch(userActions.userEdit(user));
-			dispatch(uiActions.editingUserChanged(true));
+			dispatch(uiActions.modalEditUser(user));
 		}
 	};
 };

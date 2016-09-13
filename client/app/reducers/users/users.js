@@ -21,62 +21,29 @@ const user = (state = [], action) => {
     }
 }
 
-const USERS_INITIAL = {
-	items: [],
-	user: {}
-}
-
-const users = (state = USERS_INITIAL, action) => {
+const users = (state = [], action) => {
     if (!action) {
         return state;
     }
 
     switch (action.type) {
         case actions.USER_ADD:
-            if (typeof action.clear !== "undefined" && action.clear === true) {
-                return {
-					...state,
-					items: action.payload
-				};
-            }
             //if the payload is an array, we add it to the state
             if (Array.isArray(action.payload)) {
-                return {
-					...state,
-					items: [...state.items, ...action.payload]
-				};
+                return [...state, ...action.payload];
             }
-			return {
-				...state,
-				items: [...state.items, user(undefined, action)] //we're simply concatenating the state array and the new user
-			};
+			return [...state, user(undefined, action)]; //we're simply concatenating the state array and the new user
             break;
         case actions.USER_REMOVE:
-            return {
-				...state,
-				items: state.items.filter(u => user(u, action))
-			}
-            break;
-		case actions.USER_EDIT:
-            return {
-				...state,
-				user: action.payload
-			} 
+            return state.filter(u => user(u, action));
             break;
         case actions.USER_UPDATE:
-            return {
-				...state,
-				items: state.items.map(u => user(u, action))
-			} 
+            return state.map(u => user(u, action));
             break;
         case actions.USER_CLEAR:
-            return {
-				...state,
-				items: []
-			};
-        default:
-            return state;
+            return [];
     }
+	return state;
 };
 
 export default users;

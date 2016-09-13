@@ -1,15 +1,51 @@
 import * as actions from "../../actions/ui/ui.js";
 
-const ui = (state={ isEditingUser: false }, action) => {
+const initialState = { 
+	modal: {
+		modalType: "",
+		modalProps: {}
+	}
+}
+
+const modal = (state, action) => {
+	switch (action.type) {
+		case actions.MODAL_SHOW_NEW_USER:
+			return {
+				...state,
+				modalType : action.modalType,
+				modalProps : {}
+			};
+            break;
+		case actions.MODAL_SHOW_EDIT_USER:
+			return {
+				...state,
+				modalType : action.modalType,
+				modalProps : action.modalProps
+			};
+            break;
+		case actions.MODAL_HIDE:
+			return {
+				...state,
+				modalType: "", //an empty modalType will mean the modal won't show because it evaluates as false
+				modalProps: {}
+			};
+            break;
+	}
+	return state;
+}
+
+const ui = (state=initialState, action) => {
 	if (!action) {
         return state;
     }
 	
 	switch (action.type) {
-        case actions.IS_EDITING_USER:
+		case actions.MODAL_SHOW_NEW_USER:
+		case actions.MODAL_SHOW_EDIT_USER:
+		case actions.MODAL_HIDE:
 			return {
 				...state,
-				isEditingUser: action.isEditingUser
+				modal: modal(state.modal, action)
 			}
             break;
     }

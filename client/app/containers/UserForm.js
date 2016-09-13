@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import * as userActions from "../actions/users/users";
 import * as uiActions from "../actions/ui/ui";
 import { reduxForm, reset } from 'redux-form';
-import Input from "../components/Input";
+import FieldGroup from "../components/FieldGroup";
 import Select from "../components/Select";
+import { Button } from "react-bootstrap";
 import { danger, info, warning } from '../utils/colors';
 
 const clearForm = (dispatch) => {
@@ -69,27 +70,27 @@ class UserForm extends React.Component {
 		const dsubmit = submitRemove.bind(undefined, id, dispatch);
 		return (<form onSubmit={handleSubmit(tsubmit)}>
 
-				<Input label='Name' field={name} />
-				<Input label='Year of Birth' field={yearOfBirth} />
-				<Input label='Username' field={username} />
+				<FieldGroup label='Name' field={name} />
+				<FieldGroup label='Year of Birth' field={yearOfBirth} />
+				<FieldGroup label='Username' field={username} />
 				<Select label='Country' field={country} options={
 					[
 						{name:"Select one", id:""},
 						...countries.map(a => ({'id': a, 'name': a}))
 					]
 				} />
-				{ !isEditingUser ? <button d type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(tsubmit)}>
+				{ !isEditingUser ? <Button type='button' bsStyle="info" onClick={handleSubmit(tsubmit)}>
 					New
-				</button>:null}
-				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: info}} onClick={handleSubmit(usubmit)}>
+				</Button>:null}
+				{ isEditingUser ? <Button  type='button' bsStyle="info" onClick={handleSubmit(usubmit)}>
 					Save
-				</button>:null}
-				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: danger}} onClick={handleSubmit(dsubmit)}>
+				</Button>:null}
+				{ isEditingUser ? <Button  type='button' bsStyle="danger" onClick={handleSubmit(dsubmit)}>
 					Delete
-				</button>:null}
-				{ isEditingUser ? <button  type='button' className='button button-primary' style={{backgroundColor: warning}} onClick={handleSubmit(cESubmit)}>
+				</Button>:null}
+				{ isEditingUser ? <Button  type='button' bsStyle="warning" onClick={handleSubmit(cESubmit)}>
 					Cancel
-				</button>:null}
+				</Button>:null}
 				
 			</form>);
 	}

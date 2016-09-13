@@ -33,13 +33,6 @@ export function userUpdate(id, user) {
 	};
 }
 
-export function userEdit(user) {
-	return {
-		type: USER_EDIT,
-		payload: user
-	};
-}
-
 export function usersLoad(params = null) {
 	return function (dispatch) {
 		dispatch({
@@ -48,7 +41,6 @@ export function usersLoad(params = null) {
 		axios.get(config.api.url + "/users", {params}).then((data) => {
 			dispatch({
 			  type: USER_ADD,
-			  clear: true,
 			  payload: data.data
 			});
 		});
