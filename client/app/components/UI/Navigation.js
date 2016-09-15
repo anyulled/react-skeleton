@@ -20,7 +20,7 @@ class Navigation extends React.Component {
                 <LinkContainer to="/system">
                     <NavItem><Glyphicon glyph="cog"/> System</NavItem>
                 </LinkContainer>
-                <LinkContainer to='/pagination'>
+                <LinkContainer to="/pagination">
                     <NavItem eventKey={1}>Option 1</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/option2">

@@ -9,21 +9,21 @@ class Users extends React.Component {
     }
 
     render() {
-		return(
-			<div>
-				<PageHeader>
-					Users
-				</PageHeader>
-				<Grid fluid>
-					<Row>
-						<Col sm={12}>
-							<UserTable/>
-						</Col>
-					</Row>
-				</Grid>
-			</div>
-		);
-	}
+        return (
+            <div>
+                <PageHeader>
+                    Users
+                </PageHeader>
+                <Grid fluid>
+                    <Row>
+                        <Col sm={12}>
+                            <UserTable/>
+                        </Col>
+                    </Row>
+                </Grid>
+            </div>
+        );
+    }
 }
 
 export default Users;

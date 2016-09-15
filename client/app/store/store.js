@@ -9,8 +9,8 @@ import ui from "../reducers/ui/ui";
 
 export default createStore(combineReducers({
     generic: genericReducer,
-	users: users,
-	ui: ui,
+    users: users,
+    ui: ui,
     form: formReducer
 }), compose(
     applyMiddleware(thunk, logger()),

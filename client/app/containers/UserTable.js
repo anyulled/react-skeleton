@@ -1,13 +1,13 @@
 import React from "react";
-import { Link } from "react-router";
+import {Link} from "react-router";
 import {Table, Column, Cell} from "fixed-data-table";
 import {Glyphicon} from "react-bootstrap";
 import TextCell from "../components/TextCell";
 import {connect} from "react-redux";
 import * as userActions from "../actions/users/users";
-import "fixed-data-table-2/dist/fixed-data-table-base.css";
-import "fixed-data-table-2/dist/fixed-data-table-style.css";
-import "fixed-data-table-2/dist/fixed-data-table.css";
+import "fixed-data-table-2/dist/fixed-data-table-base.css";
+import "fixed-data-table-2/dist/fixed-data-table-style.css";
+import "fixed-data-table-2/dist/fixed-data-table.css";
 import * as uiActions from "../actions/ui/ui";
 
 class UserTable extends React.Component {
@@ -57,17 +57,17 @@ UserTable.defaultProps = {
 };
 
 UserTable.propTypes = {
-    users: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        yearOfBirth: PropTypes.string.isRequired,
-        country: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired
-    }).isRequired).isRequired,
     edit: React.PropTypes.bool.isRequired,
+    users: React.PropTypes.arrayOf(React.PropTypes.shape({
+        id: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired,
+        yearOfBirth: React.PropTypes.string.isRequired,
+        country: React.PropTypes.string.isRequired,
+        username: React.PropTypes.string.isRequired
+    }).isRequired).isRequired,
+    usersLoad: React.PropTypes.func.isRequired,
     onEditClick: React.PropTypes.func.isRequired,
-    onRemoveClick: React.PropTypes.func.isRequired,
-    usersLoad: React.PropTypes.func.isRequired
+    onRemoveClick: React.PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {

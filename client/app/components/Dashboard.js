@@ -2,7 +2,7 @@ import React from "react"
 import Navigation from "./UI/Navigation"
 import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap"
 import DatePicker from "react-datepicker"
-import 'react-datepicker/dist/react-datepicker.css'
+import "react-datepicker/dist/react-datepicker.css"
 
 class Dashboard extends React.Component {
     constructor(props) {

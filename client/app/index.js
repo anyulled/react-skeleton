@@ -7,7 +7,7 @@ import store from "./store/store";
 
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
-import './assets/sass/main.scss'
+import "./assets/sass/main.scss"
 
 //import specific app components
 import GenericApp from "./components/GenericApp";
@@ -22,11 +22,11 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-				<IndexRoute component={GenericApp}/>
-				<Route path="/pagination" component={PaginationExample}/>
-				<Route path="/form1" component={UserFormPage}/>
-				<Route path="/users" component={Users}/>
-			</Route>
+                <IndexRoute component={GenericApp}/>
+                <Route path="/pagination" component={PaginationExample}/>
+                <Route path="/form1" component={UserFormPage}/>
+                <Route path="/users" component={Users}/>
+            </Route>
         </Router>
     </Provider>
     , document.getElementById("app"));
