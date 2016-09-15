@@ -17,3 +17,4 @@ The store is the object that brings actions and reducers together. It has the fo
 
 
 ## How AJAX calls are performed in this project
+To make AJAX calls, we employ Axios, which is a lightweight library that employs ES6 Promises. To load data from the server we usually emit an action to clear the state variable to be changed and then, once we've received the data, we emit another action with the data to update the state.
