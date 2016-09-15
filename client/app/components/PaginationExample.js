@@ -1,8 +1,7 @@
 import React from "react";
-import {Link} from "react-router";
-import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap"
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class PaginationExample extends React.Component {
     constructor(props) {
