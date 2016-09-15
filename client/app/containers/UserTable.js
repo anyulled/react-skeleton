@@ -2,6 +2,7 @@ import React, { PropTypes } from "react";
 import { Table, Column, Cell } from "fixed-data-table-2";
 import { Glyphicon } from "react-bootstrap";
 import TextCell from '../components/TextCell';
+import SortHeaderCell from '../components/SortHeaderCell';
 //import SortHeaderCell from '../components/SortHeaderCell';
 import { connect } from "react-redux";
 import * as userActions from "../actions/users/users";
@@ -24,8 +25,8 @@ var columnWidths = {
 		'yearOfBirth': 150,
 		'country': 150,
 		'username': 150
-	};
-
+	};		
+	
 class UserTable extends React.Component {
 	constructor(props) {
 		super(props);
@@ -48,8 +49,20 @@ class UserTable extends React.Component {
 		}
 		this.props.userTableColumnOrderSet(columnOrder);
 	}
+	sortData (data) {
+		let dat = [...data];
+		const { rowSortKey, rowSortDesc } = this.props;
+		const multiplier = rowSortDesc ? -1 : 1;
+		return dat.sort((a, b) => {
+			const aVal = a[rowSortKey] || 0
+			const bVal = b[rowSortKey] || 0
+			return aVal > bVal ? multiplier : (aVal < bVal ? -multiplier : 0)
+		});
+	}
 	render() {
-		let { users, onEditClick, onRemoveClick, edit, columnOrder } = this.props;
+		let { users, onEditClick, onRemoveClick, edit, columnOrder, rowSortKey, rowSortDesc, sortRowsBy } = this.props;
+		let sortedUsers = this.sortData(users);
+		let sortProps = { sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc };
 		let width = Object.keys(columnWidths).reduce((prevCol, key) => {
 			return prevCol + columnWidths[key];
 		}, 0);
@@ -71,16 +84,15 @@ class UserTable extends React.Component {
 							columnKey={columnKey}
 							key={i}
 							isReorderable={true}
-							header={<Cell>{columnTitles[columnKey]}</Cell>}
-							cell={<TextCell data={users} col={columnKey} />}
-							fixed={i === 0}
+							header={<SortHeaderCell {...sortProps}>{columnTitles[columnKey]}</SortHeaderCell>}
+							cell={<TextCell data={sortedUsers} col={columnKey} />}
 							width={columnWidths[columnKey]}
 						/>;
 					})}
 					{ edit ? <Column isReorderable={false}  width={100} header="Actions"
 						cell={({rowIndex, ...props}) => (
 								<Cell>
-									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(users[rowIndex])}}><Glyphicon glyph="pencil" /></div>
+									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(sortedUsers[rowIndex])}}><Glyphicon glyph="pencil" /></div>
 								</Cell>
 							)}  
 					/> : null }
@@ -105,13 +117,18 @@ UserTable.propTypes = {
 	onRemoveClick: PropTypes.func.isRequired,
 	onEditClick: PropTypes.func.isRequired,
 	edit: PropTypes.bool.isRequired,
-	columnOrder: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+	columnOrder: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+	rowSortKey: PropTypes.string.isRequired,
+	rowSortDesc: PropTypes.bool.isRequired,
+	sortRowsBy: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
 	return {
 		users: state.users,
-		columnOrder: state.tables.userTable.columnOrder
+		columnOrder: state.tables.userTable.columnOrder,
+		rowSortKey: state.tables.userTable.rowSortKey,
+		rowSortDesc: state.tables.userTable.rowSortDesc
 	};
 };
 
@@ -128,6 +145,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		userTableColumnOrderSet: (columnOrder) => {
 			dispatch(tableActions.userTableColumnOrderSet(columnOrder));
+		},
+		sortRowsBy: (sortKey) => {
+			dispatch(tableActions.userTableRowOrderSet(sortKey));
 		}
 	};
 };
