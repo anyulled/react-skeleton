@@ -1,5 +1,5 @@
-import React from "react"
-import Navigation from "./UI/Navigation"
+import React from "react";
+import Navigation from "./UI/Navigation";
 import RootModal from "../containers/RootModal";
 
 class App extends React.Component {
@@ -15,7 +15,7 @@ class App extends React.Component {
         return (<div>
             <Navigation/>
             {this.props.children}
-			<RootModal/>
+            <RootModal/>
         </div>);
     }
 }
