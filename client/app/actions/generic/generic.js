@@ -27,7 +27,6 @@ export function actionThree(params = null) {
             type: ACTION_THREE
         });
         axios.get(config.api.url + "/mock/mock_data.json", {params}).then((data)=> {
-            console.log(data);
             dispatch({
                 type: ACTION_THREE
             });

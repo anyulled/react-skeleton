@@ -1,5 +1,4 @@
 import React from "react";
-import {connect} from "react-redux";
 import * as userActions from "../actions/users/users";
 import {reduxForm} from "redux-form";
 import Input from "../components/Input";
@@ -10,8 +9,7 @@ const submit = (id, values, dispatch) => {
 };
 
 let countries = [
-    "GERMANY",
-    "IRELAND", "ITALY", "JAPAN", "SPAIN", "UK", "USA"
+    "GERMANY", "IRELAND", "ITALY", "JAPAN", "SPAIN", "UK", "USA"
 ];
 
 const validate = values => {

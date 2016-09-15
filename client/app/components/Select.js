@@ -12,9 +12,10 @@ const Select = ({field, label, options, ...props}) => {
     </FormGroup>);
 };
 
-Select.proptypes = {
+Select.propTypes = {
     field: React.PropTypes.object.isRequired,
-    label: React.PropTypes.string.isRequired
+    label: React.PropTypes.string.isRequired,
+    options: React.PropTypes.array
 };
 
 export default Select;

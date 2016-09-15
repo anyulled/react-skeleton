@@ -1,4 +1,4 @@
-export default function validateContact(data, props) {
+export default function validateContact(data) {
     const errors = {};
     if (!data.name) {
         errors.name = "Required";
@@ -9,9 +9,7 @@ export default function validateContact(data, props) {
     if (!data.phone) {
         errors.phone = "Required";
     } else if (!/\d{3}-\d{3}-\d{4}/.test(data.phone)) {
-        errors.phone = "Phone must match the form ";
-        999 - 999 - 9999;
-        ""
+        errors.phone = "Phone must match the form  999 - 999 - 9999";
     }
     return errors;
 }

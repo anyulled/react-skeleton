@@ -1,6 +1,5 @@
 import React from "react";
-import {Link} from "react-router";
-import {Table, Column, Cell} from "fixed-data-table";
+import {Table, Column, Cell} from "fixed-data-table-2";
 import {Glyphicon} from "react-bootstrap";
 import TextCell from "../components/TextCell";
 import {connect} from "react-redux";
@@ -90,9 +89,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-UserTable = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(UserTable);
-
-export default UserTable;
+export default connect(mapStateToProps, mapDispatchToProps)(UserTable);
