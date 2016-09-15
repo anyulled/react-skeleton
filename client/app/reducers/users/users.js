@@ -37,6 +37,8 @@ const users = (state = [], action) => {
             return state.map(u => user(u, action));
         case actions.USER_CLEAR:
             return [];
+        case actions.ERROR:
+            return state;
     }
     return state;
 };
