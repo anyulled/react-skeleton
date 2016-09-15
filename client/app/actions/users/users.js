@@ -3,11 +3,11 @@ import config from "../../config";
 
 export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
-export const USER_EDIT = "user/edit";
 export const USER_UPDATE = "user/update";
 export const USER_CLEAR = "user/clear";
-
+export const ERROR = "error";
 let nextUserId = 1;
+
 export function userAdd(dto) {
     return {
         type: USER_ADD,
@@ -38,11 +38,17 @@ export function usersLoad(params = null) {
         dispatch({
             type: USER_CLEAR
         });
-        axios.get(config.api.url + "/users", {params}).then((data) => {
+        axios.get(config.api.url + "/users", {params})
+            .then((data) => {
+                dispatch({
+                    type: USER_ADD,
+                    payload: data.data
+                });
+            }).catch((error)=> {
             dispatch({
-                type: USER_ADD,
-                payload: data.data
+                type: ERROR,
+                payload: error
             });
-        });
+            });
     };
 }
