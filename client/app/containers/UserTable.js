@@ -1,14 +1,14 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
-import { Table, Column, Cell } from "fixed-data-table";
+import { Table, Column, Cell } from "fixed-data-table-2";
 import { Glyphicon } from "react-bootstrap";
 import TextCell from '../components/TextCell';
 //import SortHeaderCell from '../components/SortHeaderCell';
 import { connect } from "react-redux";
 import * as userActions from "../actions/users/users";
-import "fixed-data-table/dist/fixed-data-table-base.css";
-import "fixed-data-table/dist/fixed-data-table-style.css";
-import "fixed-data-table/dist/fixed-data-table.css";
+import "fixed-data-table-2/dist/fixed-data-table-base.css";
+import "fixed-data-table-2/dist/fixed-data-table-style.css";
+import "fixed-data-table-2/dist/fixed-data-table.css";
 import * as uiActions from "../actions/ui/ui";
 
 class UserTable extends React.Component {
