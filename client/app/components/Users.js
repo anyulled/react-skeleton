@@ -1,6 +1,5 @@
 import React from "react";
-import {Link} from "react-router";
-import {Table, Grid, Row, Col, PageHeader} from "react-bootstrap";
+import {Grid, Row, Col, PageHeader} from "react-bootstrap";
 import UserTable from "../containers/UserTable";
 
 class Users extends React.Component {
