@@ -22,8 +22,8 @@ const RootModal = ({ modalType, modalProps }) => {
 		
 const mapStateToProps = (state) => {
 	return {
-		modalType: state.ui.modal.modalType,
-		modalProps: state.ui.modal.modalProps
+		modalType: state.modal.modalType,
+		modalProps: state.modal.modalProps
 	};
 };
 		 

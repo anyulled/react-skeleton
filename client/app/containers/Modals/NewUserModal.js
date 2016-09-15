@@ -4,10 +4,10 @@ import FieldGroup from "../../components/FieldGroup";
 import Select from "../../components/Select";
 import { reduxForm } from 'redux-form';
 import * as userActions from "../../actions/users/users";
-import * as uiActions from "../../actions/ui/ui";
+import * as modalActions from "../../actions/modal/modal";
 
 const clearForm = (dispatch) => {
-	dispatch(uiActions.modalHide());
+	dispatch(modalActions.modalHide());
 }
 
 const submitAdd = (id, values, dispatch) => {

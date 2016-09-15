@@ -1,5 +1,4 @@
 import React, { PropTypes } from "react";
-import { Link } from "react-router";
 import { Table, Column, Cell } from "fixed-data-table-2";
 import { Glyphicon } from "react-bootstrap";
 import TextCell from '../components/TextCell';
@@ -9,33 +8,76 @@ import * as userActions from "../actions/users/users";
 import "fixed-data-table-2/dist/fixed-data-table-base.css";
 import "fixed-data-table-2/dist/fixed-data-table-style.css";
 import "fixed-data-table-2/dist/fixed-data-table.css";
-import * as uiActions from "../actions/ui/ui";
+import * as tableActions from "../actions/tables/tables";
+import * as modalActions from "../actions/modal/modal";
+
+var columnTitles = {
+		'id': 'ID',
+		'name': 'Name',
+		'yearOfBirth': 'Year of Birth',
+		'country': 'Country',
+		'username': 'Username'
+	};
+var columnWidths = {
+		'id': 150,
+		'name': 200,
+		'yearOfBirth': 150,
+		'country': 150,
+		'username': 150
+	};
 
 class UserTable extends React.Component {
 	constructor(props) {
 		super(props);
+		
+		this.onColumnReorderEndCallback = this.onColumnReorderEndCallback.bind(this);
 	}
 	componentWillMount(){
 		this.props.usersLoad();
 	}
+	onColumnReorderEndCallback(event) {
+		console.log(event);
+		var columnOrder = this.props.columnOrder.filter((columnKey) => {
+			return columnKey !== event.reorderColumn;
+		});
+		if (event.columnAfter) {
+			var index = columnOrder.indexOf(event.columnAfter);
+			columnOrder.splice(index, 0, event.reorderColumn);
+		} else {
+			columnOrder.push(event.reorderColumn);
+		}
+		this.props.userTableColumnOrderSet(columnOrder);
+	}
 	render() {
-		let { users, onEditClick, onRemoveClick, edit } = this.props;
+		let { users, onEditClick, onRemoveClick, edit, columnOrder } = this.props;
+		let width = Object.keys(columnWidths).reduce((prevCol, key) => {
+			return prevCol + columnWidths[key];
+		}, 0);
 		let rowHeight = 30;
 		return(
 				<Table
 					height={users.length * rowHeight}
 					rowsCount={users.length}
-					width={800 + (edit ? 100 : 0)}
+					onColumnReorderEndCallback={this.onColumnReorderEndCallback}
+					isColumnReordering={false}
+					width={width + (edit ? 100 : 0)}
 					rowHeight={rowHeight}
 					headerHeight={rowHeight}
 					{...this.props}
 				>
-					<Column cell={<TextCell data={users} col="id" />} width={150} header={<Cell>ID</Cell>} />
-					<Column cell={<TextCell data={users} col="name" />} width={200} header={<Cell>Name</Cell>} />
-					<Column cell={<TextCell data={users} col="yearOfBirth" />} width={150} header={<Cell>Year of Birth</Cell>} />
-					<Column cell={<TextCell data={users} col="country" />} width={150} header={<Cell>Country</Cell>} />
-					<Column cell={<TextCell data={users} col="username" />} width={150} header={<Cell>Username</Cell>} />
-					{ edit ? <Column  width={100} header="Actions"
+					{columnOrder.map(function (columnKey, i) {
+						return <Column
+							allowCellsRecycling={true}
+							columnKey={columnKey}
+							key={i}
+							isReorderable={true}
+							header={<Cell>{columnTitles[columnKey]}</Cell>}
+							cell={<TextCell data={users} col={columnKey} />}
+							fixed={i === 0}
+							width={columnWidths[columnKey]}
+						/>;
+					})}
+					{ edit ? <Column isReorderable={false}  width={100} header="Actions"
 						cell={({rowIndex, ...props}) => (
 								<Cell>
 									<div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(users[rowIndex])}}><Glyphicon glyph="pencil" /></div>
@@ -63,12 +105,14 @@ UserTable.propTypes = {
 	usersLoad: PropTypes.func.isRequired,
 	onRemoveClick: PropTypes.func.isRequired,
 	onEditClick: PropTypes.func.isRequired,
-	edit: PropTypes.bool.isRequired
+	edit: PropTypes.bool.isRequired,
+	columnOrder: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 const mapStateToProps = (state) => {
 	return {
-		users: state.users
+		users: state.users,
+		columnOrder: state.tables.userTable.columnOrder
 	};
 };
 
@@ -81,14 +125,15 @@ const mapDispatchToProps = (dispatch) => {
 			dispatch(userActions.userRemove(id));
 		},
 		onEditClick: (user) => {
-			dispatch(uiActions.modalEditUser(user));
+			dispatch(modalActions.modalEditUser(user));
+		},
+		userTableColumnOrderSet: (columnOrder) => {
+			dispatch(tableActions.userTableColumnOrderSet(columnOrder));
 		}
 	};
 };
 
-UserTable = connect(
+export default connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(UserTable);
-
-export default UserTable;

@@ -5,12 +5,14 @@ import thunk from "redux-thunk";
 
 import genericReducer from "../reducers/generic/generic";
 import users from "../reducers/users/users";
-import ui from "../reducers/ui/ui";
+import modal from "../reducers/modal/modal";
+import tables from "../reducers/tables/tables";
 
 export default createStore(combineReducers({
     generic: genericReducer,
-	users: users,
-	ui: ui,
+	users,
+	modal,
+	tables,
     form: formReducer
 }), compose(
     applyMiddleware(thunk, logger()),

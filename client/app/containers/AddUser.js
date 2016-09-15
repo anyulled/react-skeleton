@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as userActions from "../actions/users/users";
-import * as uiActions from "../actions/ui/ui";
+import * as modalActions from "../actions/modal/modal";
 import { Button } from "react-bootstrap";
 
 const AddUser = ({ onAddUserClick }) => { return (<Button type='button' bsStyle="info" onClick={() => onAddUserClick()}>
@@ -12,15 +12,15 @@ const AddUser = ({ onAddUserClick }) => { return (<Button type='button' bsStyle=
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onAddUserClick: () => {
-			dispatch(uiActions.modalNewUser());
+			dispatch(modalActions.modalNewUser());
 		}
 	};
 };
 
 const mapStateToProps = (state) => {
 	return {
-		modalType: state.ui.modal.modalType,
-		modalProps: state.ui.modal.modalProps
+		modalType: state.modal.modalType,
+		modalProps: state.modal.modalProps
 	};
 };
 		 

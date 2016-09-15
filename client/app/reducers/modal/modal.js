@@ -1,13 +1,15 @@
-import * as actions from "../../actions/ui/ui.js";
+import * as actions from "../../actions/modal/modal.js";
 
-const initialState = { 
-	modal: {
+const initialState = {
 		modalType: "",
 		modalProps: {}
 	}
-}
 
-const modal = (state, action) => {
+const modal = (state = initialState, action) => {
+	if (!action) {
+        return state;
+    }
+	
 	switch (action.type) {
 		case actions.MODAL_SHOW_NEW_USER:
 			return {
@@ -34,22 +36,4 @@ const modal = (state, action) => {
 	return state;
 }
 
-const ui = (state=initialState, action) => {
-	if (!action) {
-        return state;
-    }
-	
-	switch (action.type) {
-		case actions.MODAL_SHOW_NEW_USER:
-		case actions.MODAL_SHOW_EDIT_USER:
-		case actions.MODAL_HIDE:
-			return {
-				...state,
-				modal: modal(state.modal, action)
-			}
-            break;
-    }
-    return state;
-};
-
-export default ui;
+export default modal;

@@ -1,6 +1,6 @@
-export const MODAL_SHOW_NEW_USER = "ui/modal/new_user";
-export const MODAL_SHOW_EDIT_USER = "ui/modal/edit_user";
-export const MODAL_HIDE = "ui/modal/hide";
+export const MODAL_SHOW_NEW_USER = "modal/show/new_user";
+export const MODAL_SHOW_EDIT_USER = "modal/show/edit_user";
+export const MODAL_HIDE = "modal/hide";
 
 export function modalNewUser() {
 	return {
