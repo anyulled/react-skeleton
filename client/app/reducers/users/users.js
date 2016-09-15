@@ -4,7 +4,6 @@ const user = (state = [], action) => {
     switch (action.type) {
         case actions.USER_ADD:
             return action.payload;
-            break;
         case actions.USER_REMOVE:
             if (state.id !== action.id) {
                 return state;
@@ -15,11 +14,10 @@ const user = (state = [], action) => {
                 return state;
             }
             return {...state, ...action.payload};
-            break;
         default:
             return state;
     }
-}
+};
 
 const users = (state = [], action) => {
     if (!action) {
@@ -32,18 +30,15 @@ const users = (state = [], action) => {
             if (Array.isArray(action.payload)) {
                 return [...state, ...action.payload];
             }
-			return [...state, user(undefined, action)]; //we're simply concatenating the state array and the new user
-            break;
+            return [...state, user(undefined, action)]; //we're simply concatenating the state array and the new user
         case actions.USER_REMOVE:
             return state.filter(u => user(u, action));
-            break;
         case actions.USER_UPDATE:
             return state.map(u => user(u, action));
-            break;
         case actions.USER_CLEAR:
             return [];
     }
-	return state;
+    return state;
 };
 
 export default users;
