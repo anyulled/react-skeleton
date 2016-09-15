@@ -87,11 +87,10 @@ class UserTable extends React.Component {
 				</Table>
 		);
 	}
-	
-}
+};
 
-UserTable.defaultProps= {
-	edit: false
+UserTable.defaultProps = {
+    edit: false
 };
 
 UserTable.propTypes = {

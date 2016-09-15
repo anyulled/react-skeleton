@@ -1,9 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
 
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
+var CopyWebpackPlugin = require("copy-webpack-plugin");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var webpackUglifyJsPlugin = require("webpack-uglify-js-plugin");
 
 
 module.exports = {
@@ -19,14 +19,16 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/, exclude: /(node_modules|bower_components)/, loader: "babel",
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: "babel",
                 query: {
                     presets: ["es2015", "react", "stage-0"]
                 }
             },
-            { test: /\.css$/, loader: "style-loader!css-loader" },
-            { test: /\.scss$/,loaders: ["style", "css", "sass"]},
-            { test: /\.less$/,loaders: ['style', 'css', 'less']}
+            {test: /\.css$/, loader: "style-loader!css-loader"},
+            {test: /\.scss$/, loaders: ["style", "css", "sass"]},
+            {test: /\.less$/, loaders: ["style", "css", "less"]}
         ]
     },
     plugins: [
@@ -36,25 +38,25 @@ module.exports = {
             filename: "assets/js/vendor.bundle.js"
         }),
         new HtmlWebpackPlugin({
-        	  template: __dirname + '/app/index.html',
-        	  filename: 'index.html',
-        	  inject: 'body'
-        	}),
+            template: __dirname + "/app/index.html",
+            filename: "index.html",
+            inject: "body"
+        }),
         new webpack.HotModuleReplacementPlugin(),
         new webpackUglifyJsPlugin({
-        	  cacheFolder: __dirname ,
-        	  debug: false,
-        	  minimize: true,
-        	  sourceMap: true,
-        	  output: {
-        	    comments: false
-        	  },
-        	  compressor: {
-        	    warnings: false
-        	  }
+            cacheFolder: __dirname,
+            debug: false,
+            minimize: true,
+            sourceMap: true,
+            output: {
+                comments: false
+            },
+            compressor: {
+                warnings: false
+            }
         }),
-        new CopyWebpackPlugin([{ from: 'app/assets', to:'assets' }])
-        
+        new CopyWebpackPlugin([{from: "app/assets", to: "assets"}])
+
         /**
          * uncomment the bellow plugins to enable code compression for production
          * this will strip out the debug code and minimize the JS resulting in

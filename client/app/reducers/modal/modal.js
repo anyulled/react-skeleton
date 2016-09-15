@@ -3,7 +3,7 @@ import * as actions from "../../actions/modal/modal.js";
 const initialState = {
 		modalType: "",
 		modalProps: {}
-	}
+	};
 
 const modal = (state = initialState, action) => {
 	if (!action) {

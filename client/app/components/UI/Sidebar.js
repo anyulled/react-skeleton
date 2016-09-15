@@ -5,7 +5,7 @@ import {Nav, NavItem} from "react-bootstrap";
 class Sidebar extends React.Component {
     constructor(props) {
         super(props);
-        
+
     }
 
     render() {

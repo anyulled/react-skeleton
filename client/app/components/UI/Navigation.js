@@ -15,12 +15,12 @@ class Navigation extends React.Component {
                     <NavItem><Glyphicon glyph="dashboard"/> Dashboard</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/form1">
-                	<NavItem><Glyphicon glyph="cog"/> Forms demo</NavItem>
+                    <NavItem><Glyphicon glyph="cog"/> Forms demo</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/system">
                     <NavItem><Glyphicon glyph="cog"/> System</NavItem>
                 </LinkContainer>
-                <LinkContainer to='/pagination'>
+                <LinkContainer to="/pagination">
                     <NavItem eventKey={1}>Option 1</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/option2">
