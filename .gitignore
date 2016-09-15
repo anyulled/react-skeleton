@@ -1,11 +1,7 @@
 # IntelliJ project files
 .idea
-client/dist/assets/js/bundle.js
-client/dist/assets/js/bundle.js.map
-client/dist/assets/js/vendor.bundle.js
-client/dist/assets/js/vendor.bundle.js.map
 client/node_modules/
 client/dist
 server/node_modules/
 coverage
-npm-degug.log
+npm-debug.log
