@@ -50,13 +50,12 @@ class SortableTable extends React.Component {
 		});
 	}
 	render() {
-		let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns } = this.props;
+		let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, rowHeight } = this.props;
 		let sortedData = this.sortData(data);
 		let sortProps = { sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc };
 		let width = Object.keys(columns).reduce((prevCol, key) => {
 			return prevCol + columns[key].width;
 		}, 0);
-		let rowHeight = 30;
 		return(
 				<Table
 					height={data.length * rowHeight}
@@ -93,7 +92,8 @@ class SortableTable extends React.Component {
 
 SortableTable.defaultProps = {
     edit: false,
-	reorderableColumns: true
+	reorderableColumns: true,
+	rowHeight: 30
 };
 
 SortableTable.propTypes = {
@@ -117,7 +117,8 @@ SortableTable.propTypes = {
 			]).isRequired,
 		width: PropTypes.number.isRequired
 	}).isRequired).isRequired,
-	reorderableColumns: PropTypes.bool.isRequired
+	reorderableColumns: PropTypes.bool.isRequired,
+	rowHeight: PropTypes.number.isRequired
 };
 
 export default SortableTable;
