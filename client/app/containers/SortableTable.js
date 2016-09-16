@@ -50,7 +50,7 @@ class SortableTable extends React.Component {
 		});
 	}
 	render() {
-		let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns } = this.props;
+		let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns } = this.props;
 		let sortedData = this.sortData(data);
 		let sortProps = { sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc };
 		let width = Object.keys(columns).reduce((prevCol, key) => {
@@ -73,7 +73,7 @@ class SortableTable extends React.Component {
 							allowCellsRecycling={true}
 							columnKey={column.key}
 							key={i}
-							isReorderable={true}
+							isReorderable={reorderableColumns}
 							header={<SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell>}
 							cell={<TextCell data={sortedData} col={column.key} />}
 							width={column.width}
@@ -92,7 +92,8 @@ class SortableTable extends React.Component {
 };
 
 SortableTable.defaultProps = {
-    edit: false
+    edit: false,
+	reorderableColumns: true
 };
 
 SortableTable.propTypes = {
@@ -115,7 +116,8 @@ SortableTable.propTypes = {
 				PropTypes.number
 			]).isRequired,
 		width: PropTypes.number.isRequired
-	}).isRequired).isRequired
+	}).isRequired).isRequired,
+	reorderableColumns: PropTypes.bool.isRequired
 };
 
 export default SortableTable;

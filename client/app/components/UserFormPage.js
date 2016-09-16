@@ -12,7 +12,7 @@ const UserFormPage = () => {
             <Col xs={12} md={10}>
                 <h3>This is for display purposes only. Any changes on the user list will be undone upon
                     re-rendering.</h3>
-                <UserTable edit={true}/>
+                <UserTable edit={true} />
             </Col>
         </Row>
     </Grid>);
