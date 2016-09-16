@@ -1,19 +1,47 @@
 import * as actions from "../../actions/tables/tables.js";
 
+const startingColumns = [{
+			key: 'id',
+			title:'ID',
+			width: 150
+		},
+		{
+			key: 'name',
+			title:'Name',
+			width: 200
+		},
+		{
+			key: 'yearOfBirth',
+			title:'Year of Birth',
+			width: 150
+		},
+		{
+			key: 'country',
+			title:'Country',
+			width: 150
+		},
+		{
+			key: 'username',
+			title:'Username',
+			width: 150
+		}];
+
 const initialState = { //Each table we may perform actions upon requires an object of its own
 		userTable: {
-			columnOrder: ["id","name", "yearOfBirth","country","username"], //the first element cannot be ordered no matter what
+			columns: startingColumns, //the first element cannot be ordered no matter what
 			rowSortKey: "id",
 			rowSortDesc: false
 		}
 	};
+	
+		
 
 const userTable = (state, action) => {
 	switch (action.type) {
 		case actions.TABLES_USER_SET_COLUMN_ORDER:
 			return {
 				...state,
-				columnOrder: action.columnOrder
+				columns: action.columns
 			};
 		case actions.TABLES_USER_SET_ROW_ORDER:
 			return {

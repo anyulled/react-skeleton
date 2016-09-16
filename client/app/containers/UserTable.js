@@ -5,31 +5,13 @@ import * as userActions from "../actions/users/users";
 import * as tableActions from "../actions/tables/tables";
 import * as modalActions from "../actions/modal/modal";
 import SortableTable from "../containers/SortableTable";
-
-let columnTitles = {
-		'id': 'ID',
-		'name': 'Name',
-		'yearOfBirth': 'Year of Birth',
-		'country': 'Country',
-		'username': 'Username'
-	};
 	
-let columnWidths = {
-		'id': 150,
-		'name': 200,
-		'yearOfBirth': 150,
-		'country': 150,
-		'username': 150
-	};	
-
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
 	return {
 		data: state.users,
-		columnOrder: state.tables.userTable.columnOrder,
+		columns: state.tables.userTable.columns,
 		rowSortKey: state.tables.userTable.rowSortKey,
-		rowSortDesc: state.tables.userTable.rowSortDesc,
-		columnWidths,
-		columnTitles
+		rowSortDesc: state.tables.userTable.rowSortDesc
 	};
 };
 
@@ -44,8 +26,8 @@ const mapDispatchToProps = (dispatch) => {
 		onEditClick: (user) => {
 			dispatch(modalActions.modalEditUser(user));
 		},
-		userTableColumnOrderSet: (columnOrder) => {
-			dispatch(tableActions.userTableColumnOrderSet(columnOrder));
+		tableColumnOrderSet: (columns) => {
+			dispatch(tableActions.userTableColumnOrderSet(columns));
 		},
 		sortRowsBy: (sortKey) => {
 			dispatch(tableActions.userTableRowOrderSet(sortKey));

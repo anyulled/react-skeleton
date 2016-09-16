@@ -20,16 +20,24 @@ class SortableTable extends React.Component {
 	}
 	onColumnReorderEndCallback(event) {
 		console.log(event);
-		var columnOrder = this.props.columnOrder.filter((columnKey) => {
-			return columnKey !== event.reorderColumn;
+		var reorderColumn = this.props.columns.filter((column) => {
+			return column.key === event.reorderColumn;
+		})[0];
+		var columns = this.props.columns.filter((column) => {
+			return column.key !== event.reorderColumn;
 		});
 		if (event.columnAfter) {
-			var index = columnOrder.indexOf(event.columnAfter);
-			columnOrder.splice(index, 0, event.reorderColumn);
+			//var index = columns.indexOf(event.columnAfter);
+			var index = columns.map((column, index) => {
+				if (column.key === event.columnAfter) {
+					return column.key;
+				}
+			}).indexOf(event.columnAfter);
+			columns.splice(index, 0, reorderColumn);
 		} else {
-			columnOrder.push(event.reorderColumn);
+			columns.push(reorderColumn);
 		}
-		this.props.userTableColumnOrderSet(columnOrder);
+		this.props.tableColumnOrderSet(columns);
 	}
 	sortData (data) {
 		let dat = [...data];
@@ -42,11 +50,11 @@ class SortableTable extends React.Component {
 		});
 	}
 	render() {
-		let { data, onEditClick, onRemoveClick, edit, columnOrder, rowSortKey, rowSortDesc, sortRowsBy, columnWidths, columnTitles } = this.props;
+		let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns } = this.props;
 		let sortedData = this.sortData(data);
 		let sortProps = { sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc };
-		let width = Object.keys(columnWidths).reduce((prevCol, key) => {
-			return prevCol + columnWidths[key];
+		let width = Object.keys(columns).reduce((prevCol, key) => {
+			return prevCol + columns[key].width;
 		}, 0);
 		let rowHeight = 30;
 		return(
@@ -60,15 +68,15 @@ class SortableTable extends React.Component {
 					headerHeight={rowHeight}
 					{...this.props}
 				>
-					{columnOrder.map(function (columnKey, i) {
+					{columns.map(function (column, i) {
 						return <Column
 							allowCellsRecycling={true}
-							columnKey={columnKey}
+							columnKey={column.key}
 							key={i}
 							isReorderable={true}
-							header={<SortHeaderCell {...sortProps}>{columnTitles[columnKey]}</SortHeaderCell>}
-							cell={<TextCell data={sortedData} col={columnKey} />}
-							width={columnWidths[columnKey]}
+							header={<SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell>}
+							cell={<TextCell data={sortedData} col={column.key} />}
+							width={column.width}
 						/>;
 					})}
 					{ edit ? <Column isReorderable={false}  width={100} header="Actions"
@@ -92,13 +100,22 @@ SortableTable.propTypes = {
 	dataLoad: PropTypes.func,
 	onRemoveClick: PropTypes.func.isRequired,
 	onEditClick: PropTypes.func.isRequired,
+	tableColumnOrderSet: PropTypes.func.isRequired,
 	edit: PropTypes.bool.isRequired,
-	columnOrder: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
 	rowSortKey: PropTypes.string.isRequired,
 	rowSortDesc: PropTypes.bool.isRequired,
 	sortRowsBy: PropTypes.func.isRequired,
-	columnTitles: PropTypes.object.isRequired,
-	columnWidths: PropTypes.object.isRequired
+	columns: PropTypes.arrayOf(PropTypes.shape({
+		key: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number
+			]).isRequired,
+		title: PropTypes.oneOfType([
+				PropTypes.string,
+				PropTypes.number
+			]).isRequired,
+		width: PropTypes.number.isRequired
+	}).isRequired).isRequired
 };
 
 export default SortableTable;
