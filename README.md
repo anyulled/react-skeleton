@@ -16,7 +16,7 @@ Reducers are what specifies how the application's state changes whenever actions
 The store is the object that brings actions and reducers together. It has the following responsibilities: it holds the application state, allows access to the state via getState() and allows state to be updated via dispatch(action).
 
 ### Preparing Redux containers in React
-In order for us to pass state variables or emit actions through a component, we need to use the mapStateToProps and mapDispatchToProps functions using React-Redux' connect function. mapStateToProps is a function that is passed the state as a parameter and returns an object with values that are state variables. mapDispatchToProps is a function that is passed the dispatch as a parameter and returns an object with functions that employ the dispatch function.
+In order for us to pass state variables or emit actions through a component, we need to use the mapStateToProps and mapDispatchToProps functions using React-Redux' connect function. mapStateToProps is a function that is passed the state as a parameter and returns an object with values that are state variables. mapDispatchToProps is a function that is passed the dispatch as a parameter and returns an object with functions that employ the dispatch function. Both functions can be null as a component can be "connected" but without passing the state or any functions using dispatch to it.
 
 We use the connect function like this:
 ```javascript
