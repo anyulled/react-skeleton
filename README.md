@@ -20,6 +20,7 @@ The store is the object that brings actions and reducers together. It has the fo
 2. Now the actions, exporting each function and each action type of constant. All actions must have a "type" property (it could be named otherwise but it's not a very good practice), which has to be a constant, containing the name of what's being done, usually a string.
 3. Reducers come next, as they will reference the action type constants. Reducers always receive the same arguments the state and the action —in this order— and always return the new state without ever mutating the previous state object they were passed as a parameter, which is why reducers ALWAYS have to be a pure function.
 4. The Redux container is just the presentational component, which has had certain state properties and dispatch functions passed as its props through the mapStateToProps and mapDispatchToProps functions respectively. Some containers don't have either any state properites or dispatch functions mapped to it (although to be considered a Redux container they should have one of either).
+
 It must be understood that in most cases, the reducers and the actions are usually completely unrelated to the container and could be used by an entirely differenty component. Even though, in some cases (which are more like the exception), we might need to define a reducer and actions for a particular component.
 
 ### Preparing Redux containers in React
