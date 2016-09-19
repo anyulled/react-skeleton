@@ -49,6 +49,6 @@ export function usersLoad(params = null) {
                 type: ERROR,
                 payload: error
             });
-		});
+        });
     };
 }

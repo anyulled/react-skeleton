@@ -7,8 +7,6 @@ import store from "./store/store";
 
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
-import "./assets/sass/main.scss";
-
 //import specific app components
 import GenericApp from "./components/GenericApp";
 import PaginationExample from "./components/PaginationExample";
