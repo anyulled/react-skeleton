@@ -10,8 +10,8 @@ const UserFormPage = () => {
                 <AddUser/>
             </Col>
             <Col xs={12} md={10}>
-                <h3>This is for display purposes only. Any changes on the user list will be undone upon
-                    re-rendering.</h3>
+                <h4>This is for display purposes only. Any changes on the user list will be undone upon
+                    re-rendering.</h4>
                 <UserTable edit={true} />
             </Col>
         </Row>

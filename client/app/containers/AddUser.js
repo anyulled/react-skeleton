@@ -5,7 +5,7 @@ import * as modalActions from "../actions/modal/modal";
 import { Button } from "react-bootstrap";
 
 const AddUser = ({onAddUserClick}) => {
-    return (<Button type="button" bsStyle="info" onClick={() => onAddUserClick()}>
+    return (<Button type="button" bsStyle="primary" onClick={() => onAddUserClick()}>
         New User
     </Button>);
 };

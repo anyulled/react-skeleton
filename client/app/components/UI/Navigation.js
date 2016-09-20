@@ -5,7 +5,7 @@ import {Nav, Navbar, NavItem, Glyphicon} from "react-bootstrap";
 class Navigation extends React.Component {
 	
     render() {
-        return (<Navbar style={{'margin-bottom':10}}>
+        return (<Navbar style={{'marginBottom':10}}>
             <Navbar.Header>
                 <Navbar.Brand>
                     <a className="navbar-brand ab-logo"><span>React/Redux Starter</span></a>
@@ -15,16 +15,16 @@ class Navigation extends React.Component {
                 <IndexLinkContainer to="/">
                     <NavItem eventKey={1}><Glyphicon glyph="dashboard"/> Home</NavItem>
                 </IndexLinkContainer>
-                <LinkContainer to="/usermanager">
-                    <NavItem eventKey={2}><Glyphicon glyph="cog"/> User Management</NavItem>
+                <LinkContainer to="/users">
+                    <NavItem eventKey={2}> User List</NavItem>
                 </LinkContainer>
                 <LinkContainer to="/widgets">
                     <NavItem eventKey={3}>Widgets</NavItem>
                 </LinkContainer>
             </Nav>
             <Nav pullRight>
-                <LinkContainer to="/users">
-                    <NavItem eventKey={4}>User List</NavItem>
+                <LinkContainer to="/usermanager">
+                    <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
                 </LinkContainer>
             </Nav>
         </Navbar>);
