@@ -6,10 +6,10 @@ class Breacrumb extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            "title": "Deals Overview",
+            "title": "Entries Overview",
             "breadcrumbs": [
-                {"id": "2", "active": false, "route": "/deals", "name": "Deals"},
-                {"id": "3", "active": false, "route": "/deals/" + this.props.id + "/client", "name": "Client"}
+                {"id": "2", "active": false, "route": "/entry", "name": "Entries"},
+                {"id": "3", "active": false, "route": "/entry/" + this.props.id + "/data", "name": "Data"}
             ]
         };
     }
@@ -28,6 +28,8 @@ class Breacrumb extends React.Component {
                 {breadcrumbItems}
             </Nav></div>);
     }
+    
+    
 }
 
 export default Breacrumb;

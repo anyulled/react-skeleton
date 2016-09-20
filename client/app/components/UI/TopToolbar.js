@@ -5,9 +5,9 @@ class TopToolbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            "title": "Deal List",
+            "title": "Entry List",
             "buttons": [
-                {"id": "1", "name": "New Deal", "style": "success", "glyphicon": "plus"}
+                {"id": "1", "name": "New Entry", "style": "success", "glyphicon": "plus"}
             ]
         };
     };

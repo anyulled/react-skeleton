@@ -48,6 +48,7 @@ class PaginationExample extends React.Component {
                                 </tr>
                                 </tfoot>
                             </Table>
+                            <h2>DatePicker</h2>
                             <DatePicker onChange={this.handleChange}/>
                         </Col>
                     </Row>

@@ -10,19 +10,19 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import "./assets/sass/main.scss";
 
 //import specific app components
-import GenericApp from "./components/GenericApp";
-import PaginationExample from "./components/PaginationExample";
+import Home from "./components/Home";
+import Widgets from "./components/Widgets";
 import Users from "./components/Users";
-import UserFormPage from "./components/UserFormPage";
+import UserManagement from "./components/UserManagement";
 import App from "./components/App";
 
 ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={GenericApp}/>
-                <Route path="/pagination" component={PaginationExample}/>
-                <Route path="/form1" component={UserFormPage}/>
+                <IndexRoute component={Home}/>
+                <Route path="/widgets" component={Widgets}/>
+                <Route path="/usermanager" component={UserManagement}/>
                 <Route path="/users" component={Users}/>
             </Route>
         </Router>
