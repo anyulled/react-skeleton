@@ -32,10 +32,3 @@ made in the app source code,
 - http-server which will serve the app stored in `./dist` folder.
 
 The app should be now accessible at `http://localhost:8080/`
-
-**CALCULATING CODE COVERAGE**
-
-This operation can be started by running the command
-`npm run cover`
-
-The `coverage` folder will contain an html page with coverage metrics
