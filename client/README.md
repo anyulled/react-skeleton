@@ -1,6 +1,6 @@
-**DBPOC-CLIENT**
+**POC-CLIENT**
 
-This is a client app repository for the DB React PoC project.
+This is a client app repository for the React PoC project.
 
 **RUNNING THE PROJECT**
 
