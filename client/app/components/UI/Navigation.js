@@ -5,7 +5,7 @@ import {Nav, Navbar, NavItem, Glyphicon} from "react-bootstrap";
 class Navigation extends React.Component {
 	
     render() {
-        return (<Navbar style={{'marginBottom':10}}>
+        return (<Navbar style={{"marginBottom":10}}>
             <Navbar.Header>
                 <Navbar.Brand>
                     <a className="navbar-brand ab-logo"><span>React/Redux Starter</span></a>

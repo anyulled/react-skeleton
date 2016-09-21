@@ -7,7 +7,7 @@ import * as userActions from "../../actions/users/users";
 import * as modalActions from "../../actions/modal/modal";
 
 const clearForm = (dispatch) => {
-	dispatch(modalActions.modalHide());
+    dispatch(modalActions.modalHide());
 };
 
 const submitAdd = (id, values, dispatch) => {
@@ -58,10 +58,10 @@ const NewUserModal = ({
                 <FieldGroup label="Year of Birth" field={yearOfBirth}/>
                 <FieldGroup label="Username" field={username}/>
                 <Select label="Country" field={country} options={
-                    [
-                        {name: "Select one", id: ""},
-                        ...countries.map(a => ({"id": a, "name": a}))
-                    ]
+                [
+                    {name: "Select one", id: ""},
+                    ...countries.map(a => ({"id": a, "name": a}))
+                ]
                 }/>
             </form>
         </Modal.Body>

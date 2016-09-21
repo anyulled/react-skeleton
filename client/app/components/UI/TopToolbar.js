@@ -10,13 +10,13 @@ class TopToolbar extends React.Component {
                 {"id": "1", "name": "New Entry", "style": "success", "glyphicon": "plus"}
             ]
         };
-    };
+    }
 
     render() {
         const buttons = this.state.buttons.map(function (item) {
             return (
                 <Button key={item.id} bsStyle={item.style}> <Glyphicon glyph={item.glyphicon}/> {item.name}</Button>
-            )
+            );
         });
 
         return (<div className="top-toolbar">

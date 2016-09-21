@@ -1,14 +1,11 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import * as userActions from "../actions/users/users";
-import * as uiActions from "../actions/ui/ui";
 import {reduxForm, reset} from "redux-form";
 import FieldGroup from "../components/FieldGroup";
 import Select from "../components/Select";
 import {Button} from "react-bootstrap";
 
 const clearForm = (dispatch) => {
-    dispatch(uiActions.editingUserChanged(false));
-    dispatch(userActions.userEdit({}));
     dispatch(reset("userForm"));
 };
 
@@ -107,6 +104,12 @@ const mapStateToProps = (state, props) => {
         id: initial.id,
         isEditingUser: state.ui.isEditingUser
     };
+};
+
+UserForm.propTypes = {
+    dispatch: PropTypes.funct.isRequired,    
+    id: PropTypes.string.isRequired,
+    isEditingUser: PropTypes.boolean
 };
 
 export default reduxForm({

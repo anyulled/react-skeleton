@@ -23,10 +23,10 @@ RootModal.prototype = {
 };
 
 const mapStateToProps = (state) => {
-	return {
-		modalType: state.modal.modalType,
-		modalProps: state.modal.modalProps
-	};
+    return {
+        modalType: state.modal.modalType,
+        modalProps: state.modal.modalProps
+    };
 };
 
 

@@ -10,7 +10,7 @@ class Sidebar extends React.Component {
 
     render() {
         const items = this.props.items.map(function (item) {
-            return (<LinkContainer key={item.id} to={item.route}><NavItem>{item.name}</NavItem></LinkContainer>)
+            return (<LinkContainer key={item.id} to={item.route}><NavItem>{item.name}</NavItem></LinkContainer>);
         });
         return (<Nav bsStyle="pills" stacked>
             {items}

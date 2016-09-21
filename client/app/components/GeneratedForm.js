@@ -42,10 +42,10 @@ const GeneratedForm = (props) => {
         <Input label="Year of Birth" field={yearOfBirth}/>
         <Input label="Username" field={username}/>
         <Select label="Country" field={country} options={
-            [
-                {name: "Select one", id: ""},
-                ...countries.map(a => ({"id": a, "name": a}))
-            ]
+        [
+            {name: "Select one", id: ""},
+            ...countries.map(a => ({"id": a, "name": a}))
+        ]
         }/>
         <button onClick={handleSubmit(tsubmit)}>
             Create new user
@@ -56,7 +56,7 @@ const GeneratedForm = (props) => {
 const mapStateToProps = (state, props) => {
     return {
         initialValues: {}
-    }
+    };
 };
 
 export default reduxForm({

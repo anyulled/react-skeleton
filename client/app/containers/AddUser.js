@@ -1,5 +1,5 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 import * as userActions from "../actions/users/users";
 import * as modalActions from "../actions/modal/modal";
 import { Button } from "react-bootstrap";
@@ -11,11 +11,11 @@ const AddUser = ({onAddUserClick}) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		onAddUserClick: () => {
-			dispatch(modalActions.modalNewUser());
-		}
-	};
+    return {
+        onAddUserClick: () => {
+            dispatch(modalActions.modalNewUser());
+        }
+    };
 };
 
 AddUser.propType = {
