@@ -1,6 +1,6 @@
-import React from "react"
-import {LinkContainer} from "react-router-bootstrap"
-import {Nav, NavItem} from "react-bootstrap"
+import React from "react";
+import {LinkContainer} from "react-router-bootstrap";
+import {Nav, NavItem} from "react-bootstrap";
 
 class Breacrumb extends React.Component {
     constructor(props) {

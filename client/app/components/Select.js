@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import {danger} from "../utils/colors";
 import {FormControl, FormGroup, ControlLabel} from "react-bootstrap";
 

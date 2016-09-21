@@ -16,7 +16,6 @@ class Home extends React.Component {
     }
 
     render() {
-    	console.log(this.props);
         return (<div>
             <Grid>
                 <Row>
@@ -24,8 +23,8 @@ class Home extends React.Component {
                         <Sidebar items={this.state.items}/>
                     </Col>
                     <Col sm={8}>
-                    	<Jumbotron>
-                    		<h1>Main Content</h1>
+                        <Jumbotron>
+                            <h1>Main Content</h1>
                             <p>This is the main content</p>
                             <p><Link to="/"><Button bsStyle="primary">Learn more</Button></Link></p>
                         </Jumbotron>

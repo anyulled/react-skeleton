@@ -7,7 +7,7 @@ import * as userActions from "../../actions/users/users";
 import * as modalActions from "../../actions/modal/modal";
 
 const clearForm = (dispatch) => {
-	dispatch(modalActions.modalHide());
+    dispatch(modalActions.modalHide());
 };
 
 const submitUpdate = (id, dispatch, values) => {
@@ -64,10 +64,10 @@ const EditUserModal = ({
                 <FieldGroup label="Year of Birth" field={yearOfBirth}/>
                 <FieldGroup label="Username" field={username}/>
                 <Select label="Country" field={country} options={
-                    [
-                        {name: "Select one", id: ""},
-                        ...countries.map(a => ({"id": a, "name": a}))
-                    ]
+                [
+                    {name: "Select one", id: ""},
+                    ...countries.map(a => ({"id": a, "name": a}))
+                ]
                 }/>
             </form>
         </Modal.Body>
@@ -94,7 +94,7 @@ const mapStateToProps = (state, props) => {
 
     return {
         initialValues: initial,
-        id: initial.id,
+        id: initial.id
     };
 };
 

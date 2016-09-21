@@ -2,21 +2,21 @@ import React from "react";
 import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-var moment = require('moment');
+var moment = require("moment");
 
 class Widgets extends React.Component {
     constructor(props) {
         super(props);
         this.state={
-        	selectedDate:moment()
-        }
-        this.handleDatePickerChange = this.handleDatePickerChange.bind(this)
+            selectedDate:moment()
+        };
+        this.handleDatePickerChange = this.handleDatePickerChange.bind(this);
     }
     
     handleDatePickerChange(date) {
-    	this.setState({
-    		selectedDate: date
-    	});
+        this.setState({
+            selectedDate: date
+        });
     }
 
     render() {
