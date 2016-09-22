@@ -8,7 +8,7 @@ class Sidebar extends React.Component {
 
     }
 
-    render() {
+    render() {  
         const items = this.props.items.map(function (item) {
             return (<LinkContainer key={item.id} to={item.route}><NavItem>{item.name}</NavItem></LinkContainer>);
         });

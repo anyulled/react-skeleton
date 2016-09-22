@@ -13,7 +13,7 @@ class Navigation extends React.Component {
             </Navbar.Header>
             <Nav activeKey={1}>
                 <IndexLinkContainer to="/">
-                    <NavItem eventKey={1}><Glyphicon glyph="dashboard"/> Home</NavItem>
+                    <NavItem eventKey={1}><Glyphicon glyph="dashboard"/> Content</NavItem>
                 </IndexLinkContainer>
                 <LinkContainer to="/users">
                     <NavItem eventKey={2}> User List</NavItem>

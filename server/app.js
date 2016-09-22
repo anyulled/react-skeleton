@@ -11,18 +11,44 @@ app.get("/", function (req, res) {
 });
 
 app.get("/users", function (req, res) {
+	console.log("Getting users");
     res.set({
         "Content-Type": "application/json"
     });
     res.sendFile(__dirname + "/static/users.json");
 });
 
-app.get("/deals", function (request, response) {
-    console.log("Deals requested:" + request);
-    response.set({
+
+app.get("/content", function (req, res) {
+	console.log("Getting content list");
+	res.set({
         "Content-Type": "application/json"
     });
-    response.sendfile(__dirname + "/static/deals.json");
+    res.sendFile(__dirname + "/static/content.json");
+});
+
+app.get("/content/1", function (req, res) {
+	console.log("Getting content 1");
+	res.set({
+        "Content-Type": "application/json"
+    });
+    res.sendFile(__dirname + "/static/content_1.json");
+});
+
+app.get("/content/2", function (req, res) {
+	console.log("Getting content 2");
+	res.set({
+        "Content-Type": "application/json"
+    });
+    res.sendFile(__dirname + "/static/content_2.json");
+});
+
+app.get("/content/3", function (req, res) {
+	console.log("Getting content 3");
+	res.set({
+        "Content-Type": "application/json"
+    });
+    res.sendFile(__dirname + "/static/content_3.json");
 });
 
 app.listen(3000, function () {

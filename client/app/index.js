@@ -10,7 +10,7 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 import "./assets/sass/main.scss";
 
 //import specific app components
-import Home from "./components/Home";
+import ContentContainer from "./containers/ContentContainer";
 import Widgets from "./components/Widgets";
 import Users from "./components/Users";
 import UserManagement from "./components/UserManagement";
@@ -20,10 +20,11 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={hashHistory}>
             <Route path="/" component={App}>
-                <IndexRoute component={Home}/>
+                <IndexRoute component={ContentContainer}/>
                 <Route path="/widgets" component={Widgets}/>
                 <Route path="/usermanager" component={UserManagement}/>
                 <Route path="/users" component={Users}/>
+                <Route path="/content/:contentId" component={ContentContainer}/>
             </Route>
         </Router>
     </Provider>
