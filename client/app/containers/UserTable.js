@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import * as userActions from "../actions/users/users";
 import * as tableActions from "../actions/tables/tables";
 import * as modalActions from "../actions/modal/modal";
-import SortableTable from "../containers/SortableTable";
+import SortableTable from "../components/SortableTable";
     
 const mapStateToProps = (state, ownProps) => {
     return {
