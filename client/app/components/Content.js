@@ -26,19 +26,14 @@ class Content extends React.Component {
     	this.props.unmount();
     }
     
-    loadContent(props){
+    loadContent(props){ 
     	if (typeof props.contentLoad === "function") {
-    		let shouldLoadContent=true;
+    		let shouldLoadContent=false;
     		
         	if(props.routeParams.contentId){
         		if(props.routeParams.contentId!=this.state.selectedItem){
         			this.state.selectedItem=props.routeParams.contentId;
-        		}else{
-        			shouldLoadContent=false;
-        		}        		
-        	}else{
-        		if(this.state.selectedItem==null){
-        			shouldLoadContent=false;
+        			shouldLoadContent=true;
         		}        		
         	}
         	if(shouldLoadContent){
