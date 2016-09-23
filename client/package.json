@@ -1,7 +1,7 @@
 {
-  "name": "react-skeleton",
+  "name": "react-starter",
   "version": "0.0.1",
-  "description": " Skeleton for React Projects",
+  "description": " React/Redux Skeleton",
   "main": "index.js",
   "scripts": {
     "package":"webpack",
