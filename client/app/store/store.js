@@ -7,12 +7,15 @@ import genericReducer from "../reducers/generic/generic";
 import users from "../reducers/users/users";
 import modal from "../reducers/modal/modal";
 import tables from "../reducers/tables/tables";
+import {contentHeaders, contents} from "../reducers/content/content";
 
 export default createStore(combineReducers({
     generic: genericReducer,
     users,
     modal,
     tables,
+    contents,
+    contentHeaders,
     form: formReducer
 }), compose(
     applyMiddleware(thunk, logger()),

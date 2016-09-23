@@ -29,7 +29,7 @@ describe("users actions", () => {
             store.dispatch(actions.usersLoad());
 
             setTimeout(function () {
-                expect(store.getActions()).to.have.length(2);
+            	expect(store.getActions()).to.have.length(2);
                 done();
             }, 1000);
 
