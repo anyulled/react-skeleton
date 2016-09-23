@@ -45,10 +45,10 @@ export function usersLoad(params = null) {
                     payload: data.data
                 });
             }).catch((error)=> {
-            dispatch({
-                type: ERROR,
-                payload: error
+                dispatch({
+                    type: ERROR,
+                    payload: error
+                });
             });
-        });
     };
 }

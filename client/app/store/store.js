@@ -10,9 +10,9 @@ import tables from "../reducers/tables/tables";
 
 export default createStore(combineReducers({
     generic: genericReducer,
-	users,
-	modal,
-	tables,
+    users,
+    modal,
+    tables,
     form: formReducer
 }), compose(
     applyMiddleware(thunk, logger()),

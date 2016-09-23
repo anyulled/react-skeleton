@@ -4,6 +4,7 @@
   "description": " Skeleton for React Projects",
   "main": "index.js",
   "scripts": {
+    "package":"webpack",
     "start": "http-server ./dist -s | webpack --watch",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register"

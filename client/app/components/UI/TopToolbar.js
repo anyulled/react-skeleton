@@ -5,18 +5,18 @@ class TopToolbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            "title": "Deal List",
+            "title": "Entry List",
             "buttons": [
-                {"id": "1", "name": "New Deal", "style": "success", "glyphicon": "plus"}
+                {"id": "1", "name": "New Entry", "style": "success", "glyphicon": "plus"}
             ]
         };
-    };
+    }
 
     render() {
         const buttons = this.state.buttons.map(function (item) {
             return (
                 <Button key={item.id} bsStyle={item.style}> <Glyphicon glyph={item.glyphicon}/> {item.name}</Button>
-            )
+            );
         });
 
         return (<div className="top-toolbar">
