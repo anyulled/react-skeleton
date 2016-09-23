@@ -4,9 +4,10 @@
   "description": " React/Redux Skeleton",
   "main": "index.js",
   "scripts": {
-    "package":"webpack",
+    "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js",
+    "eslint": "eslint app/**",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register"
   },
   "keywords": [
