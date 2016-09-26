@@ -17,13 +17,9 @@ or 404 errors, please run
 
 This will allow access to github.com repos from behind a proxy / firewall.
 
-After installing the dependencies please run
+Then run
 
-`npm install http-server -g`
-
-In order to instal the web server. Then run
-
-`npm start`
+- `npm start`
 
 This will start:
 
