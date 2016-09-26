@@ -26,7 +26,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:react/recommended"
   ],
   "rules": {
     "quotes": [
@@ -64,8 +65,20 @@
     "react/no-deprecated": [
       "error"
     ],
+    "react/no-multi-comp": [
+      "error"
+    ],
+    "react/prefer-es6-class": [
+      "warn"
+    ],
+    "react/prefer-stateless-function": [
+      "warn"
+    ],
     "react/no-direct-mutation-state": [
       "error"
+    ],
+    "react/no-unused-prop-types": [
+      "warn"
     ],
     "react/react-in-jsx-scope": [
       "warn"
