@@ -9,19 +9,19 @@ const modal = (state = initialState, action) => {
     if (!action) {
         return state;
     }
-    
+
     switch (action.type) {
         case actions.MODAL_SHOW_NEW_USER:
             return {
                 ...state,
-                modalType : action.modalType,
-                modalProps : {}
+                modalType: action.modalType,
+                modalProps: {}
             };
         case actions.MODAL_SHOW_EDIT_USER:
             return {
                 ...state,
-                modalType : action.modalType,
-                modalProps : action.modalProps
+                modalType: action.modalType,
+                modalProps: action.modalProps
             };
         case actions.MODAL_HIDE:
             return {

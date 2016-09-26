@@ -15,7 +15,7 @@ export const contents = (state = {}, action) => {
         case actions.CONTENT_UPDATE:
             return content(action);
         case actions.CONTENT_UNMOUNT:
-            return {}; 
+            return {};
         case actions.ERROR:
             return state;
     }
@@ -35,7 +35,7 @@ export const contentHeaders = (state = [], action) => {
     }
     switch (action.type) {
         case actions.CONTENT_LIST_UPDATE:
-        	if (Array.isArray(action.payload)) {
+            if (Array.isArray(action.payload)) {
                 return [...action.payload];
             }
             return [contentHeader(action)];

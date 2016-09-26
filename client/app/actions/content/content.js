@@ -17,13 +17,13 @@ export function contentUpdate(dto) {
         }
     };
 }
-
+ 
 export function unmount() {
     return {
         type: CONTENT_UNMOUNT
     };
 }
-
+ 
 export function contentHeadersLoad(params = null) {
     return function (dispatch) {
     	axios.get(config.api.url + "/content", {params})
@@ -40,7 +40,7 @@ export function contentHeadersLoad(params = null) {
         });
     };
 }
-
+ 
 export function contentLoad(id) {
     return function (dispatch) {
     	axios.get(config.api.url + "/content/"+id)
@@ -57,3 +57,4 @@ export function contentLoad(id) {
         });
     };
 }
+ 
