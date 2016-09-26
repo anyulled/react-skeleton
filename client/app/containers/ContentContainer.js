@@ -1,18 +1,18 @@
-import React, { PropTypes } from "react";
-import { connect } from "react-redux";
+import React, {PropTypes} from "react";
+import {connect} from "react-redux";
 import * as contentActions from "../actions/content/content";
 import Content from "../components/Content";
-    
+
 const mapStateToProps = (state, ownProps) => {
-	return {
-		headerList:state.contentHeaders,
+    return {
+        headerList: state.contentHeaders,
         content: state.contents
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    	contentHeadersLoad: (id) => {
+        contentHeadersLoad: () => {
             dispatch(contentActions.contentHeadersLoad());
         },
         contentLoad: (id) => {

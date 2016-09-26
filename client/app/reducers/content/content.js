@@ -3,7 +3,7 @@ import * as actions from "../../actions/content/content.js";
 const content = (state = {}, action) => {
     switch (action.type) {
         case actions.CONTENT_UPDATE:
-        	return action.payload;
+            return action.payload;
         default:
             return state;
     }
@@ -17,7 +17,7 @@ export const contents = (state = {}, action) => {
         case actions.CONTENT_UPDATE:
             return content(undefined, action);
         case actions.CONTENT_UNMOUNT:
-            return {}; 
+            return {};
         case actions.ERROR:
             return state;
     }
@@ -27,7 +27,7 @@ export const contents = (state = {}, action) => {
 const contentHeader = (state = [], action) => {
     switch (action.type) {
         case actions.CONTENT_LIST_UPDATE:
-        	return action.payload;
+            return action.payload;
         default:
             return state;
     }
@@ -39,7 +39,7 @@ export const contentHeaders = (state = [], action) => {
     }
     switch (action.type) {
         case actions.CONTENT_LIST_UPDATE:
-        	if (Array.isArray(action.payload)) {
+            if (Array.isArray(action.payload)) {
                 return [...action.payload];
             }
             return [contentHeader(undefined, action)];

@@ -20,18 +20,18 @@ export function contentUpdate(dto) {
 
 export function contentLoad(id, params = null) {
     return function (dispatch) {
-    	axios.get(config.api.url + "/content/"+id, {params})
-        .then((data) => {
-            dispatch({
-                type: CONTENT_UPDATE,
-                payload: data.data
-            });
-        }).catch((error)=> {
+        axios.get(config.api.url + "/content/" + id, {params})
+            .then((data) => {
+                dispatch({
+                    type: CONTENT_UPDATE,
+                    payload: data.data
+                });
+            }).catch((error)=> {
             dispatch({
                 type: ERROR,
                 payload: error
             });
-        });
+            });
     };
 }
 
@@ -41,20 +41,19 @@ export function unmount() {
     };
 }
 
-
 export function contentHeadersLoad(params = null) {
     return function (dispatch) {
-    	axios.get(config.api.url + "/content", {params})
-        .then((data) => {
-            dispatch({
-                type: CONTENT_LIST_UPDATE,
-                payload: data.data
-            });
-        }).catch((error)=> {
+        axios.get(config.api.url + "/content", {params})
+            .then((data) => {
+                dispatch({
+                    type: CONTENT_LIST_UPDATE,
+                    payload: data.data
+                });
+            }).catch((error)=> {
             dispatch({
                 type: ERROR,
                 payload: error
             });
-        });
+            });
     };
 }
