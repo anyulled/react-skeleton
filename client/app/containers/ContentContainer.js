@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
     	contentHeadersLoad: (id) => {
-            dispatch(contentActions.contentHeadersLoad());
+    		dispatch(contentActions.contentHeadersLoad());
         },
         contentLoad: (id) => {
             dispatch(contentActions.contentLoad(id));

@@ -5,7 +5,7 @@ const user = (state = [], action) => {
         case actions.USER_ADD:
             return action.payload;
         case actions.USER_REMOVE:
-            if (state.id !== action.id) {
+        	if (state.id !== action.id) {
                 return state;
             }
             break;
@@ -14,8 +14,6 @@ const user = (state = [], action) => {
                 return state;
             }
             return {...state, ...action.payload};
-        default:
-            return state;
     }
 };
 

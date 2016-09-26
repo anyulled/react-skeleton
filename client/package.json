@@ -4,7 +4,7 @@
   "description": " React/Redux Skeleton",
   "main": "index.js",
   "scripts": {
-    "package":"webpack",
+    "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register"
@@ -48,6 +48,7 @@
     "babel-core": "^6.11.4",
     "babel-eslint": "6.1.2",
     "babel-loader": "^6.2.4",
+    "babel-plugin-istanbul": "^2.0.1",
     "babel-plugin-transform-class-properties": "6.11.5",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-regenerator": "6.14.0",
@@ -82,7 +83,7 @@
     "react": "^15.2.1",
     "react-addons-css-transition-group": "^15.2.1",
     "react-addons-shallow-compare": "^15.3.0",
-    "react-addons-test-utils": "^15.2.1",
+    "react-addons-test-utils": "^15.3.2",
     "react-chartjs": "^0.8.0",
     "react-dom": "^15.2.1",
     "react-modal": "^1.4.0",

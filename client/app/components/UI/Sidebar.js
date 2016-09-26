@@ -3,10 +3,6 @@ import {LinkContainer} from "react-router-bootstrap";
 import {Nav, NavItem} from "react-bootstrap";
 
 class Sidebar extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
 
     render() {  
         const items = this.props.items.map(function (item) {

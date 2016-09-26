@@ -11,8 +11,10 @@ class Content extends React.Component {
         };
     }
 
-    componentWillMount(){    
-    	this.props.contentHeadersLoad();
+    componentWillMount(){   
+    	if (typeof this.props.contentHeadersLoad === "function") {
+       		this.props.contentHeadersLoad();
+    	}
     }
     
     componentWillReceiveProps (props){
@@ -21,13 +23,13 @@ class Content extends React.Component {
     
     componentWillUnmount(){
     	this.props.unmount();
-    }
+    } 
     
     loadContent(props){ 
     	if (typeof props.contentLoad === "function") {
     		let shouldLoadContent=false;
     		
-        	if(props.routeParams.contentId){
+        	if(props.routeParams && props.routeParams.contentId){
         		if(props.routeParams.contentId!=this.state.selectedItem){
         			this.state.selectedItem=props.routeParams.contentId;
         			shouldLoadContent=true;
@@ -37,8 +39,10 @@ class Content extends React.Component {
         		props.contentLoad(this.state.selectedItem);
         	}
         }
-    }
+    }   
+   
     render() {
+    	
     	let {data} = this.props;
     	let {headerList,content}=this.props;
     	return (<div>
@@ -49,14 +53,14 @@ class Content extends React.Component {
                     </Col>
                     <Col sm={8}>
                         <Jumbotron>
-                        	<h1>{content.title?content.title:'Default view'}</h1>
-                            <p>{content.description?content.description:'Select a tab on the left'}</p>
+                        	<h1>{content && content.title?content.title:'Default view'}</h1>
+                            <p>{content && content.description?content.description:'Select a tab on the left'}</p>
                         </Jumbotron>
                     </Col>
                 </Row>
             </Grid>
         </div>);
-    }
+    }                    	
 }
 
 export default Content;

@@ -1,11 +1,9 @@
 import * as actions from "../../actions/content/content.js";
 
-const content = (state = {}, action) => {
+const content = (action) => {
     switch (action.type) {
         case actions.CONTENT_UPDATE:
         	return action.payload;
-        default:
-            return state;
     }
 };
 
@@ -15,7 +13,7 @@ export const contents = (state = {}, action) => {
     }
     switch (action.type) {
         case actions.CONTENT_UPDATE:
-            return content(undefined, action);
+            return content(action);
         case actions.CONTENT_UNMOUNT:
             return {}; 
         case actions.ERROR:
@@ -24,12 +22,10 @@ export const contents = (state = {}, action) => {
     return state;
 };
 
-const contentHeader = (state = [], action) => {
+const contentHeader = (action) => {
     switch (action.type) {
         case actions.CONTENT_LIST_UPDATE:
         	return action.payload;
-        default:
-            return state;
     }
 };
 
@@ -42,7 +38,7 @@ export const contentHeaders = (state = [], action) => {
         	if (Array.isArray(action.payload)) {
                 return [...action.payload];
             }
-            return [contentHeader(undefined, action)];
+            return [contentHeader(action)];
         case actions.ERROR:
             return state;
     }
