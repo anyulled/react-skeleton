@@ -56,8 +56,7 @@ describe("<ContentContainer/>", () => {
 	});	
 	
 	it("should mount", function () {  	
-		var container  = document.createElement('div');
-		
+		var container  = document.createElement('div');		
 		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
 		expect(connectedApp).to.exist;
     });
@@ -95,8 +94,6 @@ describe("<ContentContainer/>", () => {
     it("should reset when unmount", function () {
     	var container  = document.createElement('div');
 		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
-		//container = document.createElement('div');
-		//connectedApp = TestUtils.renderIntoDocument(<ContentContainer store={store}/>,container);
 		ReactDOM.unmountComponentAtNode(container);
     });
 	
