@@ -1,11 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {mount,shallow } from "enzyme";
 import {expect} from "chai";
-import Content from "../../app/components/Content";
 import ContentContainer from "../../app/containers/ContentContainer";
 import * as actions from "../../app/actions/content/content";
-import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import configureMockStore from "redux-mock-store";
 import TestUtils from 'react-addons-test-utils';
@@ -15,7 +12,7 @@ import {contentHeaders, contents} from "../../app/reducers/content/content";
 import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 
 describe("<ContentContainer/>", () => {
-	let store,connectedApp;
+	let store;
 	const entries=[{
 		"id": "1", 
 		"name": "Pangram A", 
@@ -56,14 +53,14 @@ describe("<ContentContainer/>", () => {
 	});	
 	
 	it("should mount", function () {  	
-		var container  = document.createElement('div');		
-		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+		let container  = document.createElement('div');		
+		let connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
 		expect(connectedApp).to.exist;
     });
 	
     it("should have a consistent number of sidebar entries", function (done) {
-    	var container  = document.createElement('div');
-		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+    	let container  = document.createElement('div');
+    	let connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
 		setTimeout(function () {
     		 let items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"li");
     		 expect(items.length).to.eql(entries.length);
@@ -80,8 +77,8 @@ describe("<ContentContainer/>", () => {
     		}	
     	}
     
-    	var container  = document.createElement('div');
-		connectedApp = ReactDOM.render(<ContentContainer {...props} store={store}/>, container);
+    	let container  = document.createElement('div');
+    	let connectedApp = ReactDOM.render(<ContentContainer {...props} store={store}/>, container);
 		setTimeout(function () {
     		const items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"p");
     		expect(items.length).to.eql(1);
@@ -92,8 +89,8 @@ describe("<ContentContainer/>", () => {
     });
     
     it("should reset when unmount", function () {
-    	var container  = document.createElement('div');
-		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+    	let container  = document.createElement('div');
+    	let connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
 		ReactDOM.unmountComponentAtNode(container);
     });
 	

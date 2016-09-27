@@ -6,9 +6,9 @@
   "scripts": {
     "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js --require ignore-styles",
     "eslint": "eslint app/** --fix",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register --require ignore-styles"
   },
   "keywords": [
     "react",
@@ -73,6 +73,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
+    "ignore-styles": "^5.0.1",
     "istanbul-react": "^1.1.0",
     "jsdom": "^9.4.1",
     "json-loader": "0.5.4",
@@ -86,6 +87,8 @@
     "react-addons-shallow-compare": "^15.3.0",
     "react-addons-test-utils": "^15.3.2",
     "react-chartjs": "^0.8.0",
+    "react-dnd": "^2.1.4",
+    "react-dnd-test-backend": "^1.0.2",
     "react-dom": "^15.2.1",
     "react-modal": "^1.4.0",
     "react-redux": "^4.4.5",

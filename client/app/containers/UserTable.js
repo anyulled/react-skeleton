@@ -7,7 +7,7 @@ import * as modalActions from "../actions/modal/modal";
 import SortableTable from "../components/SortableTable";
 
 const mapStateToProps = (state, ownProps) => {
-    return {
+	return {
         data: state.users,
         columns: state.tables.userTable.columns,
         rowSortKey: state.tables.userTable.rowSortKey,
