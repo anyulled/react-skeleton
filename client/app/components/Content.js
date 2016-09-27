@@ -11,22 +11,25 @@ class Content extends React.Component {
     }
 
     componentWillMount() {
-        this.props.contentHeadersLoad();
+    	if (this.props && typeof this.props.contentHeadersLoad === "function") {
+    		this.props.contentHeadersLoad();
+    	}
     }
 
     componentWillReceiveProps(props) {
-        this.loadContent(props);
+    	this.loadContent(props);    	
     }
 
     componentWillUnmount() {
-        this.props.unmount();
+    	if (typeof this.props.unmount === "function") {
+    		this.props.unmount();
+    	}        
     }
 
     loadContent(props) {
         if (typeof props.contentLoad === "function") {
-            let shouldLoadContent = false;
-
-            if (props.routeParams && props.routeParams.contentId) {
+        	let shouldLoadContent = false;
+        	if (props.routeParams && props.routeParams.contentId) {
                 if (props.routeParams.contentId != this.state.selectedItem) {
                     this.setState({
                         selectedItem: props.routeParams.contentId
@@ -51,8 +54,8 @@ class Content extends React.Component {
                     </Col>
                     <Col sm={8}>
                         <Jumbotron>
-                            <h1>{content.title ? content.title : "Default view"}</h1>
-                            <p>{content.description ? content.description : "Select a tab on the left"}</p>
+                            <h1>{content && content.title ? content.title : "Default view"}</h1>
+                            <p>{content && content.description ? content.description : "Select a tab on the left"}</p>
                         </Jumbotron>
                     </Col>
                 </Row>
@@ -62,10 +65,10 @@ class Content extends React.Component {
 }
 
 Content.propTypes = {
-    content: React.PropTypes.object.isRequired,
-    contentHeadersLoad: React.PropTypes.func.isRequired,
-    headerList: React.PropTypes.array.isRequired,
-    unmount: React.PropTypes.func.isRequired
+    content: React.PropTypes.object,
+    contentHeadersLoad: React.PropTypes.func,
+    headerList: React.PropTypes.array,
+    unmount: React.PropTypes.func
 };
 
 export default Content;

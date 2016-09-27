@@ -16,64 +16,88 @@ import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 
 describe("<ContentContainer/>", () => {
 	let store,connectedApp;
-	var container;
-	const entries=[
-       {
-    	   "id": "1", 
-    	   "name": "Pangram A", 
-    	   "route": "/content/1"
-       },
-       {
-    	   "id": "2", 
-    	   "name": "Pangram B", 
-    	   "route": "/content/2"
-       },
-       {
-    	   "id": "3", 
-    	   "name": "Pangram C", 
-    	   "route": "/content/3"
-       }
-   ];
+	const entries=[{
+		"id": "1", 
+		"name": "Pangram A", 
+		"route": "/content/1"
+	},
+	{
+		"id": "2", 
+		"name": "Pangram B", 
+		"route": "/content/2"
+	},
+	{
+		"id": "3", 
+		"name": "Pangram C", 
+		"route": "/content/3"
+	}];
+	const content1Description="Sylvia wagt quick den Jux bei Pforzheim";
+	const content1={
+			"title":"German pangram",
+			"description":content1Description
+	};
 	beforeEach(function() {
 		store = createStore(
 				combineReducers({contents,contentHeaders}), 
 				compose(applyMiddleware(thunk
 						//,logger()
 						)));
+		
 		nock.cleanAll();
 		nock("http://localhost:3000")
 		.persist()
         .get("/content")
         .reply(200, entries);
-		container = document.createElement('div');
-		connectedApp = TestUtils.renderIntoDocument(<Provider store={store}><ContentContainer /></Provider>,container);
+		nock("http://localhost:3000")
+		.persist()
+        .get("/content/1")
+        .reply(200, content1);
 		
 	});	
 	
 	it("should mount", function () {  	
-        expect(connectedApp).to.exist;
+		var container  = document.createElement('div');
+		
+		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+		expect(connectedApp).to.exist;
     });
 	
     it("should have a consistent number of sidebar entries", function (done) {
-    	 setTimeout(function () {
-    		 const items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"li");
+    	var container  = document.createElement('div');
+		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+		setTimeout(function () {
+    		 let items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"li");
+    		 expect(items.length).to.eql(entries.length);
+    		 items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"a");
     		 expect(items.length).to.eql(entries.length);
              done();
          }, 100);
     });
     
-//    it("should load the content appropiately after selecting a sidebar entry", function (done) {
-//    	setTimeout(function () {
-//    		const items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"li");
-//    		expect(items.length).to.eql(entries.length+1);
-//    		done();
-//    	}, 100);
-//    });
+    it("should load the content appropiately after selecting a sidebar entry", function (done) {
+    	let props={
+    		routeParams:{
+    			contentId:1
+    		}	
+    	}
     
-//    it("should reset when unmount", function () {
-//    	container = document.createElement('div');
-//		connectedApp = TestUtils.renderIntoDocument(<ContentContainer store={store}/>,container);
-//		ReactDOM.unmountComponentAtNode(container);
-//    });
+    	var container  = document.createElement('div');
+		connectedApp = ReactDOM.render(<ContentContainer {...props} store={store}/>, container);
+		setTimeout(function () {
+    		const items=TestUtils.scryRenderedDOMComponentsWithTag(connectedApp,"p");
+    		expect(items.length).to.eql(1);
+    		expect(items[0].innerHTML).to.eql(content1Description);
+            done();
+        }, 100);
+    	
+    });
+    
+    it("should reset when unmount", function () {
+    	var container  = document.createElement('div');
+		connectedApp = ReactDOM.render(<ContentContainer store={store}/>, container);
+		//container = document.createElement('div');
+		//connectedApp = TestUtils.renderIntoDocument(<ContentContainer store={store}/>,container);
+		ReactDOM.unmountComponentAtNode(container);
+    });
 	
 });
