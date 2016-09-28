@@ -1,6 +1,7 @@
 import React from "react";
 import {Grid, Row, Col, PageHeader} from "react-bootstrap";
-import UserTable from "../containers/UserTable";
+//import UserTable from "../containers/UserTable";
+import UserDataTableContainer from "../containers/UserDataTableContainer";
 
 class Users extends React.Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Users extends React.Component {
                 <Grid fluid>
                     <Row>
                         <Col sm={12}>
-                            <UserTable/>
+                            <UserDataTableContainer/>
                         </Col>
                     </Row>
                 </Grid>

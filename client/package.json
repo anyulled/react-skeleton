@@ -6,7 +6,7 @@
   "scripts": {
     "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/Modal*_test.js",
     "eslint": "eslint app/** --fix",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js"
   },
@@ -37,6 +37,7 @@
     "mocha": "^2.5.3",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
+    "react-bootstrap-table": "^2.5.4",
     "react-datepicker": "^0.29.0",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",
