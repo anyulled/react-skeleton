@@ -90,7 +90,7 @@ describe("<UserTable/>", () => {
 		console.log(">> TODO should allow reordering columns!!!")
     });
 	
-	it("on edit click, the modal is prepared in edit mode with the entity data", function (done) {
+	it("should, on edit click, prepare the modal in edit mode with the entity data", function (done) {
 		let connectedApp = ReactDOM.render(<UserTable {...props} store={store}/>, container);
 		setTimeout(function () {
     		 let items=TestUtils.scryRenderedDOMComponentsWithClass(connectedApp,"glyphicon-pencil");

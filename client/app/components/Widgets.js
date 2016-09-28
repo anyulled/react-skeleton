@@ -2,7 +2,7 @@ import React from "react";
 import {Table, Grid, Row, Col, PageHeader, Pagination} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-var moment = require("moment");
+import moment from "moment";
 
 class Widgets extends React.Component {
     constructor(props) {

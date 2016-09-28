@@ -6,9 +6,9 @@
   "scripts": {
     "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js --require ignore-styles",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js",
     "eslint": "eslint app/** --fix",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register --require ignore-styles"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js"
   },
   "keywords": [
     "react",
