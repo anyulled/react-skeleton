@@ -52,7 +52,6 @@ const userTable = (state, action) => {
                 rowSortDesc: state.rowSortKey === action.rowSortKey ? !state.rowSortDesc : false 
             };
     }
-    return state;
 };
 
 const tables = (state = initialState, action) => {

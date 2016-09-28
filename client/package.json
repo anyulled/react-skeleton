@@ -6,9 +6,9 @@
   "scripts": {
     "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register test/**/*_test.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js",
     "eslint": "eslint app/** --fix",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- test/**/*.js --compilers js:babel-register"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js"
   },
   "keywords": [
     "react",
@@ -49,6 +49,7 @@
     "babel-core": "^6.11.4",
     "babel-eslint": "6.1.2",
     "babel-loader": "^6.2.4",
+    "babel-plugin-istanbul": "^2.0.1",
     "babel-plugin-transform-class-properties": "6.11.5",
     "babel-plugin-transform-react-constant-elements": "6.9.1",
     "babel-plugin-transform-regenerator": "6.14.0",
@@ -72,6 +73,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
+    "ignore-styles": "^5.0.1",
     "istanbul-react": "^1.1.0",
     "jsdom": "^9.4.1",
     "json-loader": "0.5.4",
@@ -83,8 +85,10 @@
     "react": "^15.2.1",
     "react-addons-css-transition-group": "^15.2.1",
     "react-addons-shallow-compare": "^15.3.0",
-    "react-addons-test-utils": "^15.2.1",
+    "react-addons-test-utils": "^15.3.2",
     "react-chartjs": "^0.8.0",
+    "react-dnd": "^2.1.4",
+    "react-dnd-test-backend": "^1.0.2",
     "react-dom": "^15.2.1",
     "react-modal": "^1.4.0",
     "react-redux": "^4.4.5",

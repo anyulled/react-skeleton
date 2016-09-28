@@ -20,11 +20,10 @@ describe("<Sidebar/>", () => {
     });
 
     it("should mount", function () {
-
         const wrapper = mount(<Sidebar items={items}/>);
         expect(wrapper).to.exist;
     });
-
+        
     it("should mount with the same number of items that were passed to it", () => {
         const wrapper = mount(<Sidebar items={[...items]}/>);
         expect(wrapper.find(".nav.nav-pills li")).to.have.length(items.length);

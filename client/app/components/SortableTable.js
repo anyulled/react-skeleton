@@ -1,26 +1,26 @@
-import React, { PropTypes } from "react";
-import { Table, Column, Cell } from "fixed-data-table-2";
-import { Glyphicon } from "react-bootstrap";
+import React, {PropTypes} from "react";
+import {Table, Column, Cell} from "fixed-data-table-2";
+import {Glyphicon} from "react-bootstrap";
 import TextCell from "../components/TextCell";
 import SortHeaderCell from "../components/SortHeaderCell";
 import "fixed-data-table-2/dist/fixed-data-table-base.css";
 import "fixed-data-table-2/dist/fixed-data-table-style.css";
-import "fixed-data-table-2/dist/fixed-data-table.css";    
-    
+import "fixed-data-table-2/dist/fixed-data-table.css";
+
 class SortableTable extends React.Component {
     constructor(props) {
         super(props);
-        
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
     }
-    componentWillMount(){
-        if (typeof this.props.dataLoad === "function") { 
+
+    componentWillMount() {
+        if (typeof this.props.dataLoad === "function") {
             this.props.dataLoad();
         }
     }
+
     handleOnColumnReorderEndCallback(event) {
-       
-        var reorderColumn = this.props.columns.filter((column) => {
+    	var reorderColumn = this.props.columns.filter((column) => {
             return column.key === event.reorderColumn;
         })[0];
         var columns = this.props.columns.filter((column) => {
@@ -39,9 +39,10 @@ class SortableTable extends React.Component {
         }
         this.props.tableColumnOrderSet(columns);
     }
-    sortData (data) {
+
+    sortData(data) {
         let dat = [...data];
-        const { rowSortKey, rowSortDesc } = this.props;
+        const {rowSortKey, rowSortDesc} = this.props;
         const multiplier = rowSortDesc ? -1 : 1;
         return dat.sort((a, b) => {
             const aVal = a[rowSortKey] || 0;
@@ -49,43 +50,47 @@ class SortableTable extends React.Component {
             return aVal > bVal ? multiplier : (aVal < bVal ? -multiplier : 0);
         });
     }
+
     render() {
-    	let { data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight } = this.props;
-        let sortedData = this.sortData(data);
-        let sortProps = { sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc };
+    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
+        let sortedData = this.sortData(data);        
+        let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = Object.keys(columns).reduce((prevCol, key) => {
             return prevCol + columns[key].width;
         }, 0);
-        return(
-                <Table
-                    height={data.length * rowHeight}
-                    rowsCount={data.length}
-                    onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
-                    isColumnReordering={false}
-                    width={width + (edit ? 100 : 0)}
-                    rowHeight={rowHeight}
-                    headerHeight={rowHeight}
-                    {...this.props}
-                >
-                    {columns.map(function (column, i) {
-                        return <Column
-                            allowCellsRecycling={true}
-                            columnKey={column.key}
-                            key={i}
-                            isReorderable={reorderableColumns}
-                            header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> : <Cell>{column.title}</Cell>}
-                            cell={<TextCell data={sortedData} col={column.key} />}
-                            width={column.width}
-                        />;
-                    })}
-                    { edit ? <Column isReorderable={false}  width={100} header="Actions"
-                        cell={({rowIndex, ...props}) => (
-                                <Cell>
-                                    <div style={{cursor: "pointer", display:"inline"}} onClick={() => { onEditClick(sortedData[rowIndex]);}}><Glyphicon glyph="pencil" /></div>
-                                </Cell>
-                            )}  
-                    /> : null }
-                </Table>
+        return (
+            <Table
+                height={data.length * rowHeight}
+                rowsCount={data.length}
+                onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
+                isColumnReordering={false}
+                width={width + (edit ? 100 : 0)}
+                rowHeight={rowHeight}
+                headerHeight={rowHeight}
+                {...this.props}
+            >
+                {columns.map(function (column, i) {
+                    return <Column
+                        allowCellsRecycling={true}
+                        columnKey={column.key}
+                        key={i}
+                        isReorderable={reorderableColumns}
+                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
+                            <Cell>{column.title}</Cell>}
+                        cell={<TextCell data={sortedData} col={column.key}/>}
+                        width={column.width}
+                    />;
+                })}
+                { edit ? <Column isReorderable={false} width={100} header="Actions"
+                                 cell={({rowIndex, ...props}) => (
+                                     <Cell>
+                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
+                                             onEditClick(sortedData[rowIndex]);
+                                         }}><Glyphicon glyph="pencil"/></div>
+                                     </Cell>
+                                 )}
+                /> : null }
+            </Table>
         );
     }
 }
@@ -93,7 +98,7 @@ class SortableTable extends React.Component {
 SortableTable.defaultProps = {
     edit: false,
     reorderableColumns: true,
-    reorderableRows : true,
+    reorderableRows: true,
     rowHeight: 30
 };
 
@@ -119,7 +124,7 @@ SortableTable.propTypes = {
     sortRowsBy: PropTypes.func.isRequired,
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
-    onRemoveClick: PropTypes.func.isRequired    
+    onRemoveClick: PropTypes.func.isRequired
 };
 
 export default SortableTable;

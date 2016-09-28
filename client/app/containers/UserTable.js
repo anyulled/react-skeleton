@@ -1,13 +1,13 @@
-import React, {PropTypes} from "react";
+import React from "react";
 //import SortHeaderCell from '../components/SortHeaderCell';
 import {connect} from "react-redux";
 import * as userActions from "../actions/users/users";
 import * as tableActions from "../actions/tables/tables";
 import * as modalActions from "../actions/modal/modal";
 import SortableTable from "../components/SortableTable";
-    
+
 const mapStateToProps = (state, ownProps) => {
-    return {
+	return {
         data: state.users,
         columns: state.tables.userTable.columns,
         rowSortKey: state.tables.userTable.rowSortKey,
