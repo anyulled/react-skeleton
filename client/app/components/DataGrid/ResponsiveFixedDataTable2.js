@@ -61,39 +61,46 @@ class SortableTable extends React.Component {
         let width = Object.keys(columns).reduce((prevCol, key) => {
             return prevCol + columns[key].width;
         }, 0);
+        let height=1;
+    	if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
+    		height=(this.props.data.length + 1 )*this.props.rowHeight;
+    	}
         return (
-            <ResponsiveFixedDataTable
-                height={data.length * rowHeight}
-                rowsCount={data.length}
-                onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
-                isColumnReordering={false}
-                width={width + (edit ? 100 : 0)}
-                rowHeight={rowHeight}
-                headerHeight={rowHeight}
-                {...this.props}
-            >
-                {columns.map(function (column, i) {
-                    return <Column
-                        allowCellsRecycling={true}
-                        columnKey={column.key}
-                        key={i}
-                        isReorderable={reorderableColumns}
-                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
-                            <Cell>{column.title}</Cell>}
-                        cell={<TextCell data={sortedData} col={column.key}/>}
-                        width={column.width}
-                    />;
-                })}
-                { edit ? <Column isReorderable={false} width={100} header="Actions"
-                                 cell={({rowIndex, ...props}) => (
-                                     <Cell>
-                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
-                                             onEditClick(sortedData[rowIndex]);
-                                         }}><Glyphicon glyph="pencil"/></div>
-                                     </Cell>
-                                 )}
-                /> : null }
-            </ResponsiveFixedDataTable>
+        	<div style={{height:height}}>
+	            <ResponsiveFixedDataTable
+	                height={data.length * rowHeight}
+	                rowsCount={data.length}
+	                onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
+	                isColumnReordering={false}
+	                width={width + (edit ? 100 : 0)}
+	                rowHeight={rowHeight}
+	                headerHeight={rowHeight}
+	                {...this.props}
+	            	containerStyle={{maxWidth:width}}
+	            >
+	                {columns.map(function (column, i) {
+	                    return <Column
+	                        allowCellsRecycling={true}
+	                        columnKey={column.key}
+	                        key={i}
+	                        isReorderable={reorderableColumns}
+	                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
+	                            <Cell>{column.title}</Cell>}
+	                        cell={<TextCell data={sortedData} col={column.key}/>}
+	                        width={column.width}
+	                    />;
+	                })}
+	                { edit ? <Column isReorderable={false} width={100} header="Actions"
+	                                 cell={({rowIndex, ...props}) => (
+	                                     <Cell>
+	                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
+	                                             onEditClick(sortedData[rowIndex]);
+	                                         }}><Glyphicon glyph="pencil"/></div>
+	                                     </Cell>
+	                                 )}
+	                /> : null }
+	            </ResponsiveFixedDataTable>
+            </div>
         );
     }
 }

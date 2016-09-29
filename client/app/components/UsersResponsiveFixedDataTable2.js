@@ -7,7 +7,7 @@ class UsersBootstrapTable extends React.Component {
         super(props);
     }
 
-    render() {
+    render() {    	
         return (
             <div>
                 <PageHeader>
@@ -15,8 +15,9 @@ class UsersBootstrapTable extends React.Component {
                 </PageHeader>
                 <Grid fluid>
                     <Row >
-                        <Col sm={12} style={{height:250}}>
-                            <FixedDataTable2Container/>
+                        <Col sm={12}>
+	                        <h4>CHANGE all references on node_modules/responsive-fixed-data-table/ *.js from <b>fixed-data-table</b> to <b>fixed-data-table2</b>!!!</h4>
+                            <ResponsiveFixedDataTable2Container/>
                         </Col>
                     </Row>
                 </Grid>
