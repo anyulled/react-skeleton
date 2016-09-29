@@ -11,6 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.7.1",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "fixed-data-table": "^0.6.3",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "responsive-fixed-data-table": "^2.0.0"
   }
 }
