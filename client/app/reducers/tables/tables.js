@@ -3,7 +3,7 @@ import * as actions from "../../actions/tables/tables.js";
 const startingColumns = [{
     key: "id",
     title:"ID",
-    width: 150
+    width: 100
 },
     {
         key: "name",
@@ -18,7 +18,7 @@ const startingColumns = [{
     {
         key: "country",
         title:"Country",
-        width: 150
+        width: 100
     },
     {
         key: "username",

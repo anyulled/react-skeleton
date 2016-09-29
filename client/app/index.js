@@ -10,7 +10,8 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 //import specific app components
 import ContentContainer from "./containers/ContentContainer";
 import Widgets from "./components/Widgets";
-import Users from "./components/Users";
+import UsersBootstrapTable from "./components/UsersBootstrapTable";
+import UsersFixedDataTable2 from "./components/UsersFixedDataTable2";
 import UserManagement from "./components/UserManagement";
 import App from "./components/App";
 
@@ -21,7 +22,8 @@ ReactDOM.render(
                 <IndexRoute component={ContentContainer}/>
                 <Route path="/widgets" component={Widgets}/>
                 <Route path="/usermanager" component={UserManagement}/>
-                <Route path="/users" component={Users}/>
+                <Route path="/grids/bootstrap" component={UsersBootstrapTable}/>
+                <Route path="/grids/fixed-data-table-2" component={UsersFixedDataTable2}/>
                 <Route path="/content/:contentId" component={ContentContainer}/>
             </Route>
         </Router>

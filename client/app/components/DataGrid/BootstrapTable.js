@@ -15,7 +15,7 @@ function actionFormatter(cell, row, formatExtraData) {
 	return <ActionFormatter row={row} dispatch={formatExtraData}/>;
 }
 	
-class UserDataTable extends React.Component {
+class CustomBootstrapTable extends React.Component {
 	componentWillMount() {
 		if (typeof this.props.dataLoad === "function") {
 			this.props.dataLoad();
@@ -35,4 +35,4 @@ class UserDataTable extends React.Component {
 	}
 }
 
-export default UserDataTable;
+export default CustomBootstrapTable;

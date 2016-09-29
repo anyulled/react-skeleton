@@ -1,10 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import * as userActions from "../actions/users/users";
-import * as tableActions from "../actions/tables/tables";
-import * as modalActions from "../actions/modal/modal";
-import UserDataTable from "../components/UserDataTable";
-import SortableTable from "../components/SortableTable";
+import * as userActions from "../../actions/users/users";
+import * as tableActions from "../../actions/tables/tables";
+import * as modalActions from "../../actions/modal/modal";
+import BootstrapTable from "../../components/DataGrid/BootstrapTable";
 const mapStateToProps = (state, ownProps) => {
 	return {
         data: state.users,
@@ -34,4 +33,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(UserDataTable);
+)(BootstrapTable);
