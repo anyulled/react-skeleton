@@ -6,7 +6,7 @@ class ActionFormatter extends React.Component {
 	render() {
 		let {dispatch,row} = this.props;
 		return (
-			<button className='btn btn-primary' onClick={() => {dispatch(row);}}>Edit</button>
+			<button className='btn btn-primary editRowBtn' onClick={() => {dispatch(row);}}>Edit</button>
 		);
 	}
 }

@@ -65,7 +65,6 @@ describe("Modals", () => {
 		it("should mount", function () {			
 			let connectedApp = ReactDOM.render(<NewUserModal store={store} {...newUserProps}/>, container);
 			expect(connectedApp).to.exist;
-			console.log(connectedApp)
 	    }); 
 	});
 });

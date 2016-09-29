@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import {expect} from "chai";
 import {Provider} from "react-redux";
-import Users from "../../app/components/Users";
+import UsersFixedDataTable2 from "../../app/components/UsersFixedDataTable2";
 import * as userActions from "../../app/actions/users/users";
 import * as tableActions from "../../app/actions/tables/tables";
 import * as modalActions from "../../app/actions/modal/modal";
@@ -19,7 +19,7 @@ import RootModal from "../../app/containers/RootModal";
 import AddUser from "../../app/containers/AddUser";
 import {reducer as formReducer} from "redux-form";
 
-describe("<Users/>", () => {
+describe("<UsersFixedDataTable2/>", () => {
 	let store;
 	let container  = document.createElement('div');		
 	
@@ -46,7 +46,7 @@ describe("<Users/>", () => {
 	});
 	
 	it("should mount", function () {  	
-		let connectedApp = ReactDOM.render(<Provider store={store}><Users/></Provider>, container);
+		let connectedApp = ReactDOM.render(<Provider store={store}><UsersFixedDataTable2/></Provider>, container);
 		expect(connectedApp).to.exist;
     });
 	
