@@ -60,7 +60,7 @@ class Widgets extends React.Component {
                                 </tfoot>
                             </Table>
                             <h2>DatePicker</h2>
-                            <DatePicker dateFormat='DD-MM-YYYY' selected={this.state.selectedDate} onChange={this.handleDatePickerChange}/>
+                            <DatePicker dateFormat="DD-MM-YYYY" selected={this.state.selectedDate} onChange={this.handleDatePickerChange}/>
                         </Col>
                     </Row>
                 </Grid>

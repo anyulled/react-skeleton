@@ -26,7 +26,7 @@ const modal = (state = initialState, action) => {
         case actions.MODAL_HIDE:
             return {
                 ...state,
-                modalType: "", //an empty modalType will mean the modal won't show because it evaluates as false
+                modalType: "", //an empty modalType will mean the modal won"t show because it evaluates as false
                 modalProps: {}
             };
     }

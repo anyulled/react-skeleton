@@ -69,7 +69,7 @@ describe("<UserManagement/>", () => {
 	it("should, on edit click, prepare the modal in edit mode with the entity data", function (done) {  	
 		let connectedApp = ReactDOM.render(<Provider store={store}><UserManagement/></Provider>, container);
 		setTimeout(function () {
-			let items=TestUtils.scryRenderedDOMComponentsWithClass(connectedApp,"glyphicon-pencil");
+			let items=TestUtils.scryRenderedDOMComponentsWithClass(connectedApp,"editRowBtn");
 	   		expect(items.length).to.above(1);
 	   		let item=items[0];
 	   		TestUtils.Simulate.click(item);

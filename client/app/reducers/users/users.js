@@ -5,7 +5,7 @@ const user = (state = [], action) => {
         case actions.USER_ADD:
             return action.payload;
         case actions.USER_REMOVE:
-        	if (state.id !== action.id) {
+            if (state.id !== action.id) {
                 return state;
             }
             break;
@@ -28,7 +28,7 @@ const users = (state = [], action) => {
             if (Array.isArray(action.payload)) {
                 return [...state, ...action.payload];
             }
-            return [...state, user(undefined, action)]; //we're simply concatenating the state array and the new user
+            return [...state, user(undefined, action)]; //we"re simply concatenating the state array and the new user
         case actions.USER_REMOVE:
             return state.filter(u => user(u, action));
         case actions.USER_UPDATE:

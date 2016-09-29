@@ -1,8 +1,11 @@
 import React, {PropTypes} from "react";
-import {Table, Column, Cell} from "fixed-data-table-2";
 import {Glyphicon} from "react-bootstrap";
-import TextCell from "../components/TextCell";
-import SortHeaderCell from "../components/SortHeaderCell";
+import TextCell from "../../components/TextCell";
+import SortHeaderCell from "../../components/SortHeaderCell";
+//import ResponsiveFixedDataTable from "responsive-fixed-data-table";
+//import {Column, Cell} from "fixed-data-table";
+//import "fixed-data-table/dist/fixed-data-table.min.css";
+import {Table, Column, Cell} from "fixed-data-table-2";
 import "fixed-data-table-2/dist/fixed-data-table-base.css";
 import "fixed-data-table-2/dist/fixed-data-table-style.css";
 import "fixed-data-table-2/dist/fixed-data-table.css";

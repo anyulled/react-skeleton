@@ -1,8 +1,8 @@
 import React from "react";
 import {Grid, Row, Col, PageHeader} from "react-bootstrap";
-import UserTable from "../containers/UserTable";
+import BootstrapTable from "../containers/DataGrid/BootstrapTableContainer";
 
-class Users extends React.Component {
+class UsersBootstrapTable extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -14,9 +14,9 @@ class Users extends React.Component {
                     Users
                 </PageHeader>
                 <Grid fluid>
-                    <Row>
-                        <Col sm={12}>
-                            <UserTable/>
+                    <Row >
+                        <Col sm={12} style={{height:250}}>
+                            <BootstrapTable/>
                         </Col>
                     </Row>
                 </Grid>
@@ -25,4 +25,4 @@ class Users extends React.Component {
     }
 }
 
-export default Users;
+export default UsersBootstrapTable;
