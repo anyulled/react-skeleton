@@ -16,8 +16,7 @@ class UsersBootstrapTable extends React.Component {
                 <Grid fluid>
                     <Row >
                         <Col sm={12}>
-	                        <h4>CHANGE all references on node_modules/responsive-fixed-data-table/ *.js from <b>fixed-data-table</b> to <b>fixed-data-table2</b>!!!</h4>
-                            <ResponsiveFixedDataTable2Container/>
+	                        <ResponsiveFixedDataTable2Container/>
                         </Col>
                     </Row>
                 </Grid>

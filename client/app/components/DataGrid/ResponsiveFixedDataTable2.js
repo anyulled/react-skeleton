@@ -1,5 +1,6 @@
 import React, {PropTypes} from "react";
 import {Glyphicon} from "react-bootstrap";
+import FilterBar from "./FilterBar";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
 import {Table, Column, Cell} from "fixed-data-table-2";
@@ -27,7 +28,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
 
 	componentDidMount() {
 		this.__isMounted = true;
-		this._setDimensionsOnState();
 		this._attachResizeEvent();
 	}
 
@@ -35,7 +35,11 @@ class ResponsiveFixedDataTable2 extends React.Component {
 		const { refreshRate } = this.props;
 		this._setDimensionsOnState = debounce(this._setDimensionsOnState, refreshRate);
 	}
-
+	
+	componentDidUpdate() {
+		this._setDimensionsOnState();
+    }
+	
 	_attachResizeEvent() {
 		if (window.addEventListener) {
 			window.addEventListener('resize', this._setDimensionsOnState, false);
@@ -49,7 +53,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
 	_setDimensionsOnState = () => {
 		if (this.__isMounted) {
 			const { offsetWidth, offsetHeight } = findDOMNode(this);
-
 			this.setState({
 				gridWidth: offsetWidth,
 				gridHeight: offsetHeight
@@ -113,15 +116,14 @@ class ResponsiveFixedDataTable2 extends React.Component {
             return prevCol + columns[key].width;
         }, 0);
         let height=1;
-        const { gridWidth, gridHeight } = this.state;
-        if(gridHeight>1){
-        	height=gridHeight;
-        }else if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
+        if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
     		height=(this.props.data.length + 1 )*this.props.rowHeight;
-    	}
-    	
+        }
+    	const { gridWidth, gridHeight } = this.state;
+            
         return (
-        	<div style={{height:height,maxWidth:width}}>
+    		<div style={{height:height,maxWidth:width}}>
+    			<FilterBar/> 
         		<div style={this._getStyle()}>
 		            <Table
 		                rowsCount={data.length}
