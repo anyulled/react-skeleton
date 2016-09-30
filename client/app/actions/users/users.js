@@ -36,24 +36,29 @@ export function userUpdate(id, user) {
 
 export function usersLoad() {
     return function (dispatch) {
-//        dispatch({
-//            type: USER_CLEAR
-//        });
-//        axios.get(config.api.url + "/users")
-//            .then((data) => {
-//                dispatch({
-//                    type: USER_ADD,
-//                    payload: data.data
-//                });
-//            }).catch((error)=> {
-//            	dispatch({
-//                    type: ERROR,
-//                    payload: error
-//                });
-//            });
     	dispatch({
     		type: USER_LOAD
     	})
+    };
+}
+
+export function usersLoadAjax() {
+    return function (dispatch) {
+        dispatch({
+            type: USER_CLEAR
+        });
+        axios.get(config.api.url + "/users")
+            .then((data) => {
+                dispatch({
+                    type: USER_ADD,
+                    payload: data.data
+                });
+            }).catch((error)=> {
+            	dispatch({
+                    type: ERROR,
+                    payload: error
+                });
+            });
     };
 }
 
