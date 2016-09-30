@@ -5,6 +5,7 @@ export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
 export const USER_UPDATE = "user/update";
 export const USER_CLEAR = "user/clear";
+export const USER_LOAD = "user/load";
 export const ERROR = "error";
 let nextUserId = 1;
 
@@ -35,20 +36,36 @@ export function userUpdate(id, user) {
 
 export function usersLoad() {
     return function (dispatch) {
+//        dispatch({
+//            type: USER_CLEAR
+//        });
+//        axios.get(config.api.url + "/users")
+//            .then((data) => {
+//                dispatch({
+//                    type: USER_ADD,
+//                    payload: data.data
+//                });
+//            }).catch((error)=> {
+//            	dispatch({
+//                    type: ERROR,
+//                    payload: error
+//                });
+//            });
+    	dispatch({
+    		type: USER_LOAD
+    	})
+    };
+}
+
+export function usersLoadFromData(data) {
+    return function (dispatch) {
+    	nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
         dispatch({
             type: USER_CLEAR
         });
-        axios.get(config.api.url + "/users")
-            .then((data) => {
-                dispatch({
-                    type: USER_ADD,
-                    payload: data.data
-                });
-            }).catch((error)=> {
-            	dispatch({
-                    type: ERROR,
-                    payload: error
-                });
-            });
+        dispatch({
+            type: USER_ADD,
+            payload: data
+        });
     };
 }
