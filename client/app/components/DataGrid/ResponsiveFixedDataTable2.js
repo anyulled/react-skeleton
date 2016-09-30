@@ -2,24 +2,75 @@ import React, {PropTypes} from "react";
 import {Glyphicon} from "react-bootstrap";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
-import ResponsiveFixedDataTable from 'responsive-fixed-data-table';
-import {Column, Cell} from "fixed-data-table-2";
-//import "fixed-data-table/dist/fixed-data-table.min.css";
-//import {Table, Column, Cell} from "fixed-data-table-2";
+import {Table, Column, Cell} from "fixed-data-table-2";
 import "fixed-data-table-2/dist/fixed-data-table-base.css";
 import "fixed-data-table-2/dist/fixed-data-table-style.css";
 import "fixed-data-table-2/dist/fixed-data-table.css";
+import { findDOMNode } from 'react-dom';
+import debounce from 'lodash/debounce';
+import assign from 'lodash/assign';
+import isEqual from 'lodash/isEqual';
 
-class SortableTable extends React.Component {
-    constructor(props) {
-        super(props);
+class ResponsiveFixedDataTable2 extends React.Component {
+    constructor(props, context) {
+        super(props, context);
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
-    }
+        this.state = {
+    		gridWidth: 1,
+    		gridHeight: 1
+        };
+    }  
+
+	shouldComponentUpdate(nextProps, nextState) {
+		return !isEqual(this.props, nextProps) || !isEqual(this.state, nextState);
+	}
+
+	componentDidMount() {
+		this.__isMounted = true;
+		this._setDimensionsOnState();
+		this._attachResizeEvent();
+	}
+
+	componentWillMount() {
+		const { refreshRate } = this.props;
+		this._setDimensionsOnState = debounce(this._setDimensionsOnState, refreshRate);
+	}
+
+	_attachResizeEvent() {
+		if (window.addEventListener) {
+			window.addEventListener('resize', this._setDimensionsOnState, false);
+		} else if (window.attachEvent) {
+			window.attachEvent('resize', this._setDimensionsOnState);
+		} else {
+			window.onresize = this._setDimensionsOnState;
+		}
+	}
+
+	_setDimensionsOnState = () => {
+		if (this.__isMounted) {
+			const { offsetWidth, offsetHeight } = findDOMNode(this);
+
+			this.setState({
+				gridWidth: offsetWidth,
+				gridHeight: offsetHeight
+			});
+		}
+	}
+
+	_getStyle(overrides) {
+		return {
+			...overrides,
+			width: '100%',
+			height: '100%'
+		};
+	}
 
     componentWillMount() {
         if (typeof this.props.dataLoad === "function") {
             this.props.dataLoad();
         }
+        this.__isMounted = false;
+		window.removeEventListener('resize', this._setDimensionsOnState);
     }
 
     handleOnColumnReorderEndCallback(event) {
@@ -62,58 +113,65 @@ class SortableTable extends React.Component {
             return prevCol + columns[key].width;
         }, 0);
         let height=1;
-    	if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
+        const { gridWidth, gridHeight } = this.state;
+        if(gridHeight>1){
+        	height=gridHeight;
+        }else if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
     		height=(this.props.data.length + 1 )*this.props.rowHeight;
     	}
+    	
         return (
-        	<div style={{height:height}}>
-	            <ResponsiveFixedDataTable
-	                height={data.length * rowHeight}
-	                rowsCount={data.length}
-	                onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
-	                isColumnReordering={false}
-	                width={width + (edit ? 100 : 0)}
-	                rowHeight={rowHeight}
-	                headerHeight={rowHeight}
-	                {...this.props}
-	            	containerStyle={{maxWidth:width}}
-	            >
-	                {columns.map(function (column, i) {
-	                    return <Column
-	                        allowCellsRecycling={true}
-	                        columnKey={column.key}
-	                        key={i}
-	                        isReorderable={reorderableColumns}
-	                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
-	                            <Cell>{column.title}</Cell>}
-	                        cell={<TextCell data={sortedData} col={column.key}/>}
-	                        width={column.width}
-	                    />;
-	                })}
-	                { edit ? <Column isReorderable={false} width={100} header="Actions"
-	                                 cell={({rowIndex, ...props}) => (
-	                                     <Cell>
-	                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
-	                                             onEditClick(sortedData[rowIndex]);
-	                                         }}><Glyphicon glyph="pencil"/></div>
-	                                     </Cell>
-	                                 )}
-	                /> : null }
-	            </ResponsiveFixedDataTable>
+        	<div style={{height:height,maxWidth:width}}>
+        		<div style={this._getStyle()}>
+		            <Table
+		                rowsCount={data.length}
+		                onColumnReorderEndCallback={this.handleOnColumnReorderEndCallback}
+		                isColumnReordering={false}
+		                rowHeight={rowHeight}
+		                headerHeight={rowHeight}
+		                {...this.props}
+		            	width={gridWidth} 
+		            	height={height}
+		            >
+		                {columns.map(function (column, i) {
+		                    return <Column
+		                        allowCellsRecycling={true}
+		                        columnKey={column.key}
+		                        key={i}
+		                        isReorderable={reorderableColumns}
+		                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
+		                            <Cell>{column.title}</Cell>}
+		                        cell={<TextCell data={sortedData} col={column.key}/>}
+		                        width={column.width}
+		                    />;
+		                })}
+		                { edit ? <Column isReorderable={false} width={100} header="Actions"
+		                                 cell={({rowIndex, ...props}) => (
+		                                     <Cell>
+		                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
+		                                             onEditClick(sortedData[rowIndex]);
+		                                         }}><Glyphicon glyph="pencil"/></div>
+		                                     </Cell>
+		                                 )}
+		                /> : null }
+		            </Table>
+	            </div>
             </div>
         );
     }
 }
 
-SortableTable.defaultProps = {
-    edit: false,
+ResponsiveFixedDataTable2.defaultProps = {
+	containerStyle: {},
+	edit: false,
+	refreshRate: 250, // ms
     reorderableColumns: true,
     reorderableRows: true,
     rowHeight: 30
 };
 
-SortableTable.propTypes = {
-    columns: PropTypes.arrayOf(PropTypes.shape({
+ResponsiveFixedDataTable2.propTypes = {
+	columns: PropTypes.arrayOf(PropTypes.shape({
         key: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number
@@ -124,10 +182,12 @@ SortableTable.propTypes = {
         ]).isRequired,
         width: PropTypes.number.isRequired
     }).isRequired).isRequired,
-    data: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+    containerStyle: React.PropTypes.object,
+	data: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     dataLoad: PropTypes.func,
     edit: PropTypes.bool.isRequired,
-    reorderableColumns: PropTypes.bool.isRequired,
+    refreshRate: React.PropTypes.number,
+	reorderableColumns: PropTypes.bool.isRequired,
     rowHeight: PropTypes.number.isRequired,
     rowSortDesc: PropTypes.bool.isRequired,
     rowSortKey: PropTypes.string.isRequired,
@@ -137,4 +197,4 @@ SortableTable.propTypes = {
     onRemoveClick: PropTypes.func.isRequired
 };
 
-export default SortableTable;
+export default ResponsiveFixedDataTable2;
