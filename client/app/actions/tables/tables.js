@@ -22,7 +22,7 @@ export function filterAdd(column) {
         type: TABLES_FILTER_ADD,
         column
     };
-
+}
 export function filterRemove(column) {
     return {
         type: TABLES_FILTER_REMOVE,
