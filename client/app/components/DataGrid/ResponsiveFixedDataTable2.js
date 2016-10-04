@@ -1,6 +1,6 @@
 import React, {PropTypes} from "react";
 import {Glyphicon} from "react-bootstrap";
-import FilterBar from "./FilterBar";
+import FilterBarContainer from "../../containers/DataGrid/Filter/FilterBarContainer";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
 import {Table, Column, Cell} from "fixed-data-table-2";
@@ -123,7 +123,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
             
         return (
     		<div style={{height:height,maxWidth:width}}>
-    			<FilterBar/> 
+    			<FilterBarContainer/> 
         		<div style={this._getStyle()}>
 		            <Table
 		                rowsCount={data.length}

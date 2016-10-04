@@ -3,27 +3,32 @@ import * as actions from "../../actions/tables/tables.js";
 const startingColumns = [{
     key: "id",
     title:"ID",
-    width: 100
+    width: 100,
+    type: "integer"
 },
     {
         key: "name",
         title:"Name",
-        width: 200
+        width: 200,
+        type: "string"
     },
     {
         key: "yearOfBirth",
         title:"Year of Birth",
-        width: 150
+        width: 150,
+        type: "integer"
     },
     {
         key: "country",
         title:"Country",
-        width: 100
+        width: 100,
+        type: "string"
     },
     {
         key: "username",
         title:"Username",
-        width: 150
+        width: 150,
+        type: "string"
     }];
 
 const initialState = { // Each table we may perform actions upon requires an
@@ -32,7 +37,8 @@ const initialState = { // Each table we may perform actions upon requires an
         columns: startingColumns, // the first element cannot be ordered
             // no matter what
         rowSortKey: "id",
-        rowSortDesc: false
+        rowSortDesc: false,
+        filters:[]
     }
 };
 
@@ -51,6 +57,15 @@ const userTable = (state, action) => {
                 rowSortKey: action.rowSortKey,
                 rowSortDesc: state.rowSortKey === action.rowSortKey ? !state.rowSortDesc : false 
             };
+        case actions.TABLES_FILTER_ADD:
+        	let filters=state.filters;
+        	if(filters.filter(function(e) {return e.key == action.column.key}).length==0){
+        		filters=[...filters,action.column]
+        	}
+            return {
+                ...state,
+                filters
+            };
     }
 };
 
@@ -62,6 +77,7 @@ const tables = (state = initialState, action) => {
     switch (action.type) {
         case actions.TABLES_USER_SET_COLUMN_ORDER:
         case actions.TABLES_USER_SET_ROW_ORDER:
+        case actions.TABLES_FILTER_ADD:
             return {
                 ...state,
                 userTable: userTable(state.userTable, action)
