@@ -67,7 +67,13 @@ const userTable = (state, action) => {
                 filters
             };
         case actions.TABLES_FILTER_REMOVE:
-        	filters=state.filters.filter(function(e) {return e.key != action.column.key});
+        	console.log(state);
+        	filters=state.filters.map(function (e) {     
+        		if(e.key==action.column.key){
+        			delete e.searchValue;
+        		}
+        		return e;
+        	}).filter(function(e) {return e.key != action.column.key});
         	return {
                 ...state,
                 filters

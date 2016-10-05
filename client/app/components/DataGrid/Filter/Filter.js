@@ -47,7 +47,7 @@ class Filter extends React.Component {
 				    <InputGroup style={{"borderSpacing":"0"}}>
 				    	{FILTER_COMPONENTS[filterType].hasModifier?<FilterModifier {...props}/>:null}
 				    	<SpecificFilter {...props}/>
-			        	<InputGroup.Addon onClick={() => {handleFilterRemove(filterProps)}}>X</InputGroup.Addon>        
+			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(filterProps)}}>X</InputGroup.Addon>        
 			        </InputGroup>			    
 				</span>	
 			</Col>	

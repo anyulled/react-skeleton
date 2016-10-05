@@ -1,5 +1,5 @@
 import React from "react";
-import {Grid,Row,Col,Label,DropdownButton,MenuItem} from "react-bootstrap";
+import {Glyphicon,Grid,Row,Col,Label,DropdownButton,MenuItem} from "react-bootstrap";
 import FilterContainer from "../../../containers/DataGrid/Filter/FilterContainer";
 
 
@@ -27,7 +27,12 @@ class FilterBar extends React.Component {
 			    			<br/>
 				    		<DropdownButton title="Add a filter" id="bg-nested-dropdown">
 		    					{columns?columns.map(function (column, i) {
-		    						return <MenuItem key={i} eventKey={column} onSelect={self.handleSelectEvent}>{column.title}</MenuItem>;
+		    						return (
+		    							<MenuItem key={i} eventKey={column} onSelect={self.handleSelectEvent}>
+		    								{column.title}
+		    								{filters.filter(function(e) {return e.key == column.key}).length!=0?<Glyphicon style={{"float":"right"}}glyph="ok"/>:null}		    								
+		    							</MenuItem>
+		    						);
 					                }):null
 			    				}
 						    </DropdownButton>

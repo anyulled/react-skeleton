@@ -9,7 +9,6 @@ import "fixed-data-table-2/dist/fixed-data-table-style.css";
 import "fixed-data-table-2/dist/fixed-data-table.css";
 import { findDOMNode } from 'react-dom';
 import debounce from 'lodash/debounce';
-import assign from 'lodash/assign';
 import isEqual from 'lodash/isEqual';
 
 class ResponsiveFixedDataTable2 extends React.Component {

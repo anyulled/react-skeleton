@@ -3,8 +3,10 @@ import Filter from "../../../components/DataGrid/Filter/Filter";
 import * as tableActions from "../../../actions/tables/tables";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => {
-    return {};
+const mapStateToProps = (state,ownProps) => {	
+    return {
+    	selected:ownProps.filterProps.searchValue
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
