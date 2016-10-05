@@ -37,11 +37,9 @@ class FilterBar extends React.Component {
 						    	<Row>
 					    			{filters?filters.map(function (filter, i) {
 						    			return (		    					
-					    					<Col key={i} xs={6} md={3} >
-							    				<FilterContainer key={i} filterType={filter.type} filterProps={filter}/>	
-							    			</Col>	    					
+					    					<FilterContainer key={i} filterType={filter.type} filterProps={filter}/>
 						    			);
-					                }):null}	
+					                }):null}
 				    			</Row>
 						    </Grid>	 
 			    		</Col>

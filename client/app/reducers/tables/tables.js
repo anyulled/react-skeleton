@@ -16,7 +16,7 @@ const startingColumns = [{
         key: "yearOfBirth",
         title:"Year of Birth",
         width: 150,
-        type: "integer"
+        type: "date"
     },
     {
         key: "country",
@@ -72,6 +72,21 @@ const userTable = (state, action) => {
                 ...state,
                 filters
             };
+        case actions.TABLES_FILTER_VALUE:
+        	filters=state.filters.map(function (filter) {
+        		if(filter.key==action.column.key){
+        			if(action && action.value==""){
+        				filter.searchValue=null;
+        			}else{
+        				filter.searchValue=action.value;	
+        			}        			
+        		}
+        	    return filter;
+        	});
+        	return {
+                ...state,
+                filters
+            };
     }
 };
 
@@ -85,6 +100,7 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_USER_SET_ROW_ORDER:
         case actions.TABLES_FILTER_ADD:
         case actions.TABLES_FILTER_REMOVE:
+        case actions.TABLES_FILTER_VALUE:
             return {
                 ...state,
                 userTable: userTable(state.userTable, action)

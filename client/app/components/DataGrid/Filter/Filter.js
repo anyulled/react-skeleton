@@ -1,26 +1,56 @@
 import React from "react";
 import TextFilter from "./TextFilter";
-import {ControlLabel} from "react-bootstrap";
+import DateFilter from "./DateFilter";
+import FilterModifier from "./FilterModifier";
+import {InputGroup,Col,ControlLabel} from "react-bootstrap";
 
 const FILTER_COMPONENTS = {
-    "integer": TextFilter,
-    "string": TextFilter
+    "integer":{
+    	"type":TextFilter,
+    	"grid":{
+    		"xs":6,
+        	"md":3	
+    	},
+    	"hasModifier":false
+    },
+    "string": {
+    	"type":TextFilter,
+    	"grid":{
+    		"xs":6,
+        	"md":3	
+    	},
+    	"hasModifier":false    	
+    },
+    "date": {
+    	"type":DateFilter,
+    	"grid":{
+    		"xs":7,
+        	"md":4	
+    	},
+    	"hasModifier":true    	
+    }
 };
 
 class Filter extends React.Component {	
 	
 	render() {
-		let {filterType,...props}=this.props;
+		let {filterType,handleFilterRemove,...props}=this.props;
 		if (!filterType) {
 	        return null;
 	    }
 		let {filterProps}=this.props;
-		const SpecificFilter = FILTER_COMPONENTS[filterType];
+		const SpecificFilter = FILTER_COMPONENTS[filterType].type;
 		return(
+			<Col xs={FILTER_COMPONENTS[filterType].grid.xs} md={FILTER_COMPONENTS[filterType].grid.md} >
 				<span style={{"maxWidth":"100px","display":"block"}}>
-			    <ControlLabel>{filterProps.title}</ControlLabel>
-			    <SpecificFilter {...props}/>
-			</span>
+				    <ControlLabel>{filterProps.title}</ControlLabel>
+				    <InputGroup style={{"borderSpacing":"0"}}>
+				    	{FILTER_COMPONENTS[filterType].hasModifier?<FilterModifier {...props}/>:null}
+				    	<SpecificFilter {...props}/>
+			        	<InputGroup.Addon onClick={() => {handleFilterRemove(filterProps)}}>X</InputGroup.Addon>        
+			        </InputGroup>			    
+				</span>	
+			</Col>	
 		)
 	}
 };

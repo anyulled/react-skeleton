@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => {
         	dispatch(tableActions.filterRemove(column));
         },
         handleFilterValue: (column, value) => {
-        	dispatch(tableActions.filter(column,value));
+        	dispatch(tableActions.filterSearch(column,value));
         }
     };
 };
