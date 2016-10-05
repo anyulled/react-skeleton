@@ -22,6 +22,9 @@ class Navigation extends React.Component {
 		            <LinkContainer to="/grids/fixed-data-table-2">
 		                <NavItem eventKey={5}>fixed-data-table-2</NavItem>
 		            </LinkContainer>
+		            <LinkContainer to="/grids/responsive-fixed-data-table-2">
+	                <NavItem eventKey={5}>responsive-fixed-data-table-2</NavItem>
+	            </LinkContainer>
 	            </NavDropdown>
                 <LinkContainer to="/widgets">
                     <NavItem eventKey={3}>Widgets</NavItem>

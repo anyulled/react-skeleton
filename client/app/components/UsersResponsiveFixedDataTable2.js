@@ -7,7 +7,7 @@ class UsersBootstrapTable extends React.Component {
         super(props);
     }
 
-    render() {
+    render() {    	
         return (
             <div>
                 <PageHeader>
@@ -15,8 +15,8 @@ class UsersBootstrapTable extends React.Component {
                 </PageHeader>
                 <Grid fluid>
                     <Row >
-                        <Col sm={12} style={{height:250}}>
-                            <FixedDataTable2Container/>
+                        <Col sm={12}>
+	                        <ResponsiveFixedDataTable2Container/>
                         </Col>
                     </Row>
                 </Grid>
