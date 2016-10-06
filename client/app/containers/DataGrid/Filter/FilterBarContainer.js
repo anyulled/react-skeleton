@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddFilter: (column) => {
-            dispatch(tableActions.filterAdd(column));
+            dispatch(tableActions.userTableFilterAdd(column));
         }
     };
 };

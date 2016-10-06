@@ -34,7 +34,7 @@ const FILTER_COMPONENTS = {
 class Filter extends React.Component {	
 	
     render() {
-        let {filterType,handleFilterRemove,...props}=this.props;
+        let {filterType,handleFilterRemove,handleFilterOption,handleFilterValue,...props}=this.props;
         if (!filterType) {
             return null;
         }
@@ -45,8 +45,8 @@ class Filter extends React.Component {
 				<span style={{"maxWidth":"100px","display":"block"}}>
 				    <ControlLabel>{filterProps.title}</ControlLabel>
 				    <InputGroup style={{"borderSpacing":"0"}}>
-				    	{FILTER_COMPONENTS[filterType].hasOption?<FilterOption {...props}/>:null}
-				    	<SpecificFilter {...props}/>
+				    	{FILTER_COMPONENTS[filterType].hasOption?<FilterOption {...props} handleFilterOption={handleFilterOption}/>:null}
+				    	<SpecificFilter {...props} handleFilterValue={handleFilterValue}/>
 			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(filterProps);}}>X</InputGroup.Addon>        
 			        </InputGroup>			    
 				</span>	

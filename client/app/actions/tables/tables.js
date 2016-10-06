@@ -3,6 +3,7 @@ export const TABLES_USER_SET_ROW_ORDER = "tables/user/row_sort_key/set";
 export const TABLES_USER_FILTER_ADD = "tables/user/filter/add";
 export const TABLES_USER_FILTER_REMOVE = "tables/user/filter/remove";
 export const TABLES_USER_FILTER_VALUE = "tables/user/filter/value";
+export const TABLES_USER_FILTER_OPTION = "tables/user/filter/option";
 
 export function userTableColumnOrderSet(columns) {
     return {
@@ -18,21 +19,28 @@ export function userTableRowOrderSet(rowSortKey) {
     };
 }
 
-export function filterAdd(column) {
+export function userTableFilterAdd(column) {
     return {
         type: TABLES_USER_FILTER_ADD,
         column
     };
 }
-export function filterRemove(column) {
+export function userTableFilterRemove(column) {
     return {
         type: TABLES_USER_FILTER_REMOVE,
         column
     };
 }
-export function filterSearch(column,value) {
+export function userTableFilterSearch(column,value) {
     return {
         type: TABLES_USER_FILTER_VALUE,
+        column,
+        value
+    };
+}
+export function userTableFilterOption(column,value) {
+    return {
+        type: TABLES_USER_FILTER_OPTION,
         column,
         value
     };

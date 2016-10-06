@@ -12,10 +12,13 @@ const mapStateToProps = (state,ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleFilterRemove: (column) => {
-            dispatch(tableActions.filterRemove(column));
+            dispatch(tableActions.userTableFilterRemove(column));
         },
         handleFilterValue: (column, value) => {
-            dispatch(tableActions.filterSearch(column,value));
+            dispatch(tableActions.userTableFilterSearch(column,value));
+        },
+        handleFilterOption: ({filterProps, key}) => {
+        	dispatch(tableActions.userTableFilterOption(filterProps,key));
         }
     };
 };

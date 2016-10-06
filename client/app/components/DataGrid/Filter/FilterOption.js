@@ -24,9 +24,13 @@ const OPTIONS_LIST = {
     }
 };
 
-const FilterOption = (props) => (
+const FilterOption = ({handleFilterOption,filterProps,...props}) => (
 	<DropdownButton style={{"minWidth":"39px"}}componentClass={InputGroup.Button} id="input-dropdown-addon" title="=">
-		{Object.keys(OPTIONS_LIST).map((key,i)=><MenuItem key={i} eventKey={key}>{OPTIONS_LIST[key].description}</MenuItem>)}
+		{Object.keys(OPTIONS_LIST).map((key,i)=>
+			<MenuItem key={i} eventKey={{key,filterProps}} onSelect={handleFilterOption}>
+				{OPTIONS_LIST[key].description}
+			</MenuItem>)
+		}
     </DropdownButton>        		        	
 );
 

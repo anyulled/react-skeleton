@@ -67,7 +67,6 @@ const userTable = (state, action) => {
                 filters
             };
         case actions.TABLES_USER_FILTER_REMOVE:
-            console.log(state);
             filters=state.filters.map(function (filter) {
                 let e={...filter};
                 if(e.key==action.column.key){
@@ -95,6 +94,18 @@ const userTable = (state, action) => {
                 ...state,
                 filters
             };
+        case actions.TABLES_USER_FILTER_OPTION:
+            filters=state.filters.map(function (filter) {
+                let ret={...filter};
+                if(ret.key==action.column.key){
+                    ret.searchOptionValue=action.value;
+                }
+                return ret;
+            });
+            return {
+                ...state,
+                filters
+            };
     }
 };
 
@@ -109,6 +120,7 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_USER_FILTER_ADD:
         case actions.TABLES_USER_FILTER_REMOVE:
         case actions.TABLES_USER_FILTER_VALUE:
+        case actions.TABLES_USER_FILTER_OPTION:
             return {
                 ...state,
                 userTable: userTable(state.userTable, action)

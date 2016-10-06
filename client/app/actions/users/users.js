@@ -44,7 +44,16 @@ export function usersLoad(filters) {
         	.filter(e=>e.searchValue!=undefined && e.searchValue!=null)
         	.map(e=>e.key+"="+e.searchValue)
         	.join("&");
+            
+            let options=filters
+        	.filter(e=>e.searchOptionValue!=undefined && e.searchOptionValue!=null)
+        	.map(e=>e.key+"Option="+e.searchOptionValue)
+        	.join("&");
+            if(options.length>0){
+            	params += "&"+options
+            }
         }
+        console.log(params);
         axios.get(config.api.url + "/users"+(params.length>0?"?"+params:""))
             .then((data) => {
                 dispatch({

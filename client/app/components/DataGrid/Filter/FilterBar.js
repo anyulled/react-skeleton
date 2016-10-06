@@ -27,13 +27,13 @@ class FilterBar extends React.Component {
 			    			<br/>
 				    		<DropdownButton title="Add a filter" id="bg-nested-dropdown">
 		    					{columns?columns.map(function (column, i) {
-        return (
+		    						return (
 		    							<MenuItem key={i} eventKey={column} onSelect={self.handleSelectEvent}>
 		    								{column.title}
 		    								{filters.filter(function(e) {return e.key == column.key;}).length!=0?<Glyphicon style={{"float":"right"}}glyph="ok"/>:null}		    								
 		    							</MenuItem>
 		    						);
-    }):null
+		    					}):null
 			    				}
 						    </DropdownButton>
 			    		</Col >
@@ -41,10 +41,10 @@ class FilterBar extends React.Component {
 				    		<Grid fluid>
 						    	<Row>
 					    			{filters?filters.map(function (filter, i) {
-        return (		    					
+					    				return (		    					
 					    					<FilterContainer key={i} filterType={filter.type} filterProps={filter}/>
 						    			);
-    }):null}
+					    			}):null}
 				    			</Row>
 						    </Grid>	 
 			    		</Col>

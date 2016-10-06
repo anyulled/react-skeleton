@@ -76,11 +76,11 @@ class ResponsiveFixedDataTable2 extends React.Component {
 		if(props.filters!=this.props.filters){
 			//convert both filter lists to an easily comparable pair of strings
 			let plainOldProps=this.props.filters
-				.map((e)=>e.searchValue?e.key+e.searchValue:null)
+				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
 				.filter((e)=>e!=null)
 				.join();
 			let plainNewProps=props.filters
-				.map((e)=>e.searchValue?e.key+e.searchValue:null)
+				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
 				.filter((e)=>e!=null)
 				.join();
 			if(!(plainOldProps===plainNewProps)){
