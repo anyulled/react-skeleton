@@ -179,7 +179,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
 }
 
 ResponsiveFixedDataTable2.defaultProps = {
-	containerStyle: {},
 	edit: false,
 	refreshRate: 250, // ms
     reorderableColumns: true,
@@ -199,7 +198,6 @@ ResponsiveFixedDataTable2.propTypes = {
         ]).isRequired,
         width: PropTypes.number.isRequired
     }).isRequired).isRequired,
-    containerStyle: React.PropTypes.object,
 	data: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     dataLoad: PropTypes.func,
     edit: PropTypes.bool.isRequired,

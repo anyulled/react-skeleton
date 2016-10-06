@@ -60,7 +60,8 @@ const userTable = (state, action) => {
         case actions.TABLES_USER_FILTER_ADD:
             let filters=state.filters;
             if(filters.filter(function(e) {return e.key == action.column.key;}).length==0){
-                filters=[...filters,action.column];
+            	let filter={...action.column};
+                filters=[...filters,filter];
             }
             return {
                 ...state,
@@ -71,6 +72,7 @@ const userTable = (state, action) => {
                 let e={...filter};
                 if(e.key==action.column.key){
                     delete e.searchValue;
+                    delete e.searchOptionValue;
                 }
                 return e;
             }).filter(function(e) {return e.key != action.column.key;});

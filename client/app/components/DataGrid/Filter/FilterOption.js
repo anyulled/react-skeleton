@@ -24,13 +24,13 @@ const OPTIONS_LIST = {
     }
 };
 
-const FilterOption = ({handleFilterOption,filterProps,...props}) => (
+const FilterOption = ({handleFilterOption,filterProps,defaultsearchOptionValue,...props}) => (
 		
 	<DropdownButton 
 		style={{"minWidth":"39px"}}
 		componentClass={InputGroup.Button} 
 		id="input-dropdown-addon" 
-		title={filterProps.searchOptionValue?OPTIONS_LIST[filterProps.searchOptionValue].symbol:"="}
+		title={filterProps.searchOptionValue?OPTIONS_LIST[filterProps.searchOptionValue].symbol:OPTIONS_LIST[defaultsearchOptionValue].symbol}
 	>
 		{Object.keys(OPTIONS_LIST).map((key,i)=>
 			<MenuItem key={i} eventKey={{key,filterProps}} onSelect={handleFilterOption}>
@@ -39,5 +39,9 @@ const FilterOption = ({handleFilterOption,filterProps,...props}) => (
 		}
     </DropdownButton>        		        	
 );
+
+FilterOption.defaultProps = {
+	defaultsearchOptionValue:"EQ"
+};
 
 export default FilterOption;
