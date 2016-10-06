@@ -5,17 +5,17 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state,ownProps) => {	
     return {
-    	selected:ownProps.filterProps.searchValue
+        selected:ownProps.filterProps.searchValue
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    	handleFilterRemove: (column) => {
-        	dispatch(tableActions.filterRemove(column));
+        handleFilterRemove: (column) => {
+            dispatch(tableActions.filterRemove(column));
         },
         handleFilterValue: (column, value) => {
-        	dispatch(tableActions.filterSearch(column,value));
+            dispatch(tableActions.filterSearch(column,value));
         }
     };
 };

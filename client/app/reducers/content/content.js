@@ -3,7 +3,7 @@ import * as actions from "../../actions/content/content.js";
 const content = (action) => {
     switch (action.type) {
         case actions.CONTENT_UPDATE:
-        	return action.payload;
+            return action.payload;
     }
 };
 
@@ -25,7 +25,7 @@ export const contents = (state = {}, action) => {
 const contentHeader = (action) => {
     switch (action.type) {
         case actions.CONTENT_LIST_UPDATE:
-        	return action.payload;
+            return action.payload;
     }
 };
 

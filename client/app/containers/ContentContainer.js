@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    	contentHeadersLoad: () => {
-    		dispatch(contentActions.contentHeadersLoad());
+        contentHeadersLoad: () => {
+            dispatch(contentActions.contentHeadersLoad());
         },
         contentLoad: (id) => {
             dispatch(contentActions.contentLoad(id));

@@ -33,22 +33,36 @@ export function userUpdate(id, user) {
     };
 }
 
-export function usersLoad() {
+export function usersLoad(filters) {	
     return function (dispatch) {
         dispatch({
             type: USER_CLEAR
         });
-        axios.get(config.api.url + "/users")
+        let params="";
+        if(filters){
+            params=filters
+        	.filter(e=>e.searchValue!=undefined && e.searchValue!=null)
+        	.map(e=>e.key+"="+e.searchValue)
+        	.join("&");
+        }
+        axios.get(config.api.url + "/users"+(params.length>0?"?"+params:""))
             .then((data) => {
                 dispatch({
                     type: USER_ADD,
                     payload: data.data
                 });
             }).catch((error)=> {
-            	dispatch({
+                dispatch({
                     type: ERROR,
                     payload: error
                 });
             });
     };
 }
+
+
+
+
+
+
+

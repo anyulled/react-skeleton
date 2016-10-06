@@ -7,9 +7,10 @@ import * as modalActions from "../../actions/modal/modal";
 import ResponsiveFixedDataTable2 from "../../components/DataGrid/ResponsiveFixedDataTable2";
 
 const mapStateToProps = (state, ownProps) => {
-	return {
+    return {
         data: state.users,
         columns: state.tables.userTable.columns,
+        filters: state.tables.userTable.filters,
         rowSortKey: state.tables.userTable.rowSortKey,
         rowSortDesc: state.tables.userTable.rowSortDesc
     };
@@ -17,8 +18,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        dataLoad: () => {
-            dispatch(userActions.usersLoad());
+        dataLoad: (filters) => {
+            dispatch(userActions.usersLoad(filters));
         },
         onRemoveClick: (id) => {
             dispatch(userActions.userRemove(id));

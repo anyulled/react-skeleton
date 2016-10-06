@@ -26,7 +26,7 @@ export function unmount() {
  
 export function contentHeadersLoad(params = null) {
     return function (dispatch) {
-    	axios.get(config.api.url + "/content", {params})
+        axios.get(config.api.url + "/content", {params})
         .then((data) => {
             dispatch({
                 type: CONTENT_LIST_UPDATE,
@@ -43,7 +43,7 @@ export function contentHeadersLoad(params = null) {
  
 export function contentLoad(id) {
     return function (dispatch) {
-    	axios.get(config.api.url + "/content/"+id)
+        axios.get(config.api.url + "/content/"+id)
         .then((data) => {
             dispatch({
                 type: CONTENT_UPDATE,

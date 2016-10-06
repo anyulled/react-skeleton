@@ -29,11 +29,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
 		this.__isMounted = true;
 		this._attachResizeEvent();
 	}
-
-	componentWillMount() {
-		const { refreshRate } = this.props;
-		this._setDimensionsOnState = debounce(this._setDimensionsOnState, refreshRate);
-	}
 	
 	componentDidUpdate() {
 		this._setDimensionsOnState();
@@ -66,15 +61,36 @@ class ResponsiveFixedDataTable2 extends React.Component {
 			height: '100%'
 		};
 	}
-
-    componentWillMount() {
+	componentWillMount() {
         if (typeof this.props.dataLoad === "function") {
             this.props.dataLoad();
         }
+        
         this.__isMounted = false;
-		window.removeEventListener('resize', this._setDimensionsOnState);
+		window.removeEventListener('resize', this._setDimensionsOnState);		
+		const { refreshRate } = this.props;
+		this._setDimensionsOnState = debounce(this._setDimensionsOnState, refreshRate);
     }
-
+	
+	componentWillReceiveProps(props) {
+		if(props.filters!=this.props.filters){
+			//convert both filter lists to an easily comparable pair of strings
+			let plainOldProps=this.props.filters
+				.map((e)=>e.searchValue?e.key+e.searchValue:null)
+				.filter((e)=>e!=null)
+				.join();
+			let plainNewProps=props.filters
+				.map((e)=>e.searchValue?e.key+e.searchValue:null)
+				.filter((e)=>e!=null)
+				.join();
+			if(!(plainOldProps===plainNewProps)){
+				if (typeof this.props.dataLoad === "function") {
+		            this.props.dataLoad(props.filters);
+		        }	
+			}			
+		}		
+	}
+	
     handleOnColumnReorderEndCallback(event) {
     	var reorderColumn = this.props.columns.filter((column) => {
             return column.key === event.reorderColumn;

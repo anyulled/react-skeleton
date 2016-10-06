@@ -1,58 +1,58 @@
 import React from "react";
 import TextFilter from "./TextFilter";
 import DateFilter from "./DateFilter";
-import FilterModifier from "./FilterModifier";
+import FilterOption from "./FilterOption";
 import {InputGroup,Col,ControlLabel} from "react-bootstrap";
 
 const FILTER_COMPONENTS = {
     "integer":{
-    	"type":TextFilter,
-    	"grid":{
-    		"xs":6,
-        	"md":3	
-    	},
-    	"hasModifier":false
+        "type":TextFilter,
+        "grid":{
+            "xs":6,
+            "md":3	
+        },
+        "hasOption":false
     },
     "string": {
-    	"type":TextFilter,
-    	"grid":{
-    		"xs":6,
-        	"md":3	
-    	},
-    	"hasModifier":false    	
+        "type":TextFilter,
+        "grid":{
+            "xs":6,
+            "md":3	
+        },
+        "hasOption":false    	
     },
     "date": {
-    	"type":DateFilter,
-    	"grid":{
-    		"xs":7,
-        	"md":4	
-    	},
-    	"hasModifier":true    	
+        "type":DateFilter,
+        "grid":{
+            "xs":7,
+            "md":4	
+        },
+        "hasOption":true    	
     }
 };
 
 class Filter extends React.Component {	
 	
-	render() {
-		let {filterType,handleFilterRemove,...props}=this.props;
-		if (!filterType) {
-	        return null;
-	    }
-		let {filterProps}=this.props;
-		const SpecificFilter = FILTER_COMPONENTS[filterType].type;
-		return(
+    render() {
+        let {filterType,handleFilterRemove,...props}=this.props;
+        if (!filterType) {
+            return null;
+        }
+        let {filterProps}=this.props;
+        const SpecificFilter = FILTER_COMPONENTS[filterType].type;
+        return(
 			<Col xs={FILTER_COMPONENTS[filterType].grid.xs} md={FILTER_COMPONENTS[filterType].grid.md} >
 				<span style={{"maxWidth":"100px","display":"block"}}>
 				    <ControlLabel>{filterProps.title}</ControlLabel>
 				    <InputGroup style={{"borderSpacing":"0"}}>
-				    	{FILTER_COMPONENTS[filterType].hasModifier?<FilterModifier {...props}/>:null}
+				    	{FILTER_COMPONENTS[filterType].hasOption?<FilterOption {...props}/>:null}
 				    	<SpecificFilter {...props}/>
-			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(filterProps)}}>X</InputGroup.Addon>        
+			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(filterProps);}}>X</InputGroup.Addon>        
 			        </InputGroup>			    
 				</span>	
 			</Col>	
-		)
-	}
-};
+		);
+    }
+}
 
 export default Filter;

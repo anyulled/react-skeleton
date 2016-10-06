@@ -7,7 +7,7 @@ import * as modalActions from "../../actions/modal/modal";
 import FixedDataTable2 from "../../components/DataGrid/FixedDataTable2";
 
 const mapStateToProps = (state, ownProps) => {
-	return {
+    return {
         data: state.users,
         columns: state.tables.userTable.columns,
         rowSortKey: state.tables.userTable.rowSortKey,

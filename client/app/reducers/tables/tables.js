@@ -57,39 +57,41 @@ const userTable = (state, action) => {
                 rowSortKey: action.rowSortKey,
                 rowSortDesc: state.rowSortKey === action.rowSortKey ? !state.rowSortDesc : false 
             };
-        case actions.TABLES_FILTER_ADD:
-        	let filters=state.filters;
-        	if(filters.filter(function(e) {return e.key == action.column.key}).length==0){
-        		filters=[...filters,action.column]
-        	}
+        case actions.TABLES_USER_FILTER_ADD:
+            let filters=state.filters;
+            if(filters.filter(function(e) {return e.key == action.column.key;}).length==0){
+                filters=[...filters,action.column];
+            }
             return {
                 ...state,
                 filters
             };
-        case actions.TABLES_FILTER_REMOVE:
-        	console.log(state);
-        	filters=state.filters.map(function (e) {     
-        		if(e.key==action.column.key){
-        			delete e.searchValue;
-        		}
-        		return e;
-        	}).filter(function(e) {return e.key != action.column.key});
-        	return {
+        case actions.TABLES_USER_FILTER_REMOVE:
+            console.log(state);
+            filters=state.filters.map(function (filter) {
+                let e={...filter};
+                if(e.key==action.column.key){
+                    delete e.searchValue;
+                }
+                return e;
+            }).filter(function(e) {return e.key != action.column.key;});
+            return {
                 ...state,
                 filters
             };
-        case actions.TABLES_FILTER_VALUE:
-        	filters=state.filters.map(function (filter) {
-        		if(filter.key==action.column.key){
-        			if(action && action.value==""){
-        				filter.searchValue=null;
-        			}else{
-        				filter.searchValue=action.value;	
-        			}        			
-        		}
-        	    return filter;
-        	});
-        	return {
+        case actions.TABLES_USER_FILTER_VALUE:
+            filters=state.filters.map(function (filter) {
+                let ret={...filter};
+                if(ret.key==action.column.key){
+                    if(action && action.value==""){
+                        ret.searchValue=null;
+                    }else{
+                        ret.searchValue=action.value;	
+                    }        			
+                }
+                return ret;
+            });
+            return {
                 ...state,
                 filters
             };
@@ -104,9 +106,9 @@ const tables = (state = initialState, action) => {
     switch (action.type) {
         case actions.TABLES_USER_SET_COLUMN_ORDER:
         case actions.TABLES_USER_SET_ROW_ORDER:
-        case actions.TABLES_FILTER_ADD:
-        case actions.TABLES_FILTER_REMOVE:
-        case actions.TABLES_FILTER_VALUE:
+        case actions.TABLES_USER_FILTER_ADD:
+        case actions.TABLES_USER_FILTER_REMOVE:
+        case actions.TABLES_USER_FILTER_VALUE:
             return {
                 ...state,
                 userTable: userTable(state.userTable, action)
