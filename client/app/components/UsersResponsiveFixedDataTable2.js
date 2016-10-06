@@ -2,7 +2,7 @@ import React from "react";
 import {Grid, Row, Col, PageHeader} from "react-bootstrap";
 import ResponsiveFixedDataTable2Container from "../containers/DataGrid/ResponsiveFixedDataTable2Container";
 
-class UsersBootstrapTable extends React.Component {
+class UsersResponsiveFixedDataTable2 extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -25,4 +25,4 @@ class UsersBootstrapTable extends React.Component {
     }
 }
 
-export default UsersBootstrapTable;
+export default UsersResponsiveFixedDataTable2;

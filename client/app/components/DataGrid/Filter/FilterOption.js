@@ -25,7 +25,13 @@ const OPTIONS_LIST = {
 };
 
 const FilterOption = ({handleFilterOption,filterProps,...props}) => (
-	<DropdownButton style={{"minWidth":"39px"}}componentClass={InputGroup.Button} id="input-dropdown-addon" title="=">
+		
+	<DropdownButton 
+		style={{"minWidth":"39px"}}
+		componentClass={InputGroup.Button} 
+		id="input-dropdown-addon" 
+		title={filterProps.searchOptionValue?OPTIONS_LIST[filterProps.searchOptionValue].symbol:"="}
+	>
 		{Object.keys(OPTIONS_LIST).map((key,i)=>
 			<MenuItem key={i} eventKey={{key,filterProps}} onSelect={handleFilterOption}>
 				{OPTIONS_LIST[key].description}
