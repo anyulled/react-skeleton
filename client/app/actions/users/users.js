@@ -41,12 +41,12 @@ export function usersLoad(filters) {
         let params="";
         if(filters){
             params=filters
-        	.filter(e=>e.searchValue!=undefined && e.searchValue!=null)
+        	.filter(e=>e.searchValue)
         	.map(e=>e.key+"="+formatFilterValue(e))
         	.join("&");
             
             let options=filters
-        	.filter(e=>e.searchOptionValue!=undefined && e.searchOptionValue!=null)
+        	.filter(e=>e.searchValue && e.searchOptionValue)
         	.map(e=>e.key+"Option="+e.searchOptionValue)
         	.join("&");
             if(options.length>0){
