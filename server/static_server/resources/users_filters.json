@@ -1,0 +1,18 @@
+[{
+    "key": "id",
+    "name": "Identifier",
+    "type": "number",
+    "allow_options": false
+}, {
+    "key": "creationDate",
+    "name": "Creation Date",
+    "type": "date",
+    "allow_options": true,
+    "default_option": "GT"
+}, {
+    "key": "family",
+    "name": "Family",
+    "type": "list",    
+    "allowed_values": ["Family A","Family B"],
+    "allow_options": false        
+}]

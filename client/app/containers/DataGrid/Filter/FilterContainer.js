@@ -11,14 +11,14 @@ const mapStateToProps = (state,ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleFilterRemove: (column) => {
-            dispatch(tableActions.userTableFilterRemove(column));
+        handleFilterRemove: (tableName,filter) => {
+            dispatch(tableActions.filterRemove(tableName,filter));
         },
-        handleFilterValue: (column, value) => {
-            dispatch(tableActions.userTableFilterSearch(column,value));
+        handleFilterValue: (tableName,filter, value) => {
+            dispatch(tableActions.filterSearchValue(tableName,filter,value));
         },
-        handleFilterOption: ({filterProps, key}) => {
-        	dispatch(tableActions.userTableFilterOption(filterProps,key));
+        handleFilterOption: ({tableName,filterProps, key}) => {
+        	dispatch(tableActions.filterSearchOption(tableName,filterProps,key));
         }
     };
 };

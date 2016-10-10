@@ -4,15 +4,18 @@ import * as tableActions from "../../../actions/tables/tables";
 import FilterBar from "../../../components/DataGrid/Filter/FilterBar";
 const mapStateToProps = (state, ownProps) => {
     return {
-        columns: state.tables.userTable.columns,
-        filters: state.tables.userTable.filters
+    	columns: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].columns:null),
+		filters: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].filters:null)
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddFilter: (column) => {
-            dispatch(tableActions.userTableFilterAdd(column));
+    	dataLoad: (tableName) => {
+            dispatch(tableActions.filterLoad(tableName));
+        },
+        onAddFilter: (tableName,filter) => {
+            dispatch(tableActions.filterAdd(tableName,filter));
         }
     };
 };

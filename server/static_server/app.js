@@ -20,6 +20,14 @@ app.get("/users", function (req, res) {
     res.sendFile(__dirname + resourcePath + "users.json");
 });
 
+app.get("/users/filters", function (req, res) {
+	console.log("Getting users filters");
+    res.set({
+        "Content-Type": "application/json"
+    });
+    res.sendFile(__dirname + resourcePath + "users_filters.json");
+});
+
 
 app.get("/content", function (req, res) {
 	console.log("Getting content list");

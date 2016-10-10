@@ -24,16 +24,20 @@ const OPTIONS_LIST = {
     }
 };
 
-const FilterOption = ({handleFilterOption,filterProps,defaultsearchOptionValue,...props}) => (
+const FilterOption = ({handleFilterOption,filterProps,defaultsearchOptionValue,tableName,...props}) => (
 		
 	<DropdownButton 
 		style={{"minWidth":"39px"}}
 		componentClass={InputGroup.Button} 
 		id="input-dropdown-addon" 
-		title={filterProps.searchOptionValue?OPTIONS_LIST[filterProps.searchOptionValue].symbol:OPTIONS_LIST[defaultsearchOptionValue].symbol}
+		title={filterProps.searchOptionValue
+				?
+					OPTIONS_LIST[filterProps.searchOptionValue].symbol
+				:
+					OPTIONS_LIST[filterProps.defaultOptionValue].symbol}					
 	>
 		{Object.keys(OPTIONS_LIST).map((key,i)=>
-			<MenuItem key={i} eventKey={{key,filterProps}} onSelect={handleFilterOption}>
+			<MenuItem key={i} eventKey={{tableName,key,filterProps}} onSelect={handleFilterOption}>
 				{OPTIONS_LIST[key].description}
 			</MenuItem>)
 		}

@@ -75,14 +75,14 @@ class ResponsiveFixedDataTable2 extends React.Component {
 	componentWillReceiveProps(props) {
 		if(props.filters!=this.props.filters){
 			//convert both filter lists to an easily comparable pair of strings
-			let plainOldProps=this.props.filters
+			let plainOldProps=this.props.filters?this.props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
 				.filter((e)=>e!=null)
-				.join();
-			let plainNewProps=props.filters
+				.join():"";
+			let plainNewProps=props.filters?props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
 				.filter((e)=>e!=null)
-				.join();
+				.join():"";
 			if(!(plainOldProps===plainNewProps)){
 				if (typeof this.props.dataLoad === "function") {
 		            this.props.dataLoad(props.filters);
@@ -109,7 +109,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
         } else {
             columns.push(reorderColumn);
         }
-        this.props.tableColumnOrderSet(columns);
+        this.props.tableColumnOrderSet(this.props.tableName,columns);
     }
 
     sortData(data) {
@@ -127,18 +127,22 @@ class ResponsiveFixedDataTable2 extends React.Component {
     	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
         let sortedData = this.sortData(data);        
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
-        let width = Object.keys(columns).reduce((prevCol, key) => {
-            return prevCol + columns[key].width;
-        }, 0);
+        let width = columns
+        	?
+        	(Object.keys(columns).reduce((prevCol, key) => {
+        		return prevCol + columns[key].width;
+        	}, 0))
+        	:
+        	1;
         let height=1;
         if(this.props && this.props.data && this.props.rowHeight && this.props.data.length){
     		height=(this.props.data.length + 1 )*this.props.rowHeight;
         }
     	const { gridWidth, gridHeight } = this.state;
-            
+        let tableName=this.props.tableName;    
         return (
     		<div style={{height:height,maxWidth:width}}>
-    			<FilterBarContainer/> 
+    			<FilterBarContainer {...this.props}/> 
         		<div style={this._getStyle()}>
 		            <Table
 		                rowsCount={data.length}
@@ -150,26 +154,26 @@ class ResponsiveFixedDataTable2 extends React.Component {
 		            	width={gridWidth} 
 		            	height={height}
 		            >
-		                {columns.map(function (column, i) {
+		                {columns?columns.map(function (column, i) {
 		                    return <Column
 		                        allowCellsRecycling={true}
 		                        columnKey={column.key}
 		                        key={i}
 		                        isReorderable={reorderableColumns}
-		                        header={reorderableRows ? <SortHeaderCell {...sortProps}>{column.title}</SortHeaderCell> :
+		                        header={reorderableRows ? <SortHeaderCell {...sortProps} tableName={tableName}>{column.title}</SortHeaderCell> :
 		                            <Cell>{column.title}</Cell>}
 		                        cell={<TextCell data={sortedData} col={column.key}/>}
 		                        width={column.width}
 		                    />;
-		                })}
+		                }):null}
 		                { edit ? <Column isReorderable={false} width={100} header="Actions"
-		                                 cell={({rowIndex, ...props}) => (
-		                                     <Cell>
-		                                         <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
-		                                             onEditClick(sortedData[rowIndex]);
-		                                         }}><Glyphicon glyph="pencil"/></div>
-		                                     </Cell>
-		                                 )}
+                             cell={({rowIndex, ...props}) => (
+                                 <Cell>
+                                     <div style={{cursor: "pointer", display: "inline"}} onClick={() => {
+                                         onEditClick(sortedData[rowIndex]);
+                                     }}><Glyphicon glyph="pencil"/></div>
+                                 </Cell>
+                             )}
 		                /> : null }
 		            </Table>
 	            </div>
@@ -197,15 +201,15 @@ ResponsiveFixedDataTable2.propTypes = {
             PropTypes.number
         ]).isRequired,
         width: PropTypes.number.isRequired
-    }).isRequired).isRequired,
+    }).isRequired),
 	data: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     dataLoad: PropTypes.func,
     edit: PropTypes.bool.isRequired,
     refreshRate: React.PropTypes.number,
 	reorderableColumns: PropTypes.bool.isRequired,
     rowHeight: PropTypes.number.isRequired,
-    rowSortDesc: PropTypes.bool.isRequired,
-    rowSortKey: PropTypes.string.isRequired,
+    rowSortDesc: PropTypes.bool,
+    rowSortKey: PropTypes.string,
     sortRowsBy: PropTypes.func.isRequired,
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,

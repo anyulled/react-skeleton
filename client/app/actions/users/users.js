@@ -42,7 +42,7 @@ export function usersLoad(filters) {
         if(filters){
             params=filters
         	.filter(e=>e.searchValue!=undefined && e.searchValue!=null)
-        	.map(e=>e.key+"="+e.searchValue)
+        	.map(e=>e.key+"="+formatFilterValue(e))
         	.join("&");
             
             let options=filters
@@ -69,7 +69,14 @@ export function usersLoad(filters) {
     };
 }
 
-
+function formatFilterValue(filter){
+	switch(filter.type){
+	case "date": //Moment @see http://momentjs.com/
+		return filter.searchValue.format("YYYY-MM-DD");
+	default:
+		return filter.searchValue;
+	}
+}
 
 
 

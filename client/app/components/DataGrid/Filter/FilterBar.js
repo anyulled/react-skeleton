@@ -9,14 +9,20 @@ class FilterBar extends React.Component {
         this.handleSelectEvent = this.handleSelectEvent.bind(this);
     }  
 	
-    handleSelectEvent(column){
-        if(column){
-            this.props.onAddFilter(column);
+    handleSelectEvent(filter){
+        if(filter){
+            this.props.onAddFilter(this.props.tableName,filter);
         }	
+    }
+    
+    componentWillMount() {    	
+        if (typeof this.props.dataLoad === "function") {
+            this.props.dataLoad(this.props.tableName);
+        }
     }
 	
     render() {
-        let {filters,columns} = this.props;
+        let {filters,tableName} = this.props;
         let self=this;
         return (
 		    <div style={{width:100+"%","backgroundImage":"linear-gradient(#fff,#efefef)","border": "1px solid #d3d3d3","borderBottom": "0px","padding":"2px"}}>
@@ -26,11 +32,11 @@ class FilterBar extends React.Component {
 			    			Filters
 			    			<br/>
 				    		<DropdownButton title="Add a filter" id="bg-nested-dropdown">
-		    					{columns?columns.map(function (column, i) {
+		    					{filters?filters.map(function (filter, i) {
 		    						return (
-		    							<MenuItem key={i} eventKey={column} onSelect={self.handleSelectEvent}>
-		    								{column.title}
-		    								{filters.filter(function(e) {return e.key == column.key;}).length!=0?<Glyphicon style={{"float":"right"}}glyph="ok"/>:null}		    								
+		    							<MenuItem key={i} eventKey={filter} onSelect={self.handleSelectEvent}>
+		    								{filter.name}
+		    								{filter.active?<Glyphicon style={{"float":"right"}}glyph="ok"/>:null}		    								
 		    							</MenuItem>
 		    						);
 		    					}):null
@@ -40,9 +46,9 @@ class FilterBar extends React.Component {
 			    		<Col xs={9} md={10}>
 				    		<Grid fluid>
 						    	<Row>
-					    			{filters?filters.map(function (filter, i) {
+					    			{filters?filters.filter(e=>e.active==true).map(function (filter, i) {
 					    				return (		    					
-					    					<FilterContainer key={i} filterType={filter.type} filterProps={filter}/>
+					    					<FilterContainer key={i} filterType={filter.type} filterProps={filter} tableName={tableName}/>
 						    			);
 					    			}):null}
 				    			</Row>

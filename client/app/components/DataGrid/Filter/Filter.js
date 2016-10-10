@@ -5,7 +5,15 @@ import FilterOption from "./FilterOption";
 import {InputGroup,Col,ControlLabel} from "react-bootstrap";
 
 const FILTER_COMPONENTS = {
-    "integer":{
+    "number":{		//TODO!!!!!
+        "type":TextFilter,
+        "grid":{
+            "xs":6,
+            "md":3	
+        },
+        "hasOption":false
+    },
+    "list":{		//TODO!!!!!
         "type":TextFilter,
         "grid":{
             "xs":6,
@@ -43,11 +51,11 @@ class Filter extends React.Component {
         return(
 			<Col xs={FILTER_COMPONENTS[filterType].grid.xs} md={FILTER_COMPONENTS[filterType].grid.md} >
 				<span style={{"maxWidth":"100px","display":"block"}}>
-				    <ControlLabel>{filterProps.title}</ControlLabel>
+				    <ControlLabel>{filterProps.name}</ControlLabel>
 				    <InputGroup style={{"borderSpacing":"0"}}>
 				    	{FILTER_COMPONENTS[filterType].hasOption?<FilterOption {...props} handleFilterOption={handleFilterOption}/>:null}
 				    	<SpecificFilter {...props} handleFilterValue={handleFilterValue}/>
-			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(filterProps);}}>X</InputGroup.Addon>        
+			        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(this.props.tableName, filterProps);}}>X</InputGroup.Addon>        
 			        </InputGroup>			    
 				</span>	
 			</Col>	

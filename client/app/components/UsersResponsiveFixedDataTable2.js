@@ -16,7 +16,7 @@ class UsersResponsiveFixedDataTable2 extends React.Component {
                 <Grid fluid>
                     <Row >
                         <Col sm={12}>
-	                        <ResponsiveFixedDataTable2Container/>
+	                        <ResponsiveFixedDataTable2Container tableName={"users"}/>
                         </Col>
                     </Row>
                 </Grid>
