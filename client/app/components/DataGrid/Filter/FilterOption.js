@@ -30,6 +30,7 @@ const FilterOption = ({handleFilterOption,filterProps,defaultsearchOptionValue,t
 		style={{"minWidth":"39px"}}
 		componentClass={InputGroup.Button} 
 		id="input-dropdown-addon" 
+		noCaret
 		title={filterProps.searchOptionValue
 				?
 					OPTIONS_LIST[filterProps.searchOptionValue].symbol

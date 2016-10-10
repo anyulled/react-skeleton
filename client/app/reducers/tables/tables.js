@@ -175,16 +175,21 @@ const tables = (state = initialState, action) => {
         	targetTable.rowSortKey = action.rowSortKey;
         	break;
         case actions.TABLES_FILTER_LOAD:
+        	//TODO FIXME use a decent mapping model
         	targetTable.filters=action.payload.map(filter=>{
         		console.log(filter);
         		let ret={...filter};
         		ret.allowOptions=ret.allow_options;
 	    		ret.defaultOptionValue=ret.default_option;
-	    		if(ret.allow_options){
+	    		if(ret.allow_options != undefined){
 	    			delete ret.allow_options;	
 	    		}
-	    		if(ret.allow_options){
+	    		if(ret.default_option != undefined){
 	    			delete ret.default_option;	
+	    		}
+	    		if(ret.allowed_values!=undefined){
+	    			ret.allowedValues=[...ret.allowed_values];
+	    			delete ret.allowed_values;
 	    		}
         		return ret;
         	});

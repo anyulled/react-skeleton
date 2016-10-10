@@ -41,6 +41,7 @@
     "moment": "^2.15.1",
     "react": "^15.3.1",
     "react-bootstrap": "^0.30.3",
+    "react-bootstrap-maskedinput": "^0.2.0",
     "react-bootstrap-table": "^2.5.4",
     "react-datagrid": "^2.1.1",
     "react-datepicker": "^0.29.0",
