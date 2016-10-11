@@ -25,12 +25,10 @@ class FilterBar extends React.Component {
         let {filters,tableName} = this.props;
         let self=this;
         return (
-		    <div style={{width:100+"%","backgroundImage":"linear-gradient(#fff,#efefef)","border": "1px solid #d3d3d3","borderBottom": "0px","padding":"2px"}}>
+		    <div style={{width:100+"%","backgroundImage":"linear-gradient(#fff,#efefef)","border": "1px solid #d3d3d3","borderBottom": "0px","padding":"7px 2px 3px"}}>
 			    <Grid fluid>
 				    <Row>
-			    		<Col xs={3} md={2}>
-			    			Filters
-			    			<br/>
+					    <Col xs={3} md={2}>			    						    			
 				    		<DropdownButton title="Add a filter" id="bg-nested-dropdown">
 		    					{filters?filters.map(function (filter, i) {
 		    						return (
@@ -43,16 +41,14 @@ class FilterBar extends React.Component {
 			    				}
 						    </DropdownButton>
 			    		</Col >
-			    		<Col xs={9} md={10}>
-				    		<Grid fluid>
-						    	<Row>
-					    			{filters?filters.filter(e=>e.active==true).map(function (filter, i) {
-					    				return (		    					
-					    					<FilterContainer key={i} filterType={filter.type} filterProps={filter} tableName={tableName}/>
-						    			);
-					    			}):null}
-				    			</Row>
-						    </Grid>	 
+			    		<Col xs={9} md={10} style={{"borderLeft":"1px solid rgb(211, 211, 211)","minHeight":"30px"}}>
+				    		<ul className="list-inline" style={{"marginBottom":"0px"}}>						    	
+				    			{filters?filters.filter(e=>e.active==true).map(function (filter, i) {
+				    				return (		    					
+				    					<li style={{"maxWidth":"220px"}}><FilterContainer key={i} filterType={filter.type} filterProps={filter} tableName={tableName}/></li>
+					    			);
+				    			}):null}				    			
+						    </ul>	 
 			    		</Col>
 			    	</Row>
 			    </Grid>	    	
