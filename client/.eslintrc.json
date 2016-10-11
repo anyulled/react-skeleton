@@ -78,7 +78,10 @@
       "error"
     ],
     "react/no-unused-prop-types": [
-      "warn"
+      "warn",
+      {
+        "skipShapeProps": true
+      }
     ],
     "react/react-in-jsx-scope": [
       "warn"
