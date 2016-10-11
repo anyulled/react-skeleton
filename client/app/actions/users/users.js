@@ -74,7 +74,7 @@ function formatFilterValue(filter){
 	case "date": //Moment @see http://momentjs.com/
 		return filter.searchValue.format("YYYY-MM-DD");
 	default:
-		return filter.searchValue;
+		return filter.searchValue.trim();
 	}
 }
 

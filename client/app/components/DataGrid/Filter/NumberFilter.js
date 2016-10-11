@@ -1,8 +1,8 @@
 import React from "react";
-import MaskedFormControl from 'react-bootstrap-maskedinput'
+import InputElement from 'react-input-mask'
 
-const NumberFilter = ({handleFilterValue,filterProps,tableName,componentClass,bsClass,...props}) => (
-	<MaskedFormControl style={{"height":"100%","width":"100px"}} mask='11111111111111' placeholderChar=' ' type="text" onKeyUp={(event) => {handleFilterValue(tableName,filterProps,event.target.value);}} {...props}/>	        
+const NumberFilter = ({handleFilterValue,filterProps,tableName,...props}) => (
+	<InputElement style={{"height":"100%","width":"100px"}} className='form-control' mask='99999999999' maskChar={null} onKeyUp={(event) => {handleFilterValue(tableName,filterProps,event.target.value);}} {...props}/>	        
 );
 
 export default NumberFilter;
