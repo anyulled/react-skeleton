@@ -2,6 +2,7 @@ import React from "react";
 import TextFilter from "./TextFilter";
 import NumberFilter from "./NumberFilter";
 import DateFilter from "./DateFilter";
+import BooleanFilter from "./BooleanFilter";
 import DropdownFilter from "./DropdownFilter";
 import FilterOption from "./FilterOption";
 import {InputGroup,Col,ControlLabel} from "react-bootstrap";
@@ -35,8 +36,8 @@ const FILTER_COMPONENTS = {
             "md":4	
         }	
     },
-    "boolean": {			//TODO!!!
-        "type":TextFilter,
+    "boolean": {			
+        "type":BooleanFilter,
         "grid":{
             "xs":7,
             "md":4	

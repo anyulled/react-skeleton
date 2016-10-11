@@ -45,7 +45,9 @@ class FilterBar extends React.Component {
 				    		<ul className="list-inline" style={{"marginBottom":"0px"}}>						    	
 				    			{filters?filters.filter(e=>e.active==true).map(function (filter, i) {
 				    				return (		    					
-				    					<li style={{"maxWidth":"220px"}}><FilterContainer key={i} filterType={filter.type} filterProps={filter} tableName={tableName}/></li>
+				    					<li key={i} style={{"maxWidth":"220px"}}>
+				    						<FilterContainer filterType={filter.type} filterProps={filter} tableName={tableName}/>
+				    					</li>
 					    			);
 				    			}):null}				    			
 						    </ul>	 
