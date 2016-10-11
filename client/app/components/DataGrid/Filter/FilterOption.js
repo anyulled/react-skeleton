@@ -40,8 +40,4 @@ const FilterOption = ({handleFilterOption,filterProps,defaultsearchOptionValue,t
     </DropdownButton>        		        	
 );
 
-FilterOption.defaultProps = {
-	defaultsearchOptionValue:"EQ"
-};
-
 export default FilterOption;

@@ -8,41 +8,11 @@ import FilterOption from "./FilterOption";
 import {InputGroup,Col,ControlLabel} from "react-bootstrap";
 
 const FILTER_COMPONENTS = {
-    "number":{		
-        "type":NumberFilter,
-        "grid":{
-            "xs":6,
-            "md":3	
-        }
-    },
-    "list":{		
-        "type":DropdownFilter,
-        "grid":{
-            "xs":6,
-            "md":3	
-        }
-    },
-    "text": {
-        "type":TextFilter,
-        "grid":{
-            "xs":6,
-            "md":3	
-        }
-    },
-    "date": {
-        "type":DateFilter,
-        "grid":{
-            "xs":7,
-            "md":4	
-        }	
-    },
-    "boolean": {			
-        "type":BooleanFilter,
-        "grid":{
-            "xs":7,
-            "md":4	
-        } 	
-    }
+    "number": NumberFilter,
+    "list": DropdownFilter,
+    "text": TextFilter,
+    "date": DateFilter,
+    "boolean": BooleanFilter,
 };
 
 
@@ -52,7 +22,7 @@ const Filter = (props) => {
         return null;
     }
     let {filterProps}=props;
-    const SpecificFilter = FILTER_COMPONENTS[filterType].type;
+    const SpecificFilter = FILTER_COMPONENTS[filterType];
     return(
 		<div>
 		    <ControlLabel style={{"float":"left","padding":"6px"}}>{filterProps.name}</ControlLabel>
