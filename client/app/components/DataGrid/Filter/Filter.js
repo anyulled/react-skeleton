@@ -12,32 +12,35 @@ const FILTER_COMPONENTS = {
         "grid":{
             "xs":6,
             "md":3	
-        },
-        "hasOption":false
+        }
     },
     "list":{		
         "type":DropdownFilter,
         "grid":{
             "xs":6,
             "md":3	
-        },
-        "hasOption":false
+        }
     },
-    "string": {
+    "text": {
         "type":TextFilter,
         "grid":{
             "xs":6,
             "md":3	
-        },
-        "hasOption":false    	
+        }
     },
     "date": {
         "type":DateFilter,
         "grid":{
             "xs":7,
             "md":4	
-        },
-        "hasOption":true    	
+        }	
+    },
+    "boolean": {			//TODO!!!
+        "type":TextFilter,
+        "grid":{
+            "xs":7,
+            "md":4	
+        } 	
     }
 };
 
@@ -54,7 +57,7 @@ const Filter = (props) => {
 			<span style={{"maxWidth":"100px","display":"block"}}>
 			    <ControlLabel>{filterProps.name}</ControlLabel>
 			    <InputGroup style={{"borderSpacing":"0"}}>
-			    	{FILTER_COMPONENTS[filterType].hasOption?<FilterOption {...otherProps} handleFilterOption={handleFilterOption}/>:null}
+			    	{filterProps.allowOptions?<FilterOption {...otherProps} handleFilterOption={handleFilterOption}/>:null}
 			    	<SpecificFilter {...otherProps} handleFilterValue={handleFilterValue}/>
 		        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(props.tableName, filterProps);}}>X</InputGroup.Addon>        
 		        </InputGroup>			    
