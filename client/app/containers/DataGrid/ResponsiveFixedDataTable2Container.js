@@ -9,7 +9,7 @@ import ResponsiveFixedDataTable2 from "../../components/DataGrid/ResponsiveFixed
 const mapStateToProps = (state, ownProps) => {
 	return {
 		name: ownProps.tableName,
-		data: state.users,
+		data: state[ownProps.tableName],
 		columns: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].columns:null),
 		filters: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].filters:null),
 		rowSortKey: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortKey:null),
