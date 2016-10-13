@@ -17,7 +17,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.state = {
-        	pageNumber: 1,
         	gridWidth: 1,
     		gridHeight: 1
     	};
@@ -209,7 +208,8 @@ ResponsiveFixedDataTable2.defaultProps = {
 	refreshRate: 250, // ms
     reorderableColumns: true,
     reorderableRows: true,
-    rowHeight: 30
+    rowHeight: 30,
+    pageNumber: 1
 };
 
 ResponsiveFixedDataTable2.propTypes = {

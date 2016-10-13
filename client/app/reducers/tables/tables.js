@@ -137,14 +137,14 @@ const tables = (state = initialState, action) => {
         	break;
         case actions.TABLES_FILTER_SET_ACTIVE:
         case actions.TABLES_FILTER_SEARCH_VALUE:
-        case actions.TABLES_PAGINATION:
-            targetTable.pageNumber=action.value;
-             break;
         case actions.TABLES_FILTER_SEARCH_OPTION:
         	if(targetTable.filters!=undefined && targetTable.filters!=null){
         		targetTable.filters=targetTable.filters.map(f=>filter(f,action));
         	}
         	break;
+        case actions.TABLES_PAGINATION:
+            targetTable.pageNumber=action.value;
+            break;
         case actions.TABLES_FILTER_ERROR:
             break;
     }

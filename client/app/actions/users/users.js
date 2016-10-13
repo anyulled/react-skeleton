@@ -33,26 +33,39 @@ export function userUpdate(id, user) {
     };
 }
 
-export function usersLoad(filters) {	
+export function usersLoad(properties) {	
     return function (dispatch) {
+
+        var params="";
+
+        if(properties){
+            var filters = properties.filters;
+            params = "pageNumber="+properties.pageNumber;
+
+            if(filters){
+                var search=filters
+                .filter(e=>e.searchValue)
+                .map(e=>e.key+"="+formatFilterValue(e))
+                .join("&");
+            
+                if(search.length>0){
+                    params += "&"+search
+                }
+
+                let options=filters
+                .filter(e=>e.searchValue && e.searchOptionValue)
+                .map(e=>e.key+"Option="+e.searchOptionValue)
+                .join("&");
+                if(options.length>0){
+                    params += "&"+options
+                }
+            }
+        }
+
         dispatch({
             type: USER_CLEAR
         });
-        let params="";
-        if(filters){
-            params=filters
-        	.filter(e=>e.searchValue)
-        	.map(e=>e.key+"="+formatFilterValue(e))
-        	.join("&");
-            
-            let options=filters
-        	.filter(e=>e.searchValue && e.searchOptionValue)
-        	.map(e=>e.key+"Option="+e.searchOptionValue)
-        	.join("&");
-            if(options.length>0){
-            	params += "&"+options
-            }
-        }
+
         console.log(params);
         axios.get(config.api.url + "/users"+(params.length>0?"?"+params:""))
             .then((data) => {
@@ -77,11 +90,6 @@ function formatFilterValue(filter){
 		return filter.searchValue.trim();
 	}
 }
-
-
-
-
-
 
 export function usersLoadFromData(data) {
     return function (dispatch) {
