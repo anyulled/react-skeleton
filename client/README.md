@@ -39,3 +39,7 @@ This operation can be started by running the command
 `npm run cover`
 
 The `coverage` folder will contain an html page with coverage metrics
+
+**SOCKET.IO TESTING**
+a second server is setup in port 3001 with a socket listener.
+to enable grids fetching user data for this server, change the dispatch actions from usersLoadAjax() to usersLoad()

@@ -82,3 +82,16 @@ function formatFilterValue(filter){
 
 
 
+
+export function usersLoadFromData(data) {
+    return function (dispatch) {
+    	nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
+        dispatch({
+            type: USER_CLEAR
+        });
+        dispatch({
+            type: USER_ADD,
+            payload: data
+        });
+    };
+}
