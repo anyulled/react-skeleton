@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import {Provider} from "react-redux";
 import store from "./store/store";
 
-
 import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
 //import specific app components

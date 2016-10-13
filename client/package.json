@@ -6,7 +6,7 @@
   "scripts": {
     "package": "webpack",
     "start": "http-server ./dist -s | webpack --watch",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/Filter*_test.js",
     "eslint": "eslint app/** --fix",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-register --require ./test/setup-jsdom.js --require ignore-styles test/**/*_test.js"
   },
@@ -45,6 +45,7 @@
     "react-datagrid": "^2.1.1",
     "react-datepicker": "^0.29.0",
     "react-dom": "^15.3.1",
+    "react-input-mask": "^0.7.5",
     "react-router": "^2.7.0",
     "react-tabs": "^0.7.0",
     "webpack-uglify-js-plugin": "^1.1.9"

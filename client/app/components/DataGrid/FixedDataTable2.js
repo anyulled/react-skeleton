@@ -23,7 +23,7 @@ class SortableTable extends React.Component {
     }
 
     handleOnColumnReorderEndCallback(event) {
-    	var reorderColumn = this.props.columns.filter((column) => {
+        var reorderColumn = this.props.columns.filter((column) => {
             return column.key === event.reorderColumn;
         })[0];
         var columns = this.props.columns.filter((column) => {
@@ -55,7 +55,7 @@ class SortableTable extends React.Component {
     }
 
     render() {
-    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
+        let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
         let sortedData = this.sortData(data);        
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = Object.keys(columns).reduce((prevCol, key) => {
