@@ -17,6 +17,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
         this.handleSelect = this.handleSelect.bind(this);
         this.state = {
+        	pageNumber: 1,
         	gridWidth: 1,
     		gridHeight: 1
     	};
@@ -76,7 +77,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
 	componentWillReceiveProps(props) {
 		var hasChange = (this.props.pageNumber!=props.pageNumber);
 		
-		if(props.filters!=this.props.filters){
+		if(props.filters!=this.props.filters || hasChange){
 			//convert both filter lists to an easily comparable pair of strings
 			let plainOldProps=this.props.filters?this.props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
@@ -92,7 +93,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
 		}
 
 		if ((typeof this.props.dataLoad === "function") && hasChange) {
-		   this.props.dataLoad(props.filters);
+		   this.props.dataLoad(props);
 		}		
 	}
 	
@@ -118,7 +119,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 
     handleSelect(event) {
-    	this.props.changePage(event);
+    	this.props.changePage(this.props.tableName, event);
     }
 
     sortData(data) {
