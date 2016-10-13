@@ -110,7 +110,6 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_FILTER_LOAD:
         	//TODO FIXME ARGC use a decent mapping model
         	targetTable.filters=action.payload.map(filter=>{
-        		console.log(filter);
         		let ret={...filter};
         		ret.allowOptions=ret.allow_options;
 	    		ret.defaultOptionValue=ret.default_option;
