@@ -38,7 +38,9 @@ const initialState = { // Each table we may perform actions upon requires an
             // no matter what
         rowSortKey: "id",
         rowSortDesc: false,
-        filters:[]
+        filters:[],
+        pageNumber:2,
+        numberOfPages:4
     }
 };
 
@@ -106,7 +108,13 @@ const userTable = (state, action) => {
                 ...state,
                 filters
             };
-    }
+        case actions.TABLES_USER_PAGINATION:
+            return {
+                ...state,
+                pageNumber: action.value
+            }
+
+     }
 };
 
 const tables = (state = initialState, action) => {
@@ -121,6 +129,7 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_USER_FILTER_REMOVE:
         case actions.TABLES_USER_FILTER_VALUE:
         case actions.TABLES_USER_FILTER_OPTION:
+        case actions.TABLES_USER_PAGINATION:
             return {
                 ...state,
                 userTable: userTable(state.userTable, action)

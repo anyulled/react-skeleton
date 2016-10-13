@@ -12,7 +12,9 @@ const mapStateToProps = (state, ownProps) => {
         columns: state.tables.userTable.columns,
         filters: state.tables.userTable.filters,
         rowSortKey: state.tables.userTable.rowSortKey,
-        rowSortDesc: state.tables.userTable.rowSortDesc
+        rowSortDesc: state.tables.userTable.rowSortDesc,
+        pageNumber: state.tables.userTable.pageNumber,
+        numberOfPages: state.tables.userTable.numberOfPages
     };
 };
 
@@ -32,6 +34,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         sortRowsBy: (sortKey) => {
             dispatch(tableActions.userTableRowOrderSet(sortKey));
+        },
+        changePage: (page) => {
+            dispatch(tableActions.userTablePagination(page));
         }
     };
 };
