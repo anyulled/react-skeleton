@@ -41,73 +41,6 @@ const initialState = { // Each table we may perform actions upon requires an
     }
 };
 
-const userTable = (state, action) => {
-    switch (action.type) {
-        case actions.TABLES_USER_SET_COLUMN_ORDER:
-            return {
-                ...state,
-                columns: action.columns
-            };
-        case actions.TABLES_USER_SET_ROW_ORDER:
-            return {
-                ...state,
-                rowSortKey: action.rowSortKey,
-                rowSortDesc: state.rowSortKey === action.rowSortKey ? !state.rowSortDesc : false 
-            };
-        case actions.TABLES_USER_FILTER_ADD:
-            let filters=state.filters;
-            if(filters.filter(function(e) {return e.key == action.column.key;}).length==0){
-            	let filter={...action.column};
-                filters=[...filters,filter];
-            }
-            return {
-                ...state,
-                filters
-            };
-        case actions.TABLES_USER_FILTER_REMOVE:
-            filters=state.filters.map(function (filter) {
-                let e={...filter};
-                if(e.key==action.column.key){
-                    delete e.searchValue;
-                    delete e.searchOptionValue;
-                }
-                return e;
-            }).filter(function(e) {return e.key != action.column.key;});
-            return {
-                ...state,
-                filters
-            };
-        case actions.TABLES_USER_FILTER_VALUE:
-            filters=state.filters.map(function (filter) {
-                let ret={...filter};
-                if(ret.key==action.column.key){
-                    if(action && action.value==""){
-                        ret.searchValue=null;
-                    }else{
-                        ret.searchValue=action.value;	
-                    }        			
-                }
-                return ret;
-            });
-            return {
-                ...state,
-                filters
-            };
-        case actions.TABLES_USER_FILTER_OPTION:
-            filters=state.filters.map(function (filter) {
-                let ret={...filter};
-                if(ret.key==action.column.key){
-                    ret.searchOptionValue=action.value;
-                }
-                return ret;
-            });
-            return {
-                ...state,
-                filters
-            };
-    }
-};
-
 const table = (state, action) => {
     switch (action.type) {
         case actions.TABLES_FILTER_ADD:
@@ -175,7 +108,7 @@ const tables = (state = initialState, action) => {
         	targetTable.rowSortKey = action.rowSortKey;
         	break;
         case actions.TABLES_FILTER_LOAD:
-        	//TODO FIXME use a decent mapping model
+        	//TODO FIXME ARGC use a decent mapping model
         	targetTable.filters=action.payload.map(filter=>{
         		console.log(filter);
         		let ret={...filter};
