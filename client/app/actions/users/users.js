@@ -41,12 +41,12 @@ export function usersLoad(filters) {
         let params="";
         if(filters){
             params=filters
-        	.filter(e=>e.searchValue!=undefined && e.searchValue!=null)
-        	.map(e=>e.key+"="+e.searchValue)
+        	.filter(e=>e.searchValue)
+        	.map(e=>e.key+"="+formatFilterValue(e))
         	.join("&");
             
             let options=filters
-        	.filter(e=>e.searchOptionValue!=undefined && e.searchOptionValue!=null)
+        	.filter(e=>e.searchValue && e.searchOptionValue)
         	.map(e=>e.key+"Option="+e.searchOptionValue)
         	.join("&");
             if(options.length>0){
@@ -69,9 +69,29 @@ export function usersLoad(filters) {
     };
 }
 
+function formatFilterValue(filter){
+	switch(filter.type){
+	case "date": //Moment @see http://momentjs.com/
+		return filter.searchValue.format("YYYY-MM-DD");
+	default:
+		return filter.searchValue.trim();
+	}
+}
 
 
 
 
 
 
+export function usersLoadFromData(data) {
+    return function (dispatch) {
+    	nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
+        dispatch({
+            type: USER_CLEAR
+        });
+        dispatch({
+            type: USER_ADD,
+            payload: data
+        });
+    };
+}

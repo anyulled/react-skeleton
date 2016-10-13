@@ -3,7 +3,7 @@ var app = express();
 
 var cors = require("cors");
 
-var resourcePath="/initial/";
+var resourcePath="/resources/";
 
 app.use(cors());
 app.use(express.static("static"));
@@ -53,6 +53,6 @@ app.get("/content/3", function (req, res) {
     res.sendFile(__dirname + resourcePath + "content_3.json");
 });
 
-app.listen(3001, function () {
-    console.log("App listening on port 3001!");
+app.listen(3000, function () {
+    console.log("App listening on port 3000!");
 });

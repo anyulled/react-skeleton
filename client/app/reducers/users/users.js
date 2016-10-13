@@ -21,7 +21,6 @@ const users = (state = [], action) => {
     if (!action) {
         return state;
     }
-
     switch (action.type) {
         case actions.USER_ADD:
             //if the payload is an array, we add it to the state

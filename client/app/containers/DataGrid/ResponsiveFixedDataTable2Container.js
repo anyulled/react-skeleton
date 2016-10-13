@@ -7,15 +7,17 @@ import * as modalActions from "../../actions/modal/modal";
 import ResponsiveFixedDataTable2 from "../../components/DataGrid/ResponsiveFixedDataTable2";
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-        data: state.users,
-        columns: state.tables.userTable.columns,
-        filters: state.tables.userTable.filters,
-        rowSortKey: state.tables.userTable.rowSortKey,
-        rowSortDesc: state.tables.userTable.rowSortDesc,
-        pageNumber: state.tables.userTable.pageNumber,
-        numberOfPages: state.tables.userTable.numberOfPages
-    };
+
+	return {
+		name: ownProps.tableName,
+		data: state[ownProps.tableName],
+		columns: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].columns:null),
+		filters: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].filters:null),
+		rowSortKey: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortKey:null),
+		rowSortDesc: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortDesc:null),
+        pageNumber: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageNumber:null),
+        numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null)
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -29,14 +31,14 @@ const mapDispatchToProps = (dispatch) => {
         onEditClick: (user) => {
             dispatch(modalActions.modalEditUser(user));
         },
-        tableColumnOrderSet: (columns) => {
-            dispatch(tableActions.userTableColumnOrderSet(columns));
+        tableColumnOrderSet: (table, columns) => {
+            dispatch(tableActions.tableColumnOrderSet(table, columns));
         },
-        sortRowsBy: (sortKey) => {
-            dispatch(tableActions.userTableRowOrderSet(sortKey));
+        sortRowsBy: (table, sortKey) => {
+            dispatch(tableActions.tableRowOrderSet(table, sortKey));
         },
-        changePage: (page) => {
-            dispatch(tableActions.userTablePagination(page));
+        changePage: (table, page) => {
+            dispatch(tableActions.userTablePagination(table, page));
         }
     };
 };
