@@ -26,7 +26,7 @@ describe("users actions", () => {
                     "username": "jdoe"
                 }]);
 
-            store.dispatch(actions.usersLoad());
+            store.dispatch(actions.usersLoadAjax());
 
             setTimeout(function () {
             	expect(store.getActions()).to.have.length(2);  
@@ -39,7 +39,7 @@ describe("users actions", () => {
             .get("/users")
             .replyWithError("Something went wrong");
 
-            store.dispatch(actions.usersLoad());
+            store.dispatch(actions.usersLoadAjax());
 
             setTimeout(function () {
             	expect(store.getActions()).to.have.length(2);  
