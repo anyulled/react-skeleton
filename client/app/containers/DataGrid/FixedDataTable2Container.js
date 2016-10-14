@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         dataLoad: () => {
-            dispatch(userActions.usersLoadAjax());
+            dispatch(userActions.usersLoad());
         },
         onRemoveClick: (id) => {
             dispatch(userActions.userRemove(id));

@@ -13,6 +13,7 @@ import UsersBootstrapTable from "./components/UsersBootstrapTable";
 import UsersFixedDataTable2 from "./components/UsersFixedDataTable2";
 import UsersResponsiveFixedDataTable2 from "./components/UsersResponsiveFixedDataTable2";
 import UserManagement from "./components/UserManagement";
+import DynamicFormPage from "./components/DynamicFormPage";
 import App from "./components/App";
 
 ReactDOM.render(
@@ -25,6 +26,7 @@ ReactDOM.render(
                 <Route path="/grids/bootstrap" component={UsersBootstrapTable}/>
                 <Route path="/grids/fixed-data-table-2" component={UsersFixedDataTable2}/>
                 <Route path="/grids/responsive-fixed-data-table-2" component={UsersResponsiveFixedDataTable2}/>
+                <Route path="/forms/dynamic" component={DynamicFormPage}/>
                 <Route path="/content/:contentId" component={ContentContainer}/>
             </Route>
         </Router>

@@ -26,7 +26,7 @@ const Filter = (props) => {
     return(
 		<div>
 		    <ControlLabel style={{"float":"left","padding":"6px"}}>{filterProps.name}</ControlLabel>
-		    <InputGroup style={{"borderSpacing":"0","width":"100px","float":"left"}}>
+		    <InputGroup style={{"borderSpacing":"0","maxWidth":"50px","float":"left"}}>
 		    	{filterProps.allowOptions?<FilterOption {...otherProps} handleFilterOption={handleFilterOption}/>:null}
 		    	<SpecificFilter {...otherProps} handleFilterValue={handleFilterValue}/>
 	        	<InputGroup.Addon style={{"cursor":"pointer","width":"15px"}} onClick={() => {handleFilterRemove(props.tableName, filterProps);}}>X</InputGroup.Addon>        
