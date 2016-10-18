@@ -2,6 +2,7 @@ import React, {PropTypes} from "react";
 import {connect} from "react-redux";
 // import * as formActions from "../actions/form/form";
 import Form from "../../components/Form/Form";
+import validate from "../../containers/Form/Validation/Validator";
 
 let formFields=[
     {
@@ -10,15 +11,15 @@ let formFields=[
         "type":"text",
         "specific":{},
         "validation":[
-            "rule":{
+            {
                 "type":"required",
                 "value":true      
             },
-            "rule":{
+            {
                 "type":"min",
                 "value":4         
             },
-            "rule":{
+            {
                 "type":"max",
                 "value":10         
             }
@@ -32,11 +33,11 @@ let formFields=[
             "format":"YYYY-MM-DD"
         },
         "validation":[
-            "rule":{
+            {
                 "type":"required",
                 "value":true      
             },
-            "rule":{
+            {
                 "type":"min",
                 "value":"2016-05-01"    //date format must be the same as the input field format
             }            
@@ -46,16 +47,19 @@ let formFields=[
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-        fieldData:formFields.reduce((data,field)=>{data[field.name]=field; return data },{}),
+        fieldData:formFields.reduce((data,field)=>{data[field.name]=field; return data},{}),
         fields:formFields.map(e=>e.name)
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleFormSubmit: (...values) => {
-            console.log(values)
-        }        
+        handleFormSubmit: (values,dispatch) => {
+            console.log(values);
+        },
+        handleFormValidation: (values,fieldData) => {
+            return validate(values,fieldData);
+        }
     };
 };
 
