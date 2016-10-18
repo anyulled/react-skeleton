@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import {Glyphicon} from "react-bootstrap";
+import {Glyphico, Pagination} from "react-bootstrap";
 import FilterBarContainer from "../../containers/DataGrid/Filter/FilterBarContainer";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
@@ -15,10 +15,11 @@ class ResponsiveFixedDataTable2 extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.state = {
-    		gridWidth: 1,
+        	gridWidth: 1,
     		gridHeight: 1
-        };
+    	};
     }  
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -73,7 +74,9 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 	
 	componentWillReceiveProps(props) {
-		if(props.filters!=this.props.filters){
+		var hasChange = (this.props.pageNumber!=props.pageNumber);
+		
+		if(props.filters!=this.props.filters || hasChange){
 			//convert both filter lists to an easily comparable pair of strings
 			let plainOldProps=this.props.filters?this.props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
@@ -84,10 +87,12 @@ class ResponsiveFixedDataTable2 extends React.Component {
 				.filter((e)=>e!=null)
 				.join():"";
 			if(!(plainOldProps===plainNewProps)){
-				if (typeof this.props.dataLoad === "function") {
-		            this.props.dataLoad(props.filters);
-		        }	
+				hasChange = true;	
 			}			
+		}
+
+		if ((typeof this.props.dataLoad === "function") && hasChange) {
+		   this.props.dataLoad(props);
 		}		
 	}
 	
@@ -112,6 +117,10 @@ class ResponsiveFixedDataTable2 extends React.Component {
         this.props.tableColumnOrderSet(this.props.tableName,columns);
     }
 
+    handleSelect(event) {
+    	this.props.changePage(this.props.tableName, event);
+    }
+
     sortData(data) {
         let dat = [...data];
         const {rowSortKey, rowSortDesc} = this.props;
@@ -124,8 +133,8 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 
     render() {
-    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
-        let sortedData = this.sortData(data);        
+    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber} = this.props;;
+    	let sortedData = this.sortData(data);        
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = columns
         	?
@@ -176,6 +185,18 @@ class ResponsiveFixedDataTable2 extends React.Component {
                              )}
 		                /> : null }
 		            </Table>
+		             <Pagination
+                        prev
+                        next
+                        first
+                        last
+                        ellipsis
+                        boundaryLinks
+                        items={numberOfPages}
+                        maxButtons={3}
+                        onSelect={this.handleSelect}
+                        activePage={pageNumber}
+                     />
 	            </div>
             </div>
         );
@@ -187,7 +208,8 @@ ResponsiveFixedDataTable2.defaultProps = {
 	refreshRate: 250, // ms
     reorderableColumns: true,
     reorderableRows: true,
-    rowHeight: 30
+    rowHeight: 30,
+    pageNumber: 1
 };
 
 ResponsiveFixedDataTable2.propTypes = {
@@ -213,7 +235,8 @@ ResponsiveFixedDataTable2.propTypes = {
     sortRowsBy: PropTypes.func.isRequired,
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
-    onRemoveClick: PropTypes.func.isRequired
+    onRemoveClick: PropTypes.func.isRequired,
+    changePage: PropTypes.func.isRequired
 };
 
 export default ResponsiveFixedDataTable2;

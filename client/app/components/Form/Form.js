@@ -8,23 +8,25 @@ const FORM_COMPONENTS = {
     "date": Input
 };
 
-const submitUpdate = (dispatch,values) => {
-    console.log(values)
-};
-
-const Form = ({fieldData, fields, handleSubmit, dispatch,...props}) => {
-    const usubmit = submitUpdate.bind(undefined, dispatch);
-    console.log(fieldData);
+const Form = ({fieldData, fields, handleSubmit,handleFormSubmit, dispatch,...props}) => {
     return (
-        <form onSubmit={handleSubmit(usubmit)}>
+        <form onSubmit={handleSubmit(handleFormSubmit)}>
             {Object.keys(fields).map((fieldName,i)=>{
                 let data=fieldData[fieldName];
                 let Field=FORM_COMPONENTS[data.type];
                 return (<Field key={i} {...fields[fieldName]} {...data}/>)
             })}
-            <button onClick={handleSubmit(usubmit)}> Submit </button>
+            <button onClick={handleSubmit(handleFormSubmit)}> Submit </button>
         </form>
     );
 };
 
-export default reduxForm({ form: "dynamicForm"})(Form);
+export default reduxForm({ 
+    form: "dynamicForm",
+    validate: (values, props) => {
+        console.log(props)
+        if(typeof props.handleFormValidation === "function"){
+            return props.handleFormValidation(values,props.fieldData);
+        }
+    }
+})(Form);

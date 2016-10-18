@@ -1,7 +1,6 @@
 import axios from "axios";
 import config from "../../config";
 
-
 export const TABLES_FILTER_LOAD = "tables/filter/load";
 export const TABLES_FILTER_SET_ACTIVE = "tables/filter/set/active";
 export const TABLES_FILTER_CLEAR = "tables/filter/clear";
@@ -10,6 +9,7 @@ export const TABLES_FILTER_SEARCH_VALUE = "tables/filter/search/value";
 export const TABLES_FILTER_SEARCH_OPTION = "tables/filter/search/option";
 export const TABLES_COLUMN_SET_ORDER = "tables/column/set/order";
 export const TABLES_ROW_SET_ORDER = "tables/row/set/order";
+export const TABLES_PAGINATION = "tables/pagination";
 
 export function filterAdd(table, filter) {
     return {
@@ -85,3 +85,13 @@ export function tableRowOrderSet(table,column) {
         rowSortKey:column
     };
 }
+
+export function userTablePagination(table, value) {
+    return {
+        type: TABLES_PAGINATION,
+        table,
+        value
+    };
+}
+
+

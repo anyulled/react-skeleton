@@ -37,7 +37,9 @@ const initialState = { // Each table we may perform actions upon requires an
         columns: startingColumns, // the first element cannot be ordered
             // no matter what
         rowSortKey: "id",
-        rowSortDesc: false
+        rowSortDesc: false,
+        pageNumber:2,
+        numberOfPages:4
     }
 };
 
@@ -52,8 +54,11 @@ const table = (state, action) => {
             return {
                 ...state,
                 filters
-            };        
-    }
+
+            };
+        
+     };        
+
 };
 
 const filter = (state = {}, action) => {
@@ -92,6 +97,7 @@ const tables = (state = initialState, action) => {
     if (!action || !action.table) {
         return state;
     }
+
     let newState={...state};
 	let targetTable={...newState[action.table]};
 	if(targetTable==undefined || targetTable==null){
@@ -136,6 +142,9 @@ const tables = (state = initialState, action) => {
         		targetTable.filters=targetTable.filters.map(f=>filter(f,action));
         	}
         	break;
+        case actions.TABLES_PAGINATION:
+            targetTable.pageNumber=action.value;
+            break;
         case actions.TABLES_FILTER_ERROR:
             break;
     }
