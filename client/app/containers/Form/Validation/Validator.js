@@ -6,39 +6,46 @@ const RuleMap=Rules.reduce((ruleArray,rule)=>{ruleArray[rule.name]=rule.method; 
 
 export default function validate(values,fieldData){
 	let errors={};
-	console.log("validating")
-	console.log(values)
-	console.log(fieldData)
 	Object.keys(values).map(key=>{
-		if(fieldData[key] && values[key]){//TODO ADD FULL CHECK (handle undefineds)
+		if(fieldData[key]){
+			let fieldDataKey=fieldData[key];
 			let evalValue=values[key];
-			if(fieldData.specific && fieldData.specific.format){
-				switch (fieldData.type) {
-					case types.TYPE_DATE: 
-						evalValue=moment(evalValue, fieldData.specific.format).toDate();
-					break;
-				}
+			if(evalValue!=null && evalValue!=undefined){
+				evalValue=format(evalValue,fieldDataKey);
 			}
-			let rules=fieldData[key].validation || [];
-			rules.map(rule=>{
+			
+			let rules=fieldDataKey.validation || [];
+			rules.some(rule=>{
 				if(rule.type && RuleMap[rule.type]){
-					let ruleValue=rule.value;
-					if(fieldData.specific && fieldData.specific.format){
-						switch (fieldData.type) {
-							case types.TYPE_DATE: 
-								ruleValue=moment(ruleValue, fieldData.specific.format).toDate();
-							break;
-						}
+					let ruleValue=format(rule.value,fieldDataKey);					
+					let validationResult=RuleMap[rule.type](evalValue,ruleValue,rule.value);
+					if(validationResult!=null){
+						errors[key]=validationResult;
+						return true;	//stop looking for errors on this field
 					}
-					console.log(RuleMap[rule.type](evalValue,ruleValue,rule.value));
+					return false;
 				}
 			})	
 		}		
 	})
-	console.log(fieldData)
-	console.log(RuleMap);
-	// let formattedEvalValue=moment(evalValue, format).toDate();
-	// let formattedRuleValue=moment(ruleValue, format).toDate();
 				
 	return errors;
+}
+
+function format(value,fieldData){
+	try{
+		switch (fieldData.type) {
+		case types.TYPE_DATE: 
+			if(fieldData.specific && fieldData.specific.format){
+				let date=moment(value, fieldData.specific.format);
+				return date.isValid()?date.toDate():"";
+			}
+		case types.TYPE_TEXT: 
+			return value.trim();	
+		}
+	}catch(e){
+		//ignore
+	}
+	
+	return value;
 }

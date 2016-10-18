@@ -24,8 +24,9 @@ const Form = ({fieldData, fields, handleSubmit,handleFormSubmit, dispatch,...pro
 export default reduxForm({ 
     form: "dynamicForm",
     validate: (values, props) => {
+        console.log(props)
         if(typeof props.handleFormValidation === "function"){
-            props.handleFormValidation(values,props.fieldData);
+            return props.handleFormValidation(values,props.fieldData);
         }
     }
 })(Form);
