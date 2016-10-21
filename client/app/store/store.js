@@ -9,6 +9,7 @@ import modal from "../reducers/modal/modal";
 import tables from "../reducers/tables/tables";
 import {contentHeaders, contents} from "../reducers/content/content";
 import startDataLayer, {socketMiddleware} from './middleware/socket-data-layer';
+import * as immutableStateInvariantMiddleware from "redux-immutable-state-invariant";
 
 //export default createStore(
 //	combineReducers({
@@ -37,7 +38,8 @@ const store=createStore(
 	    form: formReducer
 	}), 
 	compose(
-	    applyMiddleware(thunk, logger(),socketMiddleware),
+	    // @TODO immutableStateInvariantMiddleware should be only loaded in DEV env
+	    applyMiddleware(thunk, immutableStateInvariantMiddleware.default(), logger(),socketMiddleware),
 	    window.devToolsExtension ? window.devToolsExtension() : f => f
 	)
 );

@@ -105,6 +105,7 @@
     "react-virtualized": "^7.22.1",
     "redux": "^3.5.2",
     "redux-form": "^5.3.1",
+    "redux-immutable-state-invariant": "^1.2.3",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.1",
