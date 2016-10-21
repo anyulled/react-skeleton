@@ -18,7 +18,7 @@ export default function validate(values,fieldData){
 			rules.some(rule=>{
 				if(rule.type && RuleMap[rule.type]){
 					let ruleValue=format(rule.value,fieldDataKey);					
-					let validationResult=RuleMap[rule.type](evalValue,ruleValue,rule.value);
+					let validationResult=RuleMap[rule.type](evalValue,ruleValue,rule.value,fieldDataKey.type);
 					if(validationResult!=null){
 						errors[key]=validationResult;
 						return true;	//stop looking for errors on this field
@@ -38,7 +38,7 @@ function format(value,fieldData){
 		case types.TYPE_DATE: 
 			if(fieldData.specific && fieldData.specific.format){
 				let date=moment(value, fieldData.specific.format);
-				return date.isValid()?date.toDate():"";
+				return date.isValid()?+date.utc():null;
 			}
 		case types.TYPE_TEXT: 
 			return value.trim();	
