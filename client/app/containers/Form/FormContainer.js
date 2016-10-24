@@ -30,7 +30,7 @@ let formFields=[
         "label":"Creation date",
         "type":"date",
         "specific":{
-            "format":"YYYY-MM-DD"
+            "format":"YYYY-MMM-DD"
         },
         "validation":[
             {
