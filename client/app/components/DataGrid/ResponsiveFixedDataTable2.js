@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import {Glyphico, Pagination} from "react-bootstrap";
 import FilterBarContainer from "../../containers/DataGrid/Filter/FilterBarContainer";
+import CustomPaginationContainer from "../../containers/DataGrid/Pagination/CustomPaginationContainer";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
 import {Table, Column, Cell} from "fixed-data-table-2";
@@ -15,7 +16,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
-        this.handleSelect = this.handleSelect.bind(this);
         this.state = {
         	gridWidth: 1,
     		gridHeight: 1
@@ -117,10 +117,6 @@ class ResponsiveFixedDataTable2 extends React.Component {
         this.props.tableColumnOrderSet(this.props.tableName,columns);
     }
 
-    handleSelect(event) {
-    	this.props.changePage(this.props.tableName, event);
-    }
-
     sortData(data) {
         let dat = [...data];
         const {rowSortKey, rowSortDesc} = this.props;
@@ -185,18 +181,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
                              )}
 		                /> : null }
 		            </Table>
-		             <Pagination
-                        prev
-                        next
-                        first
-                        last
-                        ellipsis
-                        boundaryLinks
-                        items={numberOfPages}
-                        maxButtons={3}
-                        onSelect={this.handleSelect}
-                        activePage={pageNumber}
-                     />
+                    <CustomPaginationContainer {...this.props}/>  
 	            </div>
             </div>
         );
@@ -208,8 +193,7 @@ ResponsiveFixedDataTable2.defaultProps = {
 	refreshRate: 250, // ms
     reorderableColumns: true,
     reorderableRows: true,
-    rowHeight: 30,
-    pageNumber: 1
+    rowHeight: 30
 };
 
 ResponsiveFixedDataTable2.propTypes = {
