@@ -17,7 +17,14 @@ app.get("/users", function (req, res) {
     res.set({
         "Content-Type": "application/json"
     });
-    res.sendFile(__dirname + resourcePath + "users.json");
+    url = require('url');
+    var query = url.parse(req.url,true).query;
+    console.log("Args: " + JSON.stringify(query));
+    var page = req.param('pageNumber');
+    console.log("page: " + page);
+    //it paginates only to the 10 existing user files
+    page = (page != null && page > 0 && page < 10) ? page : "";
+    res.sendFile(__dirname + resourcePath + "users"+ page +".json")
 });
 
 app.get("/users/filters", function (req, res) {

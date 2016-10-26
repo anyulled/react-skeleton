@@ -1,0 +1,72 @@
+[
+	{
+		"id":"000000070",
+		"name":"Gerardo López P7",
+		"yearOfBirth":"1981",
+		"country":"SPAIN",
+		"username":"mlopez"
+	},
+	{
+		"id":"000000071",
+		"name":"John Doe P7",
+		"yearOfBirth":"1996",
+		"country":"UK",
+		"username":"jdoe"
+	},
+	{
+		"id":"000000072",
+		"name":"Erika Mustermann P7",
+		"yearOfBirth":"1975",
+		"country":"GERMANY",
+		"username":"erikamustermann"
+	},
+	{
+		"id":"000000073",
+		"yearOfBirth":"1965",
+		"name":"Yamada Taro P7",
+		"country":"JAPAN",
+		"username":"yamadat"
+	},
+	{
+		"id":"000000074",
+		"name":"Jack Smith P7",
+		"yearOfBirth":"1972",
+		"country":"USA",
+		"username":"jasmi"
+	},
+	{
+		"id":"000000075",
+		"name":"Jan Nichts P7",
+		"yearOfBirth":"1967",
+		"country":"GERMANY",
+		"username":"jnichts"
+	},
+	{
+		"id":"000000076",
+		"name":"Juan Nadie P7",
+		"yearOfBirth":"1980",
+		"country":"VENEZUELA",
+		"username":"juannadie"
+	},
+	{
+		"id":"000000077",
+		"name":"Josephine Martin P7",
+		"yearOfBirth":"1986",
+		"country":"FRANCE",
+		"username":"jmartin"
+	},
+	{
+		"id":"000000078",
+		"name":"Mario Rossi P7",
+		"yearOfBirth":"1974",
+		"country":"ITALY",
+		"username":"mrossi"
+	},
+	{
+		"id":"000000079",
+		"name":"María García P7",
+		"yearOfBirth":"1979",
+		"country":"SPAIN",
+		"username":"mgarcia"
+	}
+]
