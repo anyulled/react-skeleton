@@ -2,6 +2,8 @@ import React from "react";
 
 import { Pagination } from "react-bootstrap";
 
+import PageSummary from "../../../containers/DataGrid/Pagination/PageSummaryContainer";
+
 class CustomPagination extends React.Component {	
 
     constructor(props) {
@@ -14,7 +16,12 @@ class CustomPagination extends React.Component {
     }
 	
     render() {
+        console.log(this.props);
+        let firstElementOfThisPage = ((this.props.pageNumber-1) * this.props.pageSize) + 1;
+        let  lastElementOfThisPage = ((this.props.pageNumber  ) * this.props.pageSize);
+        let totalOfElements = this.props.totalOfElements
         return(
+            <div>
                 <Pagination
                     prev
                     next
@@ -26,7 +33,9 @@ class CustomPagination extends React.Component {
                     items={this.props.numberOfPages}
                     activePage={this.props.pageNumber}
                     onSelect={this.handleSelectPage}
-                />	
+                />
+                <PageSummary {...this.props}/>
+            </div>
 		);
     }
 }

@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 		rowSortKey: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortKey:null),
 		rowSortDesc: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortDesc:null),
         pageNumber: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageNumber:null),
-        numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null)
+        numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null),
+        totalOfElements: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].totalOfElements:null)
 	};
 };
 

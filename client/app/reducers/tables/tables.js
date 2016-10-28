@@ -40,7 +40,9 @@ const initialState = { // Each table we may perform actions upon requires an
         rowSortDesc: false,
         pageNumber: 1,
         numberOfPages: 9,
-        maxButtons: 5
+        maxButtons: 5,
+        pageSize: 13,
+        totalOfElements: 117
     }
 };
 

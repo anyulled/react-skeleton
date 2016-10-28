@@ -129,7 +129,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 
     render() {
-    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber} = this.props;;
+    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber, pageSize} = this.props;
     	let sortedData = this.sortData(data);        
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = columns
