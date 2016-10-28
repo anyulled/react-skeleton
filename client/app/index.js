@@ -13,6 +13,7 @@ import UsersBootstrapTable from "./components/UsersBootstrapTable";
 import UsersFixedDataTable2 from "./components/UsersFixedDataTable2";
 import UsersResponsiveFixedDataTable2 from "./components/UsersResponsiveFixedDataTable2";
 import UserManagement from "./components/UserManagement";
+import UserManagementWithTooltips from "./components/UserManagementWithTooltips";
 import DynamicFormPage from "./components/DynamicFormPage";
 import App from "./components/App";
 
