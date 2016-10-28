@@ -23,6 +23,7 @@ ReactDOM.render(
                 <IndexRoute component={ContentContainer}/>
                 <Route path="/widgets" component={Widgets}/>
                 <Route path="/usermanager" component={UserManagement}/>
+                <Route path="/usermanagertooltip" component={UserManagementWithTooltips}/>
                 <Route path="/grids/bootstrap" component={UsersBootstrapTable}/>
                 <Route path="/grids/fixed-data-table-2" component={UsersFixedDataTable2}/>
                 <Route path="/grids/responsive-fixed-data-table-2" component={UsersResponsiveFixedDataTable2}/>
