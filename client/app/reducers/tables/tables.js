@@ -38,8 +38,11 @@ const initialState = { // Each table we may perform actions upon requires an
             // no matter what
         rowSortKey: "id",
         rowSortDesc: false,
-        pageNumber:2,
-        numberOfPages:4
+        pageNumber: 1,
+        numberOfPages: 9,
+        maxButtons: 5,
+        pageSize: 13,
+        totalOfElements: 117
     }
 };
 

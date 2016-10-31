@@ -66,7 +66,6 @@ export function usersLoad(properties) {
             type: USER_CLEAR
         });
 
-        console.log(params);
         axios.get(config.api.url + "/users"+(params.length>0?"?"+params:""))
             .then((data) => {
                 dispatch({
