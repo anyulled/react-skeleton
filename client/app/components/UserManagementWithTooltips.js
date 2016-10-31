@@ -10,30 +10,10 @@ import PopupInButtonClick from "./PopupInButtonClick";
 import PopupInButtonClick2 from "./PopupInButtonClick2";
 import PopoverWithButtonClick from "./PopoverWithButtonClick";
 
-//class ActionFormatter extends React.Component {
-//    render() {
-//        let {dispatch,row} = this.props;
-//        return (
-//            <button className='btn btn-primary editRowBtn' onClick={() => {dispatch(row);}}>Edit</button>
-//        );
-//    }
-//}
-//
-//function actionFormatter(cell, row, formatExtraData) {
-//    return <ActionFormatter row={row} dispatch={formatExtraData}/>;
-//}
-//function tooltip() {
-//    return <Tooltip id="tooltip"><strong>Holy guacamole!</strong> Check this info.</Tooltip>;
-//}
-
-const tooltip = (
-        <Tooltip id="tooltip"><strong>Holy guacamole!</strong> Check this info.</Tooltip>
-);
-
 const UserFormPageWithTooltips = () => {
     return (
-    <div>
-        <Tooltip placement="right" className="in" id="tooltip-right">
+            <div>
+            <Tooltip placement="right" className="in" id="tooltip-right">
             Tooltip right
         </Tooltip>
         <br />
@@ -50,6 +30,7 @@ const UserFormPageWithTooltips = () => {
         <PopupInButtonClick2 colorType={colors.danger} pos={'right'} initialShow={true} />
         <br />
         <br />
+    
 	    <Grid fluid>
 	        <Row>
 	            <Col xs={12} md={8}>
