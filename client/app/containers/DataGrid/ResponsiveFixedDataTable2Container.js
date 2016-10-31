@@ -16,6 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 		rowSortKey: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortKey:null),
 		rowSortDesc: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortDesc:null),
         pageNumber: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageNumber:null),
+        pageSize: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageSize:null),
         numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null),
         totalOfElements: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].totalOfElements:null)
 	};
@@ -40,6 +41,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         changePage: (table, page) => {
             dispatch(tableActions.userTablePagination(table, page));
+        },
+        changePageSize: (table, pageSize) => {
+            dispatch(tableActions.userTablePaginationSelectPageSize(table, pageSize));
         }
     };
 };

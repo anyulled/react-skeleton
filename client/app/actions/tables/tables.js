@@ -10,6 +10,7 @@ export const TABLES_FILTER_SEARCH_OPTION = "tables/filter/search/option";
 export const TABLES_COLUMN_SET_ORDER = "tables/column/set/order";
 export const TABLES_ROW_SET_ORDER = "tables/row/set/order";
 export const TABLES_PAGINATION = "tables/pagination";
+export const TABLES_PAGINATION_SELECT_PAGE_SIZE = "tables/pagination/page/size";
 
 export function filterAdd(table, filter) {
     return {
@@ -94,4 +95,11 @@ export function userTablePagination(table, value) {
     };
 }
 
+export function userTablePaginationSelectPageSize(table, value) {
+    return {
+        type: TABLES_PAGINATION_SELECT_PAGE_SIZE,
+        table,
+        value
+    };
+}
 

@@ -41,6 +41,7 @@ export function usersLoad(properties) {
         if(properties){
             var filters = properties.filters;
             params = "pageNumber="+properties.pageNumber;
+            params += "&"+"pageSize="+properties.pageSize;
 
             if(filters){
                 var search=filters

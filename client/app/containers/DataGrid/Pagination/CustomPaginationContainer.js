@@ -18,7 +18,10 @@ const mapDispatchToProps = (dispatch) => {
     return {
         changePage: (table, page) => {
             dispatch(tableActions.userTablePagination(table, page));
-        }
+        },
+        changePageSize: (table, pageSize) => {
+            dispatch(tableActions.userTablePaginationSelectPageSize(table, pageSize));
+        }        
     };
 };
 

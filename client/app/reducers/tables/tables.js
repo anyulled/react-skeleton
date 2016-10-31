@@ -148,6 +148,9 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_PAGINATION:
             targetTable.pageNumber=action.value;
             break;
+        case actions.TABLES_PAGINATION_SELECT_PAGE_SIZE:
+            targetTable.pageSize=action.value;
+            break;
         case actions.TABLES_FILTER_ERROR:
             break;
     }
