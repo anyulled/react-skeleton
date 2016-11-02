@@ -7,10 +7,10 @@ const mapStateToProps = (state,ownProps) => {
     return {
     	tableName: ownProps.tableName,
         pageNumber: state.tables[ownProps.tableName].pageNumber,
-        numberOfPages: state.tables[ownProps.tableName].numberOfPages,
-        maxButtons: state.tables[ownProps.tableName].maxButtons,
         pageSize: state.tables[ownProps.tableName].pageSize,
-        totalOfElements: state.tables[ownProps.tableName].totalOfElements
+        numberOfPages: state.tables[ownProps.tableName].numberOfPages,
+        numberOfElements: state.tables[ownProps.tableName].numberOfElements,
+        maxButtons: state.tables[ownProps.tableName].maxButtons
     };
 };
 
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => {
         changePage: (table, page) => {
             dispatch(tableActions.userTablePagination(table, page));
         },
-        changePageSize: (table, pageSize) => {
-            dispatch(tableActions.userTablePaginationSelectPageSize(table, pageSize));
+        changePageSize: (table, pageSize, pageNumber, numberOfPages, numberOfElements) => {
+            dispatch(tableActions.userTablePaginationSelectPageSize(table, pageSize, pageNumber, numberOfPages, numberOfElements));
         }        
     };
 };

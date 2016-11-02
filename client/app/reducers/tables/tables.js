@@ -39,10 +39,10 @@ const initialState = { // Each table we may perform actions upon requires an
         rowSortKey: "id",
         rowSortDesc: false,
         pageNumber: 1,
-        numberOfPages: 9,
+        numberOfPages: 100,
         maxButtons: 5,
-        pageSize: 13,
-        totalOfElements: 117
+        pageSize: 100,
+        numberOfElements: 100
     }
 };
 
@@ -149,7 +149,10 @@ const tables = (state = initialState, action) => {
             targetTable.pageNumber=action.value;
             break;
         case actions.TABLES_PAGINATION_SELECT_PAGE_SIZE:
-            targetTable.pageSize=action.value;
+            targetTable.pageSize=action.pageSize;
+            targetTable.pageNumber=action.pageNumber;
+            targetTable.numberOfPages=action.numberOfPages;
+            targetTable.numberOfElements=action.numberOfElements;
             break;
         case actions.TABLES_FILTER_ERROR:
             break;

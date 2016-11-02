@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../../config";
+import * as tableActions from "../tables/tables";
 
 export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
@@ -71,7 +72,15 @@ export function usersLoad(properties) {
             .then((data) => {
                 dispatch({
                     type: USER_ADD,
-                    payload: data.data
+                    payload: data.data.data
+                });
+                dispatch({
+                    type: tableActions.TABLES_PAGINATION_SELECT_PAGE_SIZE,
+                    table: "users",
+                    pageSize: data.data.size,
+                    pageNumber: data.data.page,
+                    numberOfPages: data.data.totalPages,
+                    numberOfElements: data.data.totalItems
                 });
             }).catch((error)=> {
                 dispatch({

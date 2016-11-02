@@ -21,10 +21,13 @@ app.get("/users", function (req, res) {
     var query = url.parse(req.url,true).query;
     console.log("Args: " + JSON.stringify(query));
     var page = req.param('pageNumber');
+    var pageSize = req.param('pageSize');
     console.log("page: " + page);
+    console.log("pageSize: " + pageSize);
     //it paginates only to the 10 existing user files
-    page = (page != null && page > 0 && page < 10) ? page : "";
-    res.sendFile(__dirname + resourcePath + "users"+ page +".json")
+    page = (page != null) ? page : 1;
+    pageSize = (pageSize != null) ?  + pageSize : 13;
+    res.sendFile(__dirname + resourcePath + "users"+ page + "_" + pageSize +".json");
 });
 
 app.get("/users/filters", function (req, res) {

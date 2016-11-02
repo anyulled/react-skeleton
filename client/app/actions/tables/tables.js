@@ -41,7 +41,7 @@ export function filterLoad(table) {
                 dispatch({
                     type: TABLES_FILTER_LOAD,
                     table,
-                    payload: data.data
+                    payload: data.data.data?data.data.data:data.data
                 });
             }).catch((error)=> {
                 dispatch({
@@ -95,11 +95,14 @@ export function userTablePagination(table, value) {
     };
 }
 
-export function userTablePaginationSelectPageSize(table, value) {
+export function userTablePaginationSelectPageSize(table, pageSize, pageNumber, numberOfPages, numberOfElements) {
     return {
         type: TABLES_PAGINATION_SELECT_PAGE_SIZE,
         table,
-        value
+        pageSize,
+        pageNumber,
+        numberOfPages,
+        numberOfElements
     };
 }
 

@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
         pageNumber: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageNumber:null),
         pageSize: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageSize:null),
         numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null),
-        totalOfElements: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].totalOfElements:null)
+        numberOfElements: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfElements:null)
 	};
 };
 

@@ -19,18 +19,15 @@ class CustomPagination extends React.Component {
     }
 
     handleSelectPageSize(event) {
-        this.props.changePageSize(this.props.tableName, event);
+        this.props.changePageSize(this.props.tableName, event, this.props.pageNumber, this.props.numberOfPages, this.props.numberOfElements);
     }
 	
     render() {
-        let firstElementOfThisPage = ((this.props.pageNumber-1) * this.props.pageSize) + 1;
-        let  lastElementOfThisPage = ((this.props.pageNumber  ) * this.props.pageSize);
-        let totalOfElements = this.props.totalOfElements
         return(
             <div style={{width:100+"%","backgroundImage":"linear-gradient(#fff,#efefef)","border": "1px solid #d3d3d3","padding":"7px 2px 3px"}}>
                 <Grid fluid>
                     <Row>
-                        <Col xs={7} sm={8} style={{"paddingLeft":"3px"}}>
+                        <Col xs={6} sm={7} style={{"paddingLeft":"3px"}}>
                             <Pagination
                                 prev
                                 next
@@ -44,15 +41,11 @@ class CustomPagination extends React.Component {
                                 onSelect={this.handleSelectPage}
                             />
                         </Col>
-                        <Col xs={2} sm={2} style={{"borderLeft":"1px solid rgb(211, 211, 211)","minHeight":"50px","padding":"13px 2px 2px 14px"}}>
+                        <Col xs={2} sm={3} style={{"borderLeft":"1px solid rgb(211, 211, 211)","minHeight":"50px","padding":"13px 2px 2px 14px"}}>
                             <div style={{"margin":"1px 0px"}}>
-                                <DropdownButton title="Page Size" id="select-page-size-dropdown" onSelect={this.handleSelectPageSize}>
-                                    <MenuItem eventKey={5}>5</MenuItem>
-                                    <MenuItem eventKey={10}>10</MenuItem>
+                                <DropdownButton title={"Page Size: "+this.props.pageSize+" "} id="select-page-size-dropdown" onSelect={this.handleSelectPageSize}>
                                     <MenuItem eventKey={13}>13</MenuItem>
-                                    <MenuItem divider />
-                                    <MenuItem eventKey={50}>50</MenuItem>
-                                    <MenuItem eventKey={100}>100</MenuItem>
+                                    <MenuItem eventKey={20}>20</MenuItem>
                                 </DropdownButton>
                             </div>
                         </Col>

@@ -76,6 +76,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
 	componentWillReceiveProps(props) {
 		var hasChange = (this.props.pageNumber!=props.pageNumber);
         hasChange |= (this.props.pageSize!=props.pageSize);
+        hasChange |= (this.props.numberOfPages!=props.numberOfPages);
 		
 		if(props.filters!=this.props.filters || hasChange){
 			//convert both filter lists to an easily comparable pair of strings

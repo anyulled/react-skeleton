@@ -6,10 +6,10 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state,ownProps) => { 
     return {
+        pageSize: state.tables[ownProps.tableName].pageSize,
         pageNumber: state.tables[ownProps.tableName].pageNumber,
         numberOfPages: state.tables[ownProps.tableName].numberOfPages,
-        pageSize: state.tables[ownProps.tableName].pageSize,
-        totalOfElements: state.tables[ownProps.tableName].totalOfElements
+        numberOfElements: state.tables[ownProps.tableName].numberOfElements
     };
 };
 
