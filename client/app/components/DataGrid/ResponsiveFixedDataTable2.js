@@ -222,7 +222,8 @@ ResponsiveFixedDataTable2.propTypes = {
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
     onRemoveClick: PropTypes.func.isRequired,
-    changePage: PropTypes.func.isRequired
+    changePage: PropTypes.func.isRequired,
+    changePageSize: PropTypes.func.isRequired
 };
 
 export default ResponsiveFixedDataTable2;
