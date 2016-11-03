@@ -151,6 +151,9 @@ const tables = (state = initialState, action) => {
         case actions.TABLES_PAGINATION_SELECT_PAGE_SIZE:
             targetTable.pageSize=action.pageSize;
             targetTable.pageNumber=action.pageNumber;
+            if ( targetTable.pageNumber > action.numberOfPages ){
+                targetTable.pageNumber = action.numberOfPages;
+            }
             targetTable.numberOfPages=action.numberOfPages;
             targetTable.numberOfElements=action.numberOfElements;
             break;
