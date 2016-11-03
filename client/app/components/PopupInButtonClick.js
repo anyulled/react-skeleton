@@ -70,7 +70,7 @@ const ToolTip = props => {
     colorType
   } = props;
   
-  console.log (props);
+//  console.log (props);
 //  PlacementStyles[props.placement].bgColor = {backgroundColor: colorType};
   if (colorType !== undefined && colorType !== null){
       TooltipInnerStyle.backgroundColor = colorType;
@@ -113,7 +113,7 @@ const PopupInButtonClick = React.createClass({
 
   render(){
 
-      console.log (this.props)
+//      console.log (this.props)
       
     return (
       <div style={{ height: 100, paddingLeft: 150, position: 'relative' }}>

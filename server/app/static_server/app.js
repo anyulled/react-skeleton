@@ -67,6 +67,26 @@ app.get("/content/3", function (req, res) {
     res.sendFile(__dirname + resourcePath + "content_3.json");
 });
 
+app.get("/userButtonsInfo", function (req, res) {
+    console.log("Getting user buttons info");
+    
+    var button = req.param('button');
+    console.log("Button info to retrieve: " + button);
+    
+    res.set({
+        "Content-Type": "application/json"
+    });
+    
+    if (button == 'add' || button == 'edit'){
+        console.log("Sending button file");
+        res.sendFile(__dirname + resourcePath + button.concat("UserButton.json"));
+    } else {
+        console.log("Error: The file doesn`t exist");
+        // Error response
+        //var error = '{"error":"' + button.concat(" button not exist") + '"}';
+    } // else
+}); // app.get("/userButtonInfo", function (req, res)
+
 app.listen(3000, function () {
     console.log("App listening on port 3000!");
 });

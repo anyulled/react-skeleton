@@ -9,32 +9,19 @@ import * as colors from "../utils/colors.js";
 import PopupInButtonClick from "./PopupInButtonClick";
 import PopupInButtonClick2 from "./PopupInButtonClick2";
 import PopoverWithButtonClick from "./PopoverWithButtonClick";
+import AddUserButtonContainer from "../containers/AddUserButtonContainer";
 
 const UserFormPageWithTooltips = () => {
     return (
             <div>
-            <Tooltip placement="right" className="in" id="tooltip-right">
-            Tooltip right
-        </Tooltip>
-        <br />
-        <br />
+
         <PopoverWithButtonClick />
-        <br />
-        <br />
-        <PopupInButtonClick colorType={colors.success} />
-        <br />
-        <br />
-        <PopupInButtonClick2 colorType={colors.warning} pos={'top'} initialShow={false}/>
-        <br />
-        <br />
-        <PopupInButtonClick2 colorType={colors.danger} pos={'right'} initialShow={true} />
-        <br />
-        <br />
+
     
 	    <Grid fluid>
 	        <Row>
 	            <Col xs={12} md={8}>
-	                <AddUser/>
+	                <AddUserButtonContainer/>
 	            </Col>
 	            <Col xs={12} md={10}>
 	                <h4>This is for display purposes only. Any changes on the user list will be undone upon

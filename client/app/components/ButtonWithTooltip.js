@@ -1,5 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom";
+var React = require('react');
+var ReactDOM = require('react-dom');
 
 import {Tooltip, Button} from "react-bootstrap";
 import {Overlay} from "react-overlays";
@@ -29,7 +29,7 @@ const TooltipArrowStyle = {
   borderTopColor: 'transparent',
   borderBottomColor: 'transparent',
   borderStyle: 'solid',
-  opacity: .75
+  opacity: .75,
 };
 
 const PlacementStyles = {
@@ -59,6 +59,8 @@ const ToolTip = props => {
   
 //  console.log (props);
 //  console.log(PlacementStyles);
+    console.log ('ButtonWithTooltip::ToolTip: ');
+    console.log (props);
   
   let placementStyle = PlacementStyles[props.placement];
 
@@ -70,10 +72,10 @@ const ToolTip = props => {
     colorType
   } = props;
   
-//  console.log (props);
+  console.log (props);
 //  PlacementStyles[props.placement].bgColor = {backgroundColor: colorType};
   if (colorType !== undefined && colorType !== null){
-      TooltipInnerStyle.backgroundColor = colorType;
+      TooltipInnerStyle.backgroundColor = eval("colors.".concat(colorType));
   }
 //  console.log(PlacementStyles);
   
@@ -81,63 +83,39 @@ const ToolTip = props => {
     <div style={{...TooltipStyle, ...placementStyle.tooltip, ...style}}>
       <div style={{...TooltipArrowStyle, ...placementStyle.arrow, left, top }}/>
       <div style={TooltipInnerStyle}>
-        {children}
+        {props.children}
       </div>
     </div>
   );
 };
 
-const PopupInButtonClick2 = React.createClass({
-
-  getInitialState(){
-    return { show: this.props.initialShow,
-        placements: ['left', 'top', 'right', 'bottom'],
-        placement: this.props.pos
-    }
-  },
-
-  toggle(){
-    let show = this.state.show;
-    let placements = this.state.placements;
-    let placement = this.state.placement;
-
-    if (!show) {
-      show = true;
-    }
-    else {
-      show = false;
-    }
-
-    return this.setState({ show, placement });
-  },
-
-  render(){
-
-//      console.log (this.props)
-      
-    return (
-      <div style={{ height: 100, paddingLeft: 150, position: 'relative' }}>
-        <Button bsStyle='primary' ref='target' onMouseOver={this.toggle} onMouseOut={this.toggle}>
-          I am an Overlay target
+function ButtonWithTooltip (props) {
+    console.log ('ButtonWithTooltip::ButtonWithTooltip');
+    console.log (props);
+  return props.hasTooltip === true
+    ? <div>
+        <Button type="button" bsStyle="primary" onClick={() => props.onAddUserClick()} onMouseOver={props.onToggleTooltip} onMouseOut={props.onToggleTooltip}>
+            {props.text}
         </Button>
-        <p>
-          keep clicking to see the overlay placement change
-        </p>
-
         <Overlay
-          show={this.state.show}
+          show={props.show}
           onHide={() => this.setState({ show: false })}
-          placement={this.state.placement}
+          placement='right'
           container={this}
-          target={ props => ReactDOM.findDOMNode(this.refs.target)}
+          target={props.target}
         >
-          <ToolTip colorType={this.props.colorType} pos={this.props.pos} initialShow={this.props.initialShow}>
-            I'm placed to the: <strong>{this.state.placement}</strong>
+          <ToolTip colorType={props.type}>
+              {props.tooltip}
           </ToolTip>
         </Overlay>
       </div>
-    );
-  }
-});
+    : <Button type="button" bsStyle="primary" onClick={() => props.onAddUserClick()}>New User without tooltip</Button>
+}
 
-export default PopupInButtonClick2;
+ButtonWithTooltip.propTypes = {
+  hasTooltip: React.PropTypes.bool.isRequired,
+  onAddUserClick: React.PropTypes.func.isRequired,
+  onToggleTooltip: React.PropTypes.func.isRequired,
+}
+
+module.exports = ButtonWithTooltip;
