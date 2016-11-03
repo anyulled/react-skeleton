@@ -43,9 +43,6 @@ class Navigation extends React.Component {
                     <LinkContainer to="/usermanagertooltip">
                         <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management with tooltips</NavItem>
                     </LinkContainer>
-                    <LinkContainer to="/popupinbuttonclick">
-                        <NavItem eventKey={4}><Glyphicon glyph="cog"/> Popup In Button click</NavItem>
-                    </LinkContainer>
                 </NavDropdown>
             </Nav>
         </Navbar>);

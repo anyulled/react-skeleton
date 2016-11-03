@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import {Tooltip, Button} from "react-bootstrap";
 import {Overlay} from "react-overlays";
 
-import * as colors from "../utils/colors.js";
+import * as colors from "../../utils/colors.js";
 
 //Styles Mostly from Bootstrap
 const TooltipStyle = {
@@ -70,7 +70,7 @@ const ToolTip = props => {
     colorType
   } = props;
   
-  console.log (props);
+//  console.log (props);
 //  PlacementStyles[props.placement].bgColor = {backgroundColor: colorType};
   if (colorType !== undefined && colorType !== null){
       TooltipInnerStyle.backgroundColor = colorType;
@@ -113,10 +113,10 @@ const PopupInButtonClick = React.createClass({
 
   render(){
 
-      console.log (this.props)
+//      console.log (this.props)
       
     return (
-      <div style={{ height: 100, paddingLeft: 150, position: 'relative' }}>
+      <div style={{ height:50, paddingLeft: 150, position: 'relative' }}>
         <Button bsStyle='primary' ref='target' onClick={this.toggle}>
           I am an Overlay target
         </Button>

@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import {Tooltip, Button, Popover} from "react-bootstrap";
 import {Overlay} from "react-overlays";
 
-import * as colors from "../utils/colors.js";
+import * as colors from "../../utils/colors.js";
 
 class PopoverWithButtonClick extends React.Component {
   constructor(props, context) {
@@ -19,7 +19,7 @@ class PopoverWithButtonClick extends React.Component {
 
   render() {
     return (
-            <div style={{ height: 100, paddingLeft: 150, position: 'relative' }}>
+            <div style={{ height:50, paddingLeft: 150, position: 'relative' }}>
         <Button onMouseOver={this.handleClick} onMouseOut={this.handleClick}>
           Holy guacamole!
         </Button>

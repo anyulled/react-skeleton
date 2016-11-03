@@ -36,6 +36,8 @@ const users = (state = [], action) => {
             return [];
         case actions.ERROR:
             return state;
+        case actions.USER_BUTTON_INFO:
+            return {...state, ...action.buttonInfo};
     }
     return state;
 };
