@@ -8,9 +8,9 @@ import TooltipButtonContainer from "./TooltipButtonContainer";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        text: state.users.text,
-        tooltip: state.users.tooltip,
-        type: state.users.type,
+        text: state.usersTooltips.text,
+        tooltip: state.usersTooltips.tooltip,
+        type: state.usersTooltips.type,
         componentType: ownProps.componentType,
         subType: ownProps.subType,
         hasTooltip: ownProps.hasTooltip,
