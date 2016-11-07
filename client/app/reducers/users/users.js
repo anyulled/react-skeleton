@@ -52,6 +52,3 @@ export const usersTooltips = (state = [], action) => {
     }
     return state;
 };
-
-
-export default users;

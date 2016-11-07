@@ -77,9 +77,9 @@ app.get("/userButtonsInfo", function (req, res) {
         "Content-Type": "application/json"
     });
     
-    if (button == 'addUser' || button == 'editUser'){
+    if (button == 'addUserButton' || button == 'editUserButton'){
         console.log("Sending button file");
-        res.sendFile(__dirname + resourcePath + button.concat("Button.json"));
+        res.sendFile(__dirname + resourcePath + button.concat(".json"));
     } else {
         console.log("Error: The file doesn`t exist");
         // Error response

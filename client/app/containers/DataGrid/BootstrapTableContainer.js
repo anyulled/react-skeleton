@@ -26,6 +26,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         sortRowsBy: (sortKey) => {
             dispatch(tableActions.userTableRowOrderSet(sortKey));
+        },
+        onBackLoadTooltip: () => {
+            dispatch(userActions.getButtonInfo('editUserButton'));
         }
     };
 };
