@@ -75,6 +75,8 @@ class ResponsiveFixedDataTable2 extends React.Component {
 	
 	componentWillReceiveProps(props) {
 		var hasChange = (this.props.pageNumber!=props.pageNumber);
+        hasChange |= (this.props.pageSize!=props.pageSize);
+        hasChange |= (this.props.numberOfPages!=props.numberOfPages);
 		
 		if(props.filters!=this.props.filters || hasChange){
 			//convert both filter lists to an easily comparable pair of strings
@@ -220,7 +222,8 @@ ResponsiveFixedDataTable2.propTypes = {
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
     onRemoveClick: PropTypes.func.isRequired,
-    changePage: PropTypes.func.isRequired
+    changePage: PropTypes.func.isRequired,
+    changePageSize: PropTypes.func.isRequired
 };
 
 export default ResponsiveFixedDataTable2;

@@ -8,6 +8,7 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
 //import specific app components
 import ContentContainer from "./containers/ContentContainer";
+import CollapsiblePane from "./components/CollapsiblePane";
 import Widgets from "./components/Widgets";
 import UsersBootstrapTable from "./components/UsersBootstrapTable";
 import UsersFixedDataTable2 from "./components/UsersFixedDataTable2";
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Router history={hashHistory}>
             <Route path="/" component={App}>
                 <IndexRoute component={ContentContainer}/>
+                <Route path="/collapsiblepane" component={CollapsiblePane}/>
                 <Route path="/widgets" component={Widgets}/>
                 <Route path="/usermanager" component={UserManagement}/>
                 <Route path="/grids/bootstrap" component={UsersBootstrapTable}/>
