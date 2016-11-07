@@ -5,8 +5,8 @@ function renderSortArrow (sortKey, sortDesc, sortId) {
     return sortKey === sortId ? (sortDesc ? "↓" : "↑") : "";
 }
 
-const SortHeaderCell = ({children, sortBy, sortKey, sortDesc, columnKey, ...props}) => {
-    const clickFunc = () => sortBy(columnKey);
+const SortHeaderCell = ({children, sortBy, sortKey, sortDesc, columnKey,tableName, ...props}) => {
+    const clickFunc = () => sortBy(tableName,columnKey);
     return (
         <Cell {...props}>
             <a onClick={clickFunc}>

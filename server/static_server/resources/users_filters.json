@@ -1,0 +1,28 @@
+[{
+    "key": "numeric",
+    "name": "Numeric",
+    "type": "number",
+    "allow_options": false
+}, {
+    "key": "date",
+    "name": "Date",
+    "type": "date",
+    "allow_options": true,
+    "default_option": "GT"
+}, {
+    "key": "list",
+    "name": "List",
+    "type": "list",    
+    "allowed_values": ["List Value A","List Value B","List Value C","List Value D"],
+    "allow_options": false        
+}, {
+    "key": "text",
+    "name": "Text",
+    "type": "text",    
+    "allow_options": false        
+}, {
+    "key": "boolean",
+    "name": "Boolean",
+    "type": "boolean",    
+    "allow_options": false        
+}]
