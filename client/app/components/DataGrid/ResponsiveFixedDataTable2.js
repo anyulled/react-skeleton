@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
-import {Glyphicon} from "react-bootstrap";
+import {Glyphico, Pagination} from "react-bootstrap";
 import FilterBarContainer from "../../containers/DataGrid/Filter/FilterBarContainer";
+import CustomPaginationContainer from "../../containers/DataGrid/Pagination/CustomPaginationContainer";
 import TextCell from "../../components/TextCell";
 import SortHeaderCell from "../../components/SortHeaderCell";
 import {Table, Column, Cell} from "fixed-data-table-2";
@@ -16,9 +17,9 @@ class ResponsiveFixedDataTable2 extends React.Component {
         super(props, context);
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
         this.state = {
-    		gridWidth: 1,
+        	gridWidth: 1,
     		gridHeight: 1
-        };
+    	};
     }  
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -73,7 +74,11 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 	
 	componentWillReceiveProps(props) {
-		if(props.filters!=this.props.filters){
+		var hasChange = (this.props.pageNumber!=props.pageNumber);
+        hasChange |= (this.props.pageSize!=props.pageSize);
+        hasChange |= (this.props.numberOfPages!=props.numberOfPages);
+		
+		if(props.filters!=this.props.filters || hasChange){
 			//convert both filter lists to an easily comparable pair of strings
 			let plainOldProps=this.props.filters?this.props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
@@ -84,10 +89,12 @@ class ResponsiveFixedDataTable2 extends React.Component {
 				.filter((e)=>e!=null)
 				.join():"";
 			if(!(plainOldProps===plainNewProps)){
-				if (typeof this.props.dataLoad === "function") {
-		            this.props.dataLoad(props.filters);
-		        }	
+				hasChange = true;	
 			}			
+		}
+
+		if ((typeof this.props.dataLoad === "function") && hasChange) {
+		   this.props.dataLoad(props);
 		}		
 	}
 	
@@ -124,8 +131,8 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 
     render() {
-    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight} = this.props;
-        let sortedData = this.sortData(data);        
+    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber, pageSize} = this.props;
+    	let sortedData = this.sortData(data);        
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = columns
         	?
@@ -176,6 +183,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
                              )}
 		                /> : null }
 		            </Table>
+                    <CustomPaginationContainer {...this.props}/>  
 	            </div>
             </div>
         );
@@ -213,7 +221,9 @@ ResponsiveFixedDataTable2.propTypes = {
     sortRowsBy: PropTypes.func.isRequired,
     tableColumnOrderSet: PropTypes.func.isRequired,
     onEditClick: PropTypes.func.isRequired,
-    onRemoveClick: PropTypes.func.isRequired
+    onRemoveClick: PropTypes.func.isRequired,
+    changePage: PropTypes.func.isRequired,
+    changePageSize: PropTypes.func.isRequired
 };
 
 export default ResponsiveFixedDataTable2;

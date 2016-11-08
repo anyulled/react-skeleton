@@ -29,6 +29,14 @@ class Navigation extends React.Component {
                 <LinkContainer to="/widgets">
                     <NavItem eventKey={3}>Widgets</NavItem>
                 </LinkContainer>
+                <NavDropdown eventKey="4" title="Forms" id="nav-dropdown">
+                    <LinkContainer to="/forms/dynamic">
+                        <NavItem eventKey={2}>dynamic</NavItem>
+                    </LinkContainer>
+                </NavDropdown>
+                <LinkContainer to="/collapsiblepane">
+                    <NavItem eventKey={6}>CollapsiblePane</NavItem>
+                </LinkContainer>
             </Nav>
             <Nav pullRight>
                 <LinkContainer to="/usermanager">

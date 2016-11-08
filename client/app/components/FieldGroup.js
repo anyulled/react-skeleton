@@ -4,7 +4,7 @@ import {FormControl, FormGroup, ControlLabel} from "react-bootstrap";
 
 const FieldGroup = ({field, label}) => {
 	const {initialValue, autofill, onUpdate, valid, invalid, dirty, pristine, error, active, touched, visited, autofilled, ...rest } = field;
-    return (<FormGroup>
+	return (<FormGroup>
         <ControlLabel htmlFor={field.name}>{label}</ControlLabel>
         <FormControl type="text" className="u-full-width" {...rest} />
         {field.touched && field.error && <div style={{color: "white", backgroundColor: danger}}>{field.error}</div>}

@@ -7,9 +7,9 @@ import BootstrapTable from "../../components/DataGrid/BootstrapTable";
 const mapStateToProps = (state, ownProps) => {
 	return {
         data: state.users,
-        columns: state.tables.userTable.columns,
-        rowSortKey: state.tables.userTable.rowSortKey,
-        rowSortDesc: state.tables.userTable.rowSortDesc
+        columns: state.tables.users.columns,
+        rowSortKey: state.tables.users.rowSortKey,
+        rowSortDesc: state.tables.users.rowSortDesc
     };
 };
 
