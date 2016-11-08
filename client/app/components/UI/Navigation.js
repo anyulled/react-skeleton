@@ -42,9 +42,14 @@ class Navigation extends React.Component {
                 </LinkContainer>
             </Nav>
             <Nav pullRight>
-                <LinkContainer to="/usermanager">
-                    <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
-                </LinkContainer>
+                <NavDropdown eventKey="4" title="User managemnt tables" id="nav-dropdown">
+                    <LinkContainer to="/usermanager">
+                        <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/usermanagertooltip">
+                        <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management with tooltips</NavItem>
+                    </LinkContainer>
+                </NavDropdown>
             </Nav>
         </Navbar>);
     }
