@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 import {connect} from "react-redux";
-import Widgets from "../components/Widgets";
+import CustomMultiselect from "../components/CustomMultiselectComponent";
 import * as multiselectActions from "../actions/multiselect/multiselect";
 
 let objectData = [  
@@ -612,4 +612,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Widgets);
+)(CustomMultiselect);

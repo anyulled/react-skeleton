@@ -8,6 +8,7 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
 //import specific app components
 import ContentContainer from "./containers/ContentContainer";
+import CustomMultiselectContainer from "./containers/CustomMultiselectContainer";
 import CollapsiblePane from "./components/CollapsiblePane";
 import Widgets from "./components/Widgets";
 import UsersBootstrapTable from "./components/UsersBootstrapTable";
@@ -24,6 +25,7 @@ ReactDOM.render(
                 <IndexRoute component={ContentContainer}/>
                 <Route path="/collapsiblepane" component={CollapsiblePane}/>
                 <Route path="/widgets" component={Widgets}/>
+                <Route path="/customMultiselect" component={CustomMultiselectContainer}/>
                 <Route path="/usermanager" component={UserManagement}/>
                 <Route path="/grids/bootstrap" component={UsersBootstrapTable}/>
                 <Route path="/grids/fixed-data-table-2" component={UsersFixedDataTable2}/>
