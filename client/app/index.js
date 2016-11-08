@@ -8,6 +8,8 @@ import {Router, Route, IndexRoute, hashHistory} from "react-router";
 
 //import specific app components
 import ContentContainer from "./containers/ContentContainer";
+import CustomMultiselectContainer from "./containers/CustomMultiselectContainer";
+import CollapsiblePane from "./components/CollapsiblePane";
 import Widgets from "./components/Widgets";
 import UsersBootstrapTable from "./components/UsersBootstrapTable";
 import UsersFixedDataTable2 from "./components/UsersFixedDataTable2";

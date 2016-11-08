@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../../config";
+import * as tableActions from "../tables/tables";
 
 export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
@@ -33,7 +34,7 @@ export function userUpdate(id, user) {
     };
 }
 
-export function usersLoad(properties) {	
+export function usersLoad(properties) { 
     return function (dispatch) {
 
         var params="";
@@ -41,6 +42,7 @@ export function usersLoad(properties) {
         if(properties){
             var filters = properties.filters;
             params = "pageNumber="+properties.pageNumber;
+            params += "&"+"pageSize="+properties.pageSize;
 
             if(filters){
                 var search=filters
@@ -70,7 +72,15 @@ export function usersLoad(properties) {
             .then((data) => {
                 dispatch({
                     type: USER_ADD,
-                    payload: data.data
+                    payload: data.data.data
+                });
+                dispatch({
+                    type: tableActions.TABLES_PAGINATION_SELECT_PAGE_SIZE,
+                    table: "users",
+                    pageSize: data.data.size,
+                    pageNumber: data.data.page,
+                    numberOfPages: data.data.totalPages,
+                    numberOfElements: data.data.totalItems
                 });
             }).catch((error)=> {
                 dispatch({
@@ -82,17 +92,17 @@ export function usersLoad(properties) {
 }
 
 function formatFilterValue(filter){
-	switch(filter.type){
-	case "date": //Moment @see http://momentjs.com/
-		return filter.searchValue.format("YYYY-MM-DD");
-	default:
-		return filter.searchValue.trim();
-	}
+    switch(filter.type){
+    case "date": //Moment @see http://momentjs.com/
+        return filter.searchValue.format("YYYY-MM-DD");
+    default:
+        return filter.searchValue.trim();
+    }
 }
 
 export function usersLoadFromData(data) {
     return function (dispatch) {
-    	nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
+        nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
         dispatch({
             type: USER_CLEAR
         });
