@@ -1,12 +1,10 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import Tooltip from "../../components/Tooltip/Tooltip";
 
 const TooltipContainer = React.createClass({
   getInitialState: function () {
     console.log ('TooltipContainer::getInitialState');
-    console.log(this.props);
     return {
       showTooltip: this.props.showTooltip
     }
@@ -16,7 +14,6 @@ const TooltipContainer = React.createClass({
   },
   componentDidMount: function () {
     console.log ('TooltipContainer::componentDidMount');
-    console.log(this.props);
     if (this.props.loadBackTooltip){
       this.props.onLoadBackTooltip();
     } // if
@@ -40,51 +37,30 @@ const TooltipContainer = React.createClass({
   },
   render: function () {
     console.log ('TooltipContainer::render');
-    console.log(this.props);
+    var childrenNewProps = [{onMouseOver: this.handleToogleTooltip, onMouseOut: this.handleToogleTooltip}];
+    var newChildren = React.cloneElement(this.props.children, ...childrenNewProps);
+    
     return (
       <Tooltip
         tooltip={this.props.tooltip}
-        type={this.props.type}
+        colorType={this.props.colorType}
         placement={this.props.placement}
-        onToggleTooltip={this.handleToogleTooltip}
         showTooltip={this.state.showTooltip}
         target={this.state.target}
-        component={this.props.children}
+        component={newChildren}
       />
     );
   }
 });
 
 TooltipContainer.propTypes = {
-  tooltip: React.PropTypes.string,
-  type: React.PropTypes.string,
   showTooltip: React.PropTypes.bool.isRequired,
   placement: React.PropTypes.string.isRequired,
+  tooltip: React.PropTypes.string,
+  colorType: React.PropTypes.string,
   loadBackTooltip: React.PropTypes.bool.isRequired,
   onLoadBackTooltip: React.PropTypes.func,
   children: React.PropTypes.element.isRequired
 } // TooltipContainer.propTypes
 
-const mapStateToProps = (state, ownProps) => {
-  console.log("TooltipContainer::mapStateToProps");
-  console.log(state);
-  console.log(ownProps);
-  if (ownProps.loadBackTooltip){
-    return {
-      tooltip: state.usersTooltips.tooltip,
-      type: state.usersTooltips.type
-    };
-  } else {
-    return {};
-  }
-}; // mapStateToProps
-
-const mapDispatchToProps = (dispatch, ownProps) => {
-  console.log("TooltipContainer::mapDispatchToProps");
-  return { };
-}; // mapDispatchToProps
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TooltipContainer);
+export default TooltipContainer;

@@ -1,4 +1,4 @@
 {
-  "tooltip":"Edit the selected user",
-  "type":"warning"
+  "tooltip":"Edit this user data",
+  "colorType":"warning"
 }

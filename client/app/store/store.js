@@ -4,7 +4,8 @@ import logger from "redux-logger";
 import thunk from "redux-thunk";
 
 import genericReducer from "../reducers/generic/generic";
-import {users, usersTooltips} from "../reducers/users/users";
+import users from "../reducers/users/users";
+import {addUserTooltip, editUserTooltip} from "../reducers/tooltips/tooltips";
 import modal from "../reducers/modal/modal";
 import tables from "../reducers/tables/tables";
 import {contentHeaders, contents} from "../reducers/content/content";
@@ -31,12 +32,13 @@ const store=createStore(
 	combineReducers({
 	    generic: genericReducer,
 	    users,
-	    usersTooltips,
 	    modal,
 	    tables,
 	    contents,
 	    contentHeaders,
-	    form: formReducer
+	    form: formReducer,
+	    addUserTooltip,
+	    editUserTooltip
 	}), 
 	compose(
 	    // @TODO immutableStateInvariantMiddleware should be only loaded in DEV env

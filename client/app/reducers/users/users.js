@@ -17,7 +17,7 @@ const user = (state = [], action) => {
     }
 };
 
-export const users = (state = [], action) => {
+const users = (state = [], action) => {
     if (!action) {
         return state;
     }
@@ -40,15 +40,4 @@ export const users = (state = [], action) => {
     return state;
 };
 
-export const usersTooltips = (state = [], action) => {
-    if (!action) {
-        return state;
-    }
-    switch (action.type) {
-        case actions.USER_BUTTON_INFO:
-            return {...state, ...action.buttonInfo};
-        case actions.ERROR:
-            return state;
-    }
-    return state;
-};
+export default users;

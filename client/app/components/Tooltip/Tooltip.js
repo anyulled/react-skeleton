@@ -77,9 +77,8 @@ const StyledTooltip = props => {
 
 function Tooltip (props) {
   console.log ('Tooltip::Tooltip');
-  console.log(props);
   return (props.tooltip !== undefined && props.tooltip !== null)
-    ? <div onMouseOver={props.onToggleTooltip} onMouseOut={props.onToggleTooltip}>
+    ? <span>
         {props.component}
         <Overlay
           show={props.showTooltip}
@@ -88,21 +87,21 @@ function Tooltip (props) {
           container={this}
           target={props.target}
         >
-          <StyledTooltip colorType={props.type}>
+          <StyledTooltip colorType={props.colorType}>
             {props.tooltip}
           </StyledTooltip>
         </Overlay>
-      </div>
-    : <div>{props.component}</div>
+      </span>
+    : <span>{props.component}</span>
 } // Tooltip (props)
 
 Tooltip.propTypes = {
-  tooltip: React.PropTypes.string,
-  type: React.PropTypes.string,
-  placement: React.PropTypes.string.isRequired,
-  onToggleTooltip: React.PropTypes.func.isRequired,
   showTooltip: React.PropTypes.bool.isRequired,
-  component: React.PropTypes.element.isRequired
+  placement: React.PropTypes.string.isRequired,
+  tooltip: React.PropTypes.string,
+  colorType: React.PropTypes.string,
+  component: React.PropTypes.element.isRequired,
+  target: React.PropTypes.object
 } // Tooltip.propTypes
 
 module.exports = Tooltip;

@@ -1,7 +1,6 @@
 import axios from "axios";
 import config from "../../config";
 
-export const USER_BUTTON_INFO = "userButtonInfo";
 export const USER_ADD = "user/add";
 export const USER_REMOVE = "user/remove";
 export const USER_UPDATE = "user/update";
@@ -103,22 +102,3 @@ export function usersLoadFromData(data) {
         });
     };
 }
-
-export function getButtonInfo (button){
-    return function (dispatch){
-        var params = "button=" + button;
-        
-        axios.get(config.api.url + "/userButtonsInfo" + (params.length > 0 ? "?" + params : ""))
-            .then((data) => {
-                dispatch({
-                    type: USER_BUTTON_INFO,
-                    buttonInfo: data.data
-                });
-            }).catch((error)=> {
-                dispatch({
-                    type: ERROR,
-                    payload: error
-                });
-            });
-    } // function
-} // getButtonInfo

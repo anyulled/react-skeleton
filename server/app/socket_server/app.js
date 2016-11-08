@@ -12,8 +12,8 @@ io.on('connection', function(socket){
 	console.log('a user connected');
 	socket.on("user/add", user=>{
 		console.log("Received new user");
-		console.log(message);
-		//users=[...users,user];	  
+        // console.log(message);
+		// users=[...users,user];	  
 	});
 	socket.on("user/load", message=>{
 		console.log("Getting users list");
