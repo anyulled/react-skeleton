@@ -52,6 +52,7 @@ const PlacementStyles = {
 
 const StyledTooltip = props => {
   console.log ('Tooltip::StyledTooltip');
+  
   let placementStyle = PlacementStyles[props.placement];
   let {
     style,
