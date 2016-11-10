@@ -4,7 +4,7 @@
   "description": " React/Redux Skeleton",
   "main": "index.js",
   "scripts": {
-  	"ph": "http-server -p 8089 ./dist -s | phantomjs ./phantom-test/test.js",
+  	"ph": "http-server -p 8089 ./dist -s | phantomjs ./integration-test/test.js",
     "package": "webpack",
     "start": "http-server -p 8089 ./dist -s | webpack --watch",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --require ./test/setup-jsdom.js --require ignore-styles test/**/Filter*_test.js",
@@ -91,6 +91,7 @@
     "moment": "^2.14.1",
     "nock": "^8.0.0",
     "node-sass": "^3.8.0",
+    "phantomjs-prebuilt": "^2.1.13",
     "postcss-loader": "0.9.1",
     "rc-collapse": "^1.6.8",
     "react": "^15.2.1",
