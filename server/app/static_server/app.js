@@ -98,3 +98,13 @@ app.get("/userButtonsInfo", function (req, res) {
         //var error = '{"error":"' + button.concat(" button not exist") + '"}';
     } // else
 }); // app.get("/userButtonInfo", function (req, res)
+
+app.get("/reduxSample", function (req, res) {
+    console.log("Getting reduxSample info");
+    
+    res.set({
+        "Content-Type": "application/json"
+    });
+    
+    res.sendFile(__dirname + resourcePath + "reduxSample.json");
+}); // app.get("/userButtonInfo", function (req, res)

@@ -11,6 +11,7 @@ import tables from "../reducers/tables/tables";
 import {contentHeaders, contents} from "../reducers/content/content";
 import startDataLayer, {socketMiddleware} from './middleware/socket-data-layer';
 import * as immutableStateInvariantMiddleware from "redux-immutable-state-invariant";
+import reduxSample from "../reducers/reduxSample/reduxSample";
 
 //export default createStore(
 //	combineReducers({
@@ -37,6 +38,7 @@ const store=createStore(
 	    contents,
 	    contentHeaders,
 	    form: formReducer,
+	    reduxSample,
 	    addUserTooltip,
 	    editUserTooltip
 	}), 

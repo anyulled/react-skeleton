@@ -40,6 +40,9 @@ class Navigation extends React.Component {
                 <LinkContainer to="/customMultiselect">
                     <NavItem eventKey={7}>Multiselect</NavItem>
                 </LinkContainer>
+                <LinkContainer to="/reduxSample">
+                    <NavItem eventKey={8}>Redux Sample</NavItem>
+                </LinkContainer>
             </Nav>
             <Nav pullRight>
                 <NavDropdown eventKey="4" title="User managemnt tables" id="nav-dropdown">
