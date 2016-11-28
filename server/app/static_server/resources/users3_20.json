@@ -1,148 +1,148 @@
-{	"page":3,
-	"size":20,
-	"totalPages":6,
-	"totalItems":117,
-	"data" : 
-[
-	{
-		"id":"400000012",
-		"name":"Erika Mustermann P4",
-		"yearOfBirth":"1975",
-		"country":"GERMANY",
-		"username":"erikamustermann"
-	},
-	{
-		"id":"400000013",
-		"yearOfBirth":"1965",
-		"name":"Yamada Taro P4",
-		"country":"JAPAN",
-		"username":"yamadat"
-	},
-	{
-		"id":"400000014",
-		"name":"Jack Smith P4",
-		"yearOfBirth":"1972",
-		"country":"USA",
-		"username":"jasmi"
-	},
-	{
-		"id":"400000015",
-		"name":"Jan Nichts P4",
-		"yearOfBirth":"1967",
-		"country":"GERMANY",
-		"username":"jnichts"
-	},
-	{
-		"id":"400000016",
-		"name":"Juan Nadie P4",
-		"yearOfBirth":"1980",
-		"country":"VENEZUELA",
-		"username":"juannadie"
-	},
-	{
-		"id":"400000017",
-		"name":"Josephine Martin P4",
-		"yearOfBirth":"1986",
-		"country":"FRANCE",
-		"username":"jmartin"
-	},
-	{
-		"id":"400000018",
-		"name":"Mario Rossi P4",
-		"yearOfBirth":"1974",
-		"country":"ITALY",
-		"username":"mrossi"
-	},
-	{
-		"id":"400000019",
-		"name":"María García P4",
-		"yearOfBirth":"1979",
-		"country":"SPAIN",
-		"username":"mgarcia"
-	},
-	{
-		"id":"400000070",
-		"name":"Gerardo López P4",
-		"yearOfBirth":"1981",
-		"country":"SPAIN",
-		"username":"mlopez"
-	},
-	{
-		"id":"400000071",
-		"name":"Jane Johnson P4",
-		"yearOfBirth":"1991",
-		"country":"USA",
-		"username":"janejohnson"
-	},
-	{
-		"id":"400000072",
-		"name":"Will O'Connor P4",
-		"yearOfBirth":"1958",
-		"country":"IRELAND",
-		"username":"ericoconnor"
-	},
-	{
-		"id":"400000073",
-		"name":"Nobita Rio P4",
-		"yearOfBirth":"1985",
-		"country":"JAPAN",
-		"username":"nobitar"
-	},
-	{
-		"id":"500000011",
-		"name":"John Doe P5",
-		"yearOfBirth":"1996",
-		"country":"UK",
-		"username":"jdoe"
-	},
-	{
-		"id":"500000012",
-		"name":"Erika Mustermann P5",
-		"yearOfBirth":"1975",
-		"country":"GERMANY",
-		"username":"erikamustermann"
-	},
-	{
-		"id":"500000013",
-		"yearOfBirth":"1965",
-		"name":"Yamada Taro P5",
-		"country":"JAPAN",
-		"username":"yamadat"
-	},
-	{
-		"id":"500000014",
-		"name":"Jack Smith P5",
-		"yearOfBirth":"1972",
-		"country":"USA",
-		"username":"jasmi"
-	},
-	{
-		"id":"500000015",
-		"name":"Jan Nichts P5",
-		"yearOfBirth":"1967",
-		"country":"GERMANY",
-		"username":"jnichts"
-	},
-	{
-		"id":"500000016",
-		"name":"Juan Nadie P5",
-		"yearOfBirth":"1980",
-		"country":"VENEZUELA",
-		"username":"juannadie"
-	},
-	{
-		"id":"500000017",
-		"name":"Josephine Martin P5",
-		"yearOfBirth":"1986",
-		"country":"FRANCE",
-		"username":"jmartin"
-	},
-	{
-		"id":"500000018",
-		"name":"Mario Rossi P5",
-		"yearOfBirth":"1974",
-		"country":"ITALY",
-		"username":"mrossi"
-	}
-]
+{
+  "page": 3,
+  "size": 20,
+  "totalPages": 6,
+  "totalItems": 117,
+  "data": [
+    {
+      "id": "400000012",
+      "name": "Erika Mustermann P4",
+      "yearOfBirth": "1975",
+      "country": "GERMANY",
+      "username": "erikamustermann"
+    },
+    {
+      "id": "400000013",
+      "yearOfBirth": "1965",
+      "name": "Yamada Taro P4",
+      "country": "JAPAN",
+      "username": "yamadat"
+    },
+    {
+      "id": "400000014",
+      "name": "Jack Smith P4",
+      "yearOfBirth": "1972",
+      "country": "USA",
+      "username": "jasmi"
+    },
+    {
+      "id": "400000015",
+      "name": "Jan Nichts P4",
+      "yearOfBirth": "1967",
+      "country": "GERMANY",
+      "username": "jnichts"
+    },
+    {
+      "id": "400000016",
+      "name": "Juan Nadie P4",
+      "yearOfBirth": "1980",
+      "country": "VENEZUELA",
+      "username": "juannadie"
+    },
+    {
+      "id": "400000017",
+      "name": "Josephine Martin P4",
+      "yearOfBirth": "1986",
+      "country": "FRANCE",
+      "username": "jmartin"
+    },
+    {
+      "id": "400000018",
+      "name": "Mario Rossi P4",
+      "yearOfBirth": "1974",
+      "country": "ITALY",
+      "username": "mrossi"
+    },
+    {
+      "id": "400000019",
+      "name": "María García P4",
+      "yearOfBirth": "1979",
+      "country": "SPAIN",
+      "username": "mgarcia"
+    },
+    {
+      "id": "400000070",
+      "name": "Gerardo López P4",
+      "yearOfBirth": "1981",
+      "country": "SPAIN",
+      "username": "mlopez"
+    },
+    {
+      "id": "400000071",
+      "name": "Jane Johnson P4",
+      "yearOfBirth": "1991",
+      "country": "USA",
+      "username": "janejohnson"
+    },
+    {
+      "id": "400000072",
+      "name": "Will O'Connor P4",
+      "yearOfBirth": "1958",
+      "country": "IRELAND",
+      "username": "ericoconnor"
+    },
+    {
+      "id": "400000073",
+      "name": "Nobita Rio P4",
+      "yearOfBirth": "1985",
+      "country": "JAPAN",
+      "username": "nobitar"
+    },
+    {
+      "id": "500000011",
+      "name": "John Doe P5",
+      "yearOfBirth": "1996",
+      "country": "UK",
+      "username": "jdoe"
+    },
+    {
+      "id": "500000012",
+      "name": "Erika Mustermann P5",
+      "yearOfBirth": "1975",
+      "country": "GERMANY",
+      "username": "erikamustermann"
+    },
+    {
+      "id": "500000013",
+      "yearOfBirth": "1965",
+      "name": "Yamada Taro P5",
+      "country": "JAPAN",
+      "username": "yamadat"
+    },
+    {
+      "id": "500000014",
+      "name": "Jack Smith P5",
+      "yearOfBirth": "1972",
+      "country": "USA",
+      "username": "jasmi"
+    },
+    {
+      "id": "500000015",
+      "name": "Jan Nichts P5",
+      "yearOfBirth": "1967",
+      "country": "GERMANY",
+      "username": "jnichts"
+    },
+    {
+      "id": "500000016",
+      "name": "Juan Nadie P5",
+      "yearOfBirth": "1980",
+      "country": "VENEZUELA",
+      "username": "juannadie"
+    },
+    {
+      "id": "500000017",
+      "name": "Josephine Martin P5",
+      "yearOfBirth": "1986",
+      "country": "FRANCE",
+      "username": "jmartin"
+    },
+    {
+      "id": "500000018",
+      "name": "Mario Rossi P5",
+      "yearOfBirth": "1974",
+      "country": "ITALY",
+      "username": "mrossi"
+    }
+  ]
 }

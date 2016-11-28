@@ -1,8 +1,9 @@
-{	"page":1,
-	"size":13,
-	"totalPages":9,
-	"totalItems":117,
-	"data" : 
+{
+  "page": 1,
+  "size": 13,
+  "totalPages": 9,
+  "totalItems": 117,
+  "data":
 [
 	{
 		"id":"000000061",
@@ -45,8 +46,8 @@
 		"yearOfBirth":"1980",
 		"country":"VENEZUELA",
 		"username":"juannadie"
-	},
-	{
+    },
+  {
 		"id":"000000067",
 		"name":"Josephine Martin",
 		"yearOfBirth":"1986",

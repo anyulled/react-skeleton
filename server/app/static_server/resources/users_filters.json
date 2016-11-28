@@ -23,12 +23,16 @@
 }, {
     "key": "boolean",
     "name": "Boolean",
-    "type": "boolean",    
-    "allow_options": false        
-}, {
+    "type": "boolean",
+  "allow_options": false
+},
+  {
     "key": " boolList",
     "name": "Boolean List",
-    "type": "list",    
-    "allowed_values": ["true","false"],
+    "type": "list",
+    "allowed_values": [
+      "true",
+      "false"
+    ],
     "allow_options": false        
 }]

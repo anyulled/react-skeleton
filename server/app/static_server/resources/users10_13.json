@@ -1,7 +1,7 @@
-{	
-	"page":10,
-	"size":13,
-	"totalPages":9,
-	"totalItems":117,
-	"data" : [ ]
+{
+  "page": 10,
+  "size": 13,
+  "totalPages": 9,
+  "totalItems": 117,
+  "data": []
 }
