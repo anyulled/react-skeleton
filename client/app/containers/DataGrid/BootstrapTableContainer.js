@@ -5,7 +5,7 @@ import * as tableActions from "../../actions/tables/tables";
 import * as modalActions from "../../actions/modal/modal";
 import BootstrapTable from "../../components/DataGrid/BootstrapTable";
 const mapStateToProps = (state, ownProps) => {
-	return {
+    return {
         data: state.users,
         columns: state.tables.users.columns,
         rowSortKey: state.tables.users.rowSortKey,

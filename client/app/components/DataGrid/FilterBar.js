@@ -1,7 +1,7 @@
 import React from "react";
 
 const FilterBar = () => (
-    <div style={{width:100+'%',height:40}}>
+    <div style={{width: 100 + "%", height: 40}}>
     	<table className="table">
     		<thead>
     			<tr>

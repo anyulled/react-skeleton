@@ -31,7 +31,7 @@ export function filterRemove(table, filter) {
 }
 
 export function filterLoad(table) {
-	return function (dispatch) {
+    return function (dispatch) {
         dispatch({
             type: TABLES_FILTER_CLEAR,
             table
@@ -41,7 +41,7 @@ export function filterLoad(table) {
                 dispatch({
                     type: TABLES_FILTER_LOAD,
                     table,
-                    payload: data.data.data?data.data.data:data.data
+                    payload: data.data.data ? data.data.data : data.data
                 });
             }).catch((error)=> {
                 dispatch({

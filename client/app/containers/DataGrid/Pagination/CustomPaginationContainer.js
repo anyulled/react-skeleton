@@ -1,11 +1,11 @@
-import React, { PropTypes } from "react";
-import CustomPagination from "../../../components/DataGrid/Pagination/CustomPagination";
-import * as tableActions from "../../../actions/tables/tables";
+import React from "react";
+import CustomPagination from "components/DataGrid/Pagination/CustomPagination";
+import * as tableActions from "actions/tables/tables";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state,ownProps) => { 
+const mapStateToProps = (state, ownProps) => {
     return {
-    	tableName: ownProps.tableName,
+        tableName: ownProps.tableName,
         pageNumber: state.tables[ownProps.tableName].pageNumber,
         pageSize: state.tables[ownProps.tableName].pageSize,
         numberOfPages: state.tables[ownProps.tableName].numberOfPages,

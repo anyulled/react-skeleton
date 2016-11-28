@@ -1,16 +1,8 @@
 import React from "react";
-import Navigation from "./UI/Navigation";
-import RootModal from "../containers/RootModal";
+import Navigation from "components/UI/Navigation";
+import RootModal from "containers/RootModal";
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    handleChange() {
-
-    }
-
     render() {
         return (<div>
             <Navigation/>

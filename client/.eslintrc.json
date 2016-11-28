@@ -10,9 +10,15 @@
   },
   "settings": {
     "import/ignore": [
+      "webpack",
       "node_modules",
       "\\.(json)$"
-    ]
+    ],
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
   },
   "env": {
     "es6": true,
@@ -76,12 +82,6 @@
     ],
     "react/no-direct-mutation-state": [
       "error"
-    ],
-    "react/no-unused-prop-types": [
-      "warn",
-      {
-        "skipShapeProps": true
-      }
     ],
     "react/react-in-jsx-scope": [
       "warn"

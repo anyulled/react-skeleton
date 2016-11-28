@@ -1,7 +1,7 @@
-import React, {PropTypes} from "react";
+import React from "react";
 import {connect} from "react-redux";
-import * as contentActions from "../actions/content/content";
-import Content from "../components/Content";
+import * as contentActions from "actions/content/content";
+import Content from "components/Content";
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-    	contentHeadersLoad: () => {
-    		dispatch(contentActions.contentHeadersLoad());
+        contentHeadersLoad: () => {
+            dispatch(contentActions.contentHeadersLoad());
         },
         contentLoad: (id) => {
             dispatch(contentActions.contentLoad(id));

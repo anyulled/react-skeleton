@@ -5,7 +5,7 @@ import FormContainer from "../containers/Form/FormContainer";
 const DynamicFormPage = () => (
     <div>
         <PageHeader>
-        Dynamic Form
+            Dynamic Form
         </PageHeader>
         <Grid fluid>
             <Row >
@@ -15,8 +15,7 @@ const DynamicFormPage = () => (
             </Row>
         </Grid>
     </div>
-)
-
+);
 
 
 export default DynamicFormPage;

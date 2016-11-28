@@ -1,10 +1,10 @@
 import React from "react";
-//import SortHeaderCell from "../components/SortHeaderCell";
 import {connect} from "react-redux";
-import * as userActions from "../../actions/users/users";
-import * as tableActions from "../../actions/tables/tables";
-import * as modalActions from "../../actions/modal/modal";
-import FixedDataTable2 from "../../components/DataGrid/FixedDataTable2";
+import * as userActions from "actions/users/users";
+import * as tableActions from "actions/tables/tables";
+import * as modalActions from "actions/modal/modal";
+import FixedDataTable2 from "components/DataGrid/FixedDataTable2";
+//import SortHeaderCell from "../components/SortHeaderCell";
 
 const mapStateToProps = (state, ownProps) => {
     return {

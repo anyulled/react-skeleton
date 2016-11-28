@@ -1,7 +1,7 @@
-import React, { PropTypes } from "react";
-import EditUserModal from "./Modals/EditUserModal";
-import NewUserModal from "./Modals/NewUserModal";
+import React, {PropTypes} from "react";
 import {connect} from "react-redux";
+import EditUserModal from "containers/Modals/EditUserModal";
+import NewUserModal from "containers/Modals/NewUserModal";
 
 const MODAL_COMPONENTS = {
     "NEW_USER": NewUserModal,

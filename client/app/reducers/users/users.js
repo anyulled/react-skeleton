@@ -1,4 +1,4 @@
-import * as actions from "../../actions/users/users.js";
+import * as actions from "actions/users/users";
 
 const user = (state = [], action) => {
     switch (action.type) {

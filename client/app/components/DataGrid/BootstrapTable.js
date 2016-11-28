@@ -30,7 +30,7 @@ class CustomBootstrapTable extends React.Component {
             <BootstrapTable data={data} bordered={ false }>
                 {columns.map(function (column, i) {
                     return <TableHeaderColumn key={i} dataSort={ true } dataField={column.key}
-                                              isKey={ i == 0 }>{column.title}</TableHeaderColumn>
+                                              isKey={ i == 0 }>{column.title}</TableHeaderColumn>;
                 })}
                 <TableHeaderColumn dataFormat={ actionFormatter } formatExtraData={onEditClick}
                                    hidden={ !edit }>Actions</TableHeaderColumn>

@@ -1,13 +1,14 @@
 import React from "react";
-import {danger} from "../../utils/colors";
-import {FormControl, FormGroup, ControlLabel} from "react-bootstrap";
+import {FormControl} from "react-bootstrap";
 
-const Input = ({label,...field}) => {
+const Input = ({label, ...field}) => {
 
-	const {initialValue, autofill, onUpdate, valid, invalid, dirty, pristine, 
-        error, active, touched, visited, autofilled,validation, specific,...rest } = field;
+    const {
+        initialValue, autofill, onUpdate, valid, invalid, dirty, pristine,
+        error, active, touched, visited, autofilled, validation, specific, ...rest
+    } = field;
     return (
-        <FormControl type="text" className="u-full-width" {...rest}/> 
+        <FormControl type="text" className="u-full-width" {...rest}/>
     );
 };
 

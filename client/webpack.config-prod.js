@@ -1,15 +1,19 @@
-const webpack = require("webpack");
 const path = require("path");
-
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
-var webpackUglifyJsPlugin = require("webpack-uglify-js-plugin");
-
+const webpack = require("webpack");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WebpackUglifyJsPlugin = require("webpack-uglify-js-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
     entry: {
         js: ["./app/index.js"],
-        vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare", "react-virtualized"]
+        vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare"]
+    },
+    resolve: {
+        root: path.resolve("app"),
+        extensions: ["", ".js"],
+        modulesDirectories: ["node_modules"]
     },
     devtool: "source-map",
     output: {
@@ -32,6 +36,12 @@ module.exports = {
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        }),
+        new CleanWebpackPlugin(["dist"]),
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             minChunks: Infinity,
@@ -42,8 +52,7 @@ module.exports = {
             filename: "index.html",
             inject: "body"
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpackUglifyJsPlugin({
+        new WebpackUglifyJsPlugin({
             cacheFolder: __dirname,
             debug: false,
             minimize: true,
@@ -55,6 +64,8 @@ module.exports = {
                 warnings: false
             }
         }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
         new CopyWebpackPlugin([{from: "app/assets", to: "assets"}])
     ]
 };

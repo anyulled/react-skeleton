@@ -1,26 +1,26 @@
 import React from "react";
-import {MenuItem,DropdownButton,InputGroup} from "react-bootstrap";
+import {MenuItem, DropdownButton, InputGroup} from "react-bootstrap";
 
 const OPTIONS_LIST = {
     "EQ":{
     	symbol:"=",
-    	description:"= (equals to)",
+        description: "= (equals to)"
     },
     "NEQ":{
     	symbol:"!=",
-    	description:"!= (not equals to)",
+        description: "!= (not equals to)"
     },
     "LIKE":{
     	symbol:"~",
-    	description:"~ (similar to)",
+        description: "~ (similar to)"
     },
     "GT":{
     	symbol:">",
-    	description:"> (greater than)",
+        description: "> (greater than)"
     },
     "LT":{
     	symbol:"<",
-    	description:"< (lower than)",
+        description: "< (lower than)"
     }
 };
 

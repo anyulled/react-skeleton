@@ -34,32 +34,31 @@ export function userUpdate(id, user) {
     };
 }
 
-export function usersLoad(properties) {	
+export function usersLoad(properties) {
     return function (dispatch) {
+        var params = "";
 
-        var params="";
-
-        if(properties){
+        if (properties) {
             var filters = properties.filters;
-            params = "pageNumber="+properties.pageNumber;
-            params += "&"+"pageSize="+properties.pageSize;
+            params = "pageNumber=" + properties.pageNumber;
+            params += "&" + "pageSize=" + properties.pageSize;
 
-            if(filters){
-                var search=filters
-                .filter(e=>e.searchValue)
-                .map(e=>e.key+"="+formatFilterValue(e))
-                .join("&");
-            
-                if(search.length>0){
-                    params += "&"+search
+            if (filters) {
+                var search = filters
+                    .filter(e => e.searchValue)
+                    .map(e => e.key + "=" + formatFilterValue(e))
+                    .join("&");
+
+                if (search.length > 0) {
+                    params += "&" + search;
                 }
 
-                let options=filters
-                .filter(e=>e.searchValue && e.searchOptionValue)
-                .map(e=>e.key+"Option="+e.searchOptionValue)
-                .join("&");
-                if(options.length>0){
-                    params += "&"+options
+                let options = filters
+                    .filter(e => e.searchValue && e.searchOptionValue)
+                    .map(e => e.key + "Option=" + e.searchOptionValue)
+                    .join("&");
+                if (options.length > 0) {
+                    params += "&" + options;
                 }
             }
         }
@@ -68,7 +67,7 @@ export function usersLoad(properties) {
             type: USER_CLEAR
         });
 
-        axios.get(config.api.url + "/users"+(params.length>0?"?"+params:""))
+        axios.get(config.api.url + "/users" + (params.length > 0 ? "?" + params : ""))
             .then((data) => {
                 dispatch({
                     type: USER_ADD,
@@ -91,18 +90,20 @@ export function usersLoad(properties) {
     };
 }
 
-function formatFilterValue(filter){
-	switch(filter.type){
-	case "date": //Moment @see http://momentjs.com/
-		return filter.searchValue.format("YYYY-MM-DD");
-	default:
-		return filter.searchValue.trim();
-	}
+function formatFilterValue(filter) {
+    switch (filter.type) {
+        case "date": //Moment @see http://momentjs.com/
+            return filter.searchValue.format("YYYY-MM-DD");
+        default:
+            return filter.searchValue.trim();
+    }
 }
 
 export function usersLoadFromData(data) {
     return function (dispatch) {
-    	nextUserId=Math.max.apply(Math,data.map(function(o){return o.id;}))+1;
+        nextUserId = Math.max.apply(Math, data.map(function (o) {
+                return o.id;
+            })) + 1;
         dispatch({
             type: USER_CLEAR
         });

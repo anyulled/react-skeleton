@@ -1,7 +1,7 @@
 import React from "react";
-import 'rc-collapse/assets/index.css';
-import 'string.prototype.repeat';
-import Collapse, { Panel } from 'rc-collapse';
+import "rc-collapse/assets/index.css";
+import "string.prototype.repeat";
+import Collapse, {Panel} from "rc-collapse";
 
 const text = `
     A dog is a type of domesticated animal.
@@ -16,20 +16,20 @@ function random() {
 class CollapsiblePane extends React.Component {
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             time: random(),
             accordion: false,
-            activeKey: ['4']
+            activeKey: ["4"]
         };
-        this.onChange = this.onChange.bind(this);
-        this.reRender = this.reRender.bind(this);
-        this.toggle = this.toggle.bind(this);
-        this.setActivityKey = this.setActivityKey.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleReRender = this.handleReRender.bind(this);
+        this.handleToggle = this.handleToggle.bind(this);
+        this.handleActivityKey = this.handleActivityKey.bind(this);
     }
 
-    onChange(activeKey) {
+    handleChange(activeKey) {
         this.setState({
-            activeKey,
+            activeKey
         });
     }
 
@@ -44,9 +44,9 @@ class CollapsiblePane extends React.Component {
             );
         }
         items.push(
-            <Panel header={`This is panel header 4`} key="4">
+            <Panel header={"This is panel header 4"} key="4">
                 <Collapse defaultActiveKey="1">
-                    <Panel header={`This is panel nest panel`} key="1">
+                    <Panel header={"This is panel nest panel"} key="1">
                         <p>{text}</p>
                     </Panel>
                 </Collapse>
@@ -56,42 +56,42 @@ class CollapsiblePane extends React.Component {
         return items;
     }
 
-    setActivityKey() {
+    handleActivityKey() {
         this.setState({
-            activeKey: ['2'],
+            activeKey: ["2"]
         });
     }
 
-    reRender() {
+    handleReRender() {
         this.setState({
-            time: random(),
+            time: random()
         });
     }
 
-    toggle() {
+    handleToggle() {
         this.setState({
-            accordion: !this.state.accordion,
+            accordion: !this.state.accordion
         });
     }
 
     render() {
         const accordion = this.state.accordion;
-        const btn = accordion ? 'accordion' : 'collapse';
+        const btn = accordion ? "accordion" : "collapse";
         const activeKey = this.state.activeKey;
-        return (<div style={{ margin: 20, width: 400 }}>
-                <button onClick={this.reRender}>reRender</button>
-                <button onClick={this.toggle}>{btn}</button>
-                <br/><br/>
-                <button onClick={this.setActivityKey}>active header 2</button>
-                <br/><br/>
-                <Collapse
-                    accordion={accordion}
-                    onChange={this.onChange}
-                    activeKey={activeKey}
-                >
-                    {this.getItems()}
-                </Collapse>
-            </div>);
+        return (<div style={{margin: 20, width: 400}}>
+            <button onClick={this.handleReRender}>reRender</button>
+            <button onClick={this.handleToggle}>{btn}</button>
+            <br/><br/>
+            <button onClick={this.handleActivityKey}>active header 2</button>
+            <br/><br/>
+            <Collapse
+                accordion={accordion}
+                onChange={this.handleChange}
+                activeKey={activeKey}
+            >
+                {this.getItems()}
+            </Collapse>
+        </div>);
     }
 
 }

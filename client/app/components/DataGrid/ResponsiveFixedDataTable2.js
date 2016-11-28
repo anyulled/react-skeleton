@@ -1,5 +1,5 @@
 import React, {PropTypes} from "react";
-import {Glyphico, Pagination} from "react-bootstrap";
+import {Glyphico} from "react-bootstrap";
 import FilterBarContainer from "../../containers/DataGrid/Filter/FilterBarContainer";
 import CustomPaginationContainer from "../../containers/DataGrid/Pagination/CustomPaginationContainer";
 import TextCell from "../../components/TextCell";
@@ -8,18 +8,18 @@ import {Table, Column, Cell} from "fixed-data-table-2";
 import "fixed-data-table-2/dist/fixed-data-table-base.css";
 import "fixed-data-table-2/dist/fixed-data-table-style.css";
 import "fixed-data-table-2/dist/fixed-data-table.css";
-import { findDOMNode } from 'react-dom';
-import debounce from 'lodash/debounce';
-import isEqual from 'lodash/isEqual';
+import {findDOMNode} from "react-dom";
+import debounce from "lodash/debounce";
+import isEqual from "lodash/isEqual";
 
 class ResponsiveFixedDataTable2 extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.handleOnColumnReorderEndCallback = this.handleOnColumnReorderEndCallback.bind(this);
         this.state = {
-        	gridWidth: 1,
+            gridWidth: 1,
     		gridHeight: 1
-    	};
+        };
     }  
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -53,7 +53,7 @@ class ResponsiveFixedDataTable2 extends React.Component {
 				gridHeight: offsetHeight
 			});
 		}
-	}
+    };
 
 	_getStyle(overrides) {
 		return {
@@ -74,11 +74,11 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 	
 	componentWillReceiveProps(props) {
-		var hasChange = (this.props.pageNumber!=props.pageNumber);
-        hasChange |= (this.props.pageSize!=props.pageSize);
-        hasChange |= (this.props.numberOfPages!=props.numberOfPages);
-		
-		if(props.filters!=this.props.filters || hasChange){
+        var hasChange = (this.props.pageNumber != props.pageNumber);
+        hasChange |= (this.props.pageSize != props.pageSize);
+        hasChange |= (this.props.numberOfPages != props.numberOfPages);
+
+        if (props.filters != this.props.filters || hasChange) {
 			//convert both filter lists to an easily comparable pair of strings
 			let plainOldProps=this.props.filters?this.props.filters
 				.map((e)=>e.searchValue?e.key+e.searchValue+e.searchOptionValue:null)
@@ -89,12 +89,12 @@ class ResponsiveFixedDataTable2 extends React.Component {
 				.filter((e)=>e!=null)
 				.join():"";
 			if(!(plainOldProps===plainNewProps)){
-				hasChange = true;	
-			}			
-		}
+                hasChange = true;
+            }
+        }
 
-		if ((typeof this.props.dataLoad === "function") && hasChange) {
-		   this.props.dataLoad(props);
+        if ((typeof this.props.dataLoad === "function") && hasChange) {
+            this.props.dataLoad(props);
 		}		
 	}
 	
@@ -131,8 +131,8 @@ class ResponsiveFixedDataTable2 extends React.Component {
     }
 
     render() {
-    	let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber, pageSize} = this.props;
-    	let sortedData = this.sortData(data);        
+        let {data, onEditClick, onRemoveClick, edit, rowSortKey, rowSortDesc, sortRowsBy, columns, reorderableColumns, reorderableRows, rowHeight, numberOfPages, pageNumber, pageSize} = this.props;
+        let sortedData = this.sortData(data);
         let sortProps = {sortBy: sortRowsBy, sortKey: rowSortKey, sortDesc: rowSortDesc};
         let width = columns
         	?

@@ -1,12 +1,18 @@
 const webpack = require("webpack");
-
-var CopyWebpackPlugin = require("copy-webpack-plugin");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
     entry: {
-        js: ["./app/index.js"],
+        js: ["webpack/hot/only-dev-server", "react-hot-loader/patch", "./app/index.js"],
         vendor: ["react", "react-dom", "redux", "react-redux", "es6-promise", "react-addons-shallow-compare"]
+    },
+    resolve: {
+        root: path.resolve("app"),
+        extensions: ["", ".js"],
+        modulesDirectories: ["node_modules"]
     },
     devtool: "source-map",
     output: {
@@ -24,10 +30,15 @@ module.exports = {
                 }
             },
             {test: /\.css$/, loader: "style-loader!css-loader"},
+            {test: /\.scss$/, loaders: ["style", "css", "sass"]},
             {test: /\.less$/, loaders: ["style", "css", "less"]}
         ]
     },
     plugins: [
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify("false")
+        }),
+        new CleanWebpackPlugin(["dist"]),
         new webpack.optimize.CommonsChunkPlugin({
             name: "vendor",
             minChunks: Infinity,
@@ -39,6 +50,7 @@ module.exports = {
             inject: "body"
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin(),
         new CopyWebpackPlugin([{from: "app/assets", to: "assets"}])
     ]
 };

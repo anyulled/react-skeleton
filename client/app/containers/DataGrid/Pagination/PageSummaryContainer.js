@@ -1,10 +1,9 @@
-import React, { PropTypes } from "react";
-import PageSummary from "../../../components/DataGrid/Pagination/PageSummary";
-import * as tableActions from "../../../actions/tables/tables";
-
+import React from "react";
+import PageSummary from "components/DataGrid/Pagination/PageSummary";
+import * as tableActions from "actions/tables/tables";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state,ownProps) => { 
+const mapStateToProps = (state, ownProps) => {
     return {
         pageSize: state.tables[ownProps.tableName].pageSize,
         pageNumber: state.tables[ownProps.tableName].pageNumber,

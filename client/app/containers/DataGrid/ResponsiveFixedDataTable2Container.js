@@ -1,25 +1,25 @@
 import React from "react";
-//import SortHeaderCell from '../components/SortHeaderCell';
 import {connect} from "react-redux";
-import * as userActions from "../../actions/users/users";
-import * as tableActions from "../../actions/tables/tables";
-import * as modalActions from "../../actions/modal/modal";
-import ResponsiveFixedDataTable2 from "../../components/DataGrid/ResponsiveFixedDataTable2";
+import * as userActions from "actions/users/users";
+import * as tableActions from "actions/tables/tables";
+import * as modalActions from "actions/modal/modal";
+import ResponsiveFixedDataTable2 from "components/DataGrid/ResponsiveFixedDataTable2";
+//import SortHeaderCell from '../components/SortHeaderCell';
 
 const mapStateToProps = (state, ownProps) => {
 
-	return {
-		name: ownProps.tableName,
-		data: state[ownProps.tableName],
-		columns: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].columns:null),
-		filters: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].filters:null),
-		rowSortKey: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortKey:null),
-		rowSortDesc: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].rowSortDesc:null),
-        pageNumber: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageNumber:null),
-        pageSize: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].pageSize:null),
-        numberOfPages: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfPages:null),
-        numberOfElements: (state.tables[ownProps.tableName]?state.tables[ownProps.tableName].numberOfElements:null)
-	};
+    return {
+        name: ownProps.tableName,
+        data: state[ownProps.tableName],
+        columns: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].columns : null),
+        filters: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].filters : null),
+        rowSortKey: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].rowSortKey : null),
+        rowSortDesc: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].rowSortDesc : null),
+        pageNumber: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].pageNumber : null),
+        pageSize: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].pageSize : null),
+        numberOfPages: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].numberOfPages : null),
+        numberOfElements: (state.tables[ownProps.tableName] ? state.tables[ownProps.tableName].numberOfElements : null)
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
