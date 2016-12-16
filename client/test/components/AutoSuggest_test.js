@@ -5,8 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import Autosuggest from 'react-autosuggest';
 import Autocomplete from 'react-autocomplete';
 
-//Xavi Mundó Fucks!!
-//Jaja saludos
+
 describe("Autosuggest", () => {
 	let container = document.createElement('div');
 	let suggestions = [];
