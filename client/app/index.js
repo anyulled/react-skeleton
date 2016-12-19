@@ -19,6 +19,8 @@ import UserManagementWithTooltips from "./components/Tooltip/UserManagementWithT
 import DynamicFormPage from "./components/DynamicFormPage";
 import App from "./components/App";
 import ReduxSamplePage from "./containers/reduxSample/ReduxSamplePage";
+import AutosuggestExample from "./components/Form/Autosuggest";
+import AutocompleteExample from "./components/Form/Autocomplete";
 
 ReactDOM.render(
     <Provider store={store}>
@@ -36,6 +38,8 @@ ReactDOM.render(
                 <Route path="/forms/dynamic" component={DynamicFormPage}/>
                 <Route path="/reduxSample" component={ReduxSamplePage}/>
                 <Route path="/content/:contentId" component={ContentContainer}/>
+                <Route path="/autosuggest" component={AutosuggestExample}/> 
+                <Route path="/autocomplete" component={AutocompleteExample}/> 
             </Route>
         </Router>
     </Provider>
