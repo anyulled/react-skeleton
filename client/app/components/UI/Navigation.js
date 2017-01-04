@@ -45,7 +45,7 @@ class Navigation extends React.Component {
                 </LinkContainer>
             </Nav>
             <Nav pullRight>
-                <NavDropdown eventKey="4" title="User managemnt tables" id="nav-dropdown">
+                <NavDropdown eventKey="4" title="User management tables" id="nav-dropdown">
                     <LinkContainer to="/usermanager">
                         <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
                     </LinkContainer>
