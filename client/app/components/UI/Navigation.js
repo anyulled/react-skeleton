@@ -37,11 +37,22 @@ class Navigation extends React.Component {
                 <LinkContainer to="/collapsiblepane">
                     <NavItem eventKey={6}>CollapsiblePane</NavItem>
                 </LinkContainer>
+                <LinkContainer to="/customMultiselect">
+                    <NavItem eventKey={7}>Multiselect</NavItem>
+                </LinkContainer>
+                <LinkContainer to="/reduxSample">
+                    <NavItem eventKey={8}>Redux Sample</NavItem>
+                </LinkContainer>
             </Nav>
             <Nav pullRight>
-                <LinkContainer to="/usermanager">
-                    <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
-                </LinkContainer>
+                <NavDropdown eventKey="4" title="User management tables" id="nav-dropdown">
+                    <LinkContainer to="/usermanager">
+                        <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management</NavItem>
+                    </LinkContainer>
+                    <LinkContainer to="/usermanagertooltip">
+                        <NavItem eventKey={4}><Glyphicon glyph="cog"/> User Management with tooltips</NavItem>
+                    </LinkContainer>
+                </NavDropdown>
             </Nav>
         </Navbar>);
     }

@@ -9,7 +9,7 @@ import FixedDataTable2 from "../../components/DataGrid/FixedDataTable2";
 const mapStateToProps = (state, ownProps) => {
     return {
         data: state.users,
-        columns: state.tables.userTable.columns,
+        columns: state.tables.userTable.columns, //TODO: This throws an error and all the app stops working
         rowSortKey: state.tables.userTable.rowSortKey,
         rowSortDesc: state.tables.userTable.rowSortDesc
     };

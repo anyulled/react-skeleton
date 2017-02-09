@@ -1,0 +1,21 @@
+[
+    {
+        "name":"lvl1",
+        "label":"Level 1",
+        "type":"single_select",
+        "active":"true"
+    },
+    {
+        "name":"lvl2",
+        "label":"Level 2",
+        "type":"single_select",
+        "active":"false"
+    },
+    {
+        "name":"lvl3",
+        "label":"Level 3",
+        "type":"multiple_select",
+        "active":"true"
+    },
+
+]
