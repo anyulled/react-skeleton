@@ -1,0 +1,310 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.14.1
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-567746:
+    - babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - eslint > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-bootstrap-typeahead > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - eslint > inquirer > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - eslint > table > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-autosuggest > redux > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-bootstrap-table > @allenfang/react-toastr > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > async > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-register > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-generator > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-generator > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - istanbul > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-helpers > babel-template > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - isparta > babel-core > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
+    - react-datagrid > babel-cli > babel-register > babel-core > babel-helpers > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-05-01T07:42:27.636Z'
