@@ -93,7 +93,7 @@
     "mocha": "^2.5.3",
     "moment": "^2.14.1",
     "nock": "^8.0.0",
-    "node-sass": "^3.8.0",
+    "node-sass": "^4.14.1",
     "phantomjs-prebuilt": "^2.1.13",
     "postcss-loader": "0.9.1",
     "rc-collapse": "^1.6.8",
