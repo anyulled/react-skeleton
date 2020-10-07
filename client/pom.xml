@@ -11,7 +11,7 @@
         <webapp.directory>.</webapp.directory>
         <configuration.directory>config</configuration.directory>
         <!-- versions -->
-        <maven-assembly-plugin.version>2.4</maven-assembly-plugin.version>
+        <maven-assembly-plugin.version>2.6</maven-assembly-plugin.version>
     </properties>
 
     <build>
