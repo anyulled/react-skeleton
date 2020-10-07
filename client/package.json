@@ -72,7 +72,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "babel-runtime": "6.26.0",
-    "chai": "3.5.0",
+    "chai": "4.2.0",
     "chart.js": "2.9.3",
     "copy-webpack-plugin": "3.0.1",
     "css-loader": "0.28.11",
