@@ -101,7 +101,7 @@
     "react-addons-css-transition-group": "15.6.2",
     "react-addons-shallow-compare": "15.6.2",
     "react-addons-test-utils": "15.6.2",
-    "react-chartjs": "0.8.0",
+    "react-chartjs": "1.2.0",
     "react-dnd": "2.6.0",
     "react-dnd-test-backend": "1.0.2",
     "react-dom": "15.6.2",
