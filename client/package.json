@@ -31,7 +31,7 @@
     "eslint-plugin-import": "^2.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "fixed-data-table-2": "^1.1.1",
-    "i18next": "^3.4.1",
+    "i18next": "^19.0.0",
     "isparta": "^4.0.0",
     "istanbul": "1.0.0-alpha.2",
     "jsdom": "^16.0.0",
