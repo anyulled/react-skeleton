@@ -84,7 +84,7 @@
     "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.21.3",
     "extract-text-webpack-plugin": "1.0.1",
-    "file-loader": "6.1.0",
+    "file-loader": "6.1.1",
     "html-webpack-plugin": "4.5.0",
     "ignore-styles": "5.0.1",
     "istanbul-react": "1.1.0",
