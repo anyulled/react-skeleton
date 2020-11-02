@@ -90,7 +90,7 @@
     "istanbul-react": "1.1.0",
     "jsdom": "16.4.0",
     "json-loader": "0.5.7",
-    "mocha": "8.2.0",
+    "mocha": "8.2.1",
     "moment": "2.29.1",
     "nock": "13.0.4",
     "node-sass": "5.0.0",
