@@ -15,6 +15,6 @@
     "socket.io": "^4.0.0"
   },
   "devDependencies": {
-    "redux": "4.1.1"
+    "redux": "4.2.0"
   }
 }
